@@ -46,6 +46,10 @@ public class RateEmployee extends javax.swing.JFrame {
         setFields();
         tableupdate();
 
+        task.getTableHeader().setOpaque(true);
+//        Employee.getTableHeader().setBackground(new java.awt.Color(64, 56, 84));
+        task.getTableHeader().setFont(new java.awt.Font("Rockwell", 1, 10));
+        task.getTableHeader().setForeground(new java.awt.Color(52, 45, 71));
     }
 
     private void setFields() {
@@ -129,7 +133,7 @@ public class RateEmployee extends javax.swing.JFrame {
         hours = new javax.swing.JTextField();
         error3 = new javax.swing.JLabel();
         error4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -159,7 +163,8 @@ public class RateEmployee extends javax.swing.JFrame {
         jPanel2.add(Taskname);
         Taskname.setBounds(20, 170, 271, 32);
 
-        task.setForeground(new java.awt.Color(48, 27, 71));
+        task.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
+        task.setForeground(new java.awt.Color(52, 45, 71));
         task.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -171,6 +176,9 @@ public class RateEmployee extends javax.swing.JFrame {
                 "Employee ID", "Employee Name", "Hours", "Rating"
             }
         ));
+        task.setFocusable(false);
+        task.setGridColor(new java.awt.Color(52, 45, 71));
+        task.setSelectionBackground(new java.awt.Color(130, 120, 158));
         task.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 taskMouseClicked(evt);
@@ -181,25 +189,25 @@ public class RateEmployee extends javax.swing.JFrame {
         jPanel2.add(jScrollPane2);
         jScrollPane2.setBounds(320, 100, 414, 310);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
         jLabel2.setText("Employee Rating");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(10, 11, 337, 44);
+        jLabel2.setBounds(20, 10, 337, 43);
 
-        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(52, 45, 71));
         jLabel3.setText("Task ID:");
         jPanel2.add(jLabel3);
         jLabel3.setBounds(20, 90, 130, 30);
 
-        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(52, 45, 71));
         jLabel4.setText("Task Name:");
         jPanel2.add(jLabel4);
         jLabel4.setBounds(20, 150, 160, 19);
 
-        jLabel10.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(52, 45, 71));
         jLabel10.setText("Employee ID:");
         jPanel2.add(jLabel10);
@@ -214,10 +222,19 @@ public class RateEmployee extends javax.swing.JFrame {
         jPanel2.add(empid);
         empid.setBounds(20, 230, 271, 28);
 
-        add1.setBackground(new java.awt.Color(88, 84, 98));
+        add1.setBackground(new java.awt.Color(38, 32, 54));
         add1.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         add1.setForeground(new java.awt.Color(255, 255, 255));
+        add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/save.png"))); // NOI18N
         add1.setText("Save");
+        add1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                add1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                add1MouseExited(evt);
+            }
+        });
         add1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 add1ActionPerformed(evt);
@@ -226,7 +243,7 @@ public class RateEmployee extends javax.swing.JFrame {
         jPanel2.add(add1);
         add1.setBounds(100, 380, 90, 40);
 
-        jLabel11.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(52, 45, 71));
         jLabel11.setText("Rating:");
         jPanel2.add(jLabel11);
@@ -240,7 +257,7 @@ public class RateEmployee extends javax.swing.JFrame {
         jPanel2.add(rating);
         rating.setBounds(20, 330, 271, 28);
 
-        jLabel12.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(52, 45, 71));
         jLabel12.setText("Hours Worked:");
         jPanel2.add(jLabel12);
@@ -265,24 +282,19 @@ public class RateEmployee extends javax.swing.JFrame {
         error4.setForeground(new java.awt.Color(255, 0, 51));
         error4.setText("Rate employee performance out of 10.");
         jPanel2.add(error4);
-        error4.setBounds(60, 300, 240, 40);
+        error4.setBounds(70, 300, 240, 40);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(52, 45, 71));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
-        jButton2.setText("Dashboard");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 45, 71)));
-        jButton2.setBorderPainted(false);
-        jButton2.setFocusable(false);
-        jButton2.setRequestFocusEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(52, 45, 71));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
+        jLabel5.setText("Dashboard");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
             }
         });
-        jPanel2.add(jButton2);
-        jButton2.setBounds(630, 0, 130, 40);
+        jPanel2.add(jLabel5);
+        jLabel5.setBounds(630, 10, 130, 40);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -383,12 +395,23 @@ public class RateEmployee extends javax.swing.JFrame {
         rating.setText(model.getValueAt(selectedIndex, 4).toString());
     }//GEN-LAST:event_taskMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void add1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add1MouseEntered
         // TODO add your handling code here:
+                add1.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_add1MouseEntered
+
+    private void add1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add1MouseExited
+        // TODO add your handling code here:
+                add1.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_add1MouseExited
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         Dashboard db = new Dashboard();
         db.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -436,7 +459,6 @@ public class RateEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel error3;
     private javax.swing.JLabel error4;
     private javax.swing.JTextField hours;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -444,6 +466,7 @@ public class RateEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;

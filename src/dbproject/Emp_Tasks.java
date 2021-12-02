@@ -49,6 +49,10 @@ public class Emp_Tasks extends javax.swing.JFrame {
         //setFields();
         tableupdate("");
 
+        Etask.getTableHeader().setOpaque(true);
+//        Employee.getTableHeader().setBackground(new java.awt.Color(64, 56, 84));
+        Etask.getTableHeader().setFont(new java.awt.Font("Rockwell", 1, 10));
+        Etask.getTableHeader().setForeground(new java.awt.Color(52, 45, 71));
     }
 
     private void tableupdate(String s) { //table updated after every change
@@ -113,7 +117,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         error1 = new javax.swing.JLabel();
         error2 = new javax.swing.JLabel();
         error3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -122,13 +126,14 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
         jLabel2.setText("Your Tasks");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(21, 11, 337, 44);
+        jLabel2.setBounds(21, 11, 337, 43);
 
-        Etask.setForeground(new java.awt.Color(48, 27, 71));
+        Etask.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
+        Etask.setForeground(new java.awt.Color(52, 45, 71));
         Etask.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -140,6 +145,9 @@ public class Emp_Tasks extends javax.swing.JFrame {
                 "Task ID", "Task Name", "Start Date", "End Date", "Status", "Hours", "Rating"
             }
         ));
+        Etask.setFocusable(false);
+        Etask.setGridColor(new java.awt.Color(52, 45, 71));
+        Etask.setSelectionBackground(new java.awt.Color(130, 120, 158));
         Etask.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 EtaskMouseClicked(evt);
@@ -150,7 +158,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jPanel1.add(jScrollPane2);
         jScrollPane2.setBounds(312, 85, 414, 360);
 
-        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(52, 45, 71));
         jLabel4.setText("Task ID:");
         jPanel1.add(jLabel4);
@@ -165,7 +173,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jPanel1.add(taskid);
         taskid.setBounds(20, 100, 271, 32);
 
-        jLabel12.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(52, 45, 71));
         jLabel12.setText("Task Name:");
         jPanel1.add(jLabel12);
@@ -180,7 +188,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jPanel1.add(taskname);
         taskname.setBounds(20, 160, 271, 32);
 
-        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(52, 45, 71));
         jLabel5.setText("Task Details:");
         jPanel1.add(jLabel5);
@@ -194,7 +202,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(20, 210, 271, 70);
 
-        jLabel10.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(52, 45, 71));
         jLabel10.setText("Start Date:");
         jPanel1.add(jLabel10);
@@ -209,7 +217,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jPanel1.add(startdate);
         startdate.setBounds(20, 300, 271, 32);
 
-        jLabel11.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(52, 45, 71));
         jLabel11.setText("End Date:");
         jPanel1.add(jLabel11);
@@ -224,19 +232,38 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jPanel1.add(enddate);
         enddate.setBounds(20, 350, 271, 32);
 
-        MarkComplete.setBackground(new java.awt.Color(88, 84, 98));
+        MarkComplete.setBackground(new java.awt.Color(38, 32, 54));
         MarkComplete.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         MarkComplete.setForeground(new java.awt.Color(255, 255, 255));
+        MarkComplete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/mark.png"))); // NOI18N
         MarkComplete.setText("Mark Done");
+        MarkComplete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                MarkCompleteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                MarkCompleteMouseExited(evt);
+            }
+        });
         MarkComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MarkCompleteActionPerformed(evt);
             }
         });
         jPanel1.add(MarkComplete);
-        MarkComplete.setBounds(100, 410, 110, 30);
+        MarkComplete.setBounds(100, 410, 120, 30);
 
+        Pending.setBackground(new java.awt.Color(38, 32, 54));
+        Pending.setForeground(new java.awt.Color(255, 255, 255));
         Pending.setText("Pending");
+        Pending.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PendingMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PendingMouseExited(evt);
+            }
+        });
         Pending.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PendingActionPerformed(evt);
@@ -245,7 +272,17 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jPanel1.add(Pending);
         Pending.setBounds(480, 50, 73, 23);
 
+        Missed.setBackground(new java.awt.Color(38, 32, 54));
+        Missed.setForeground(new java.awt.Color(255, 255, 255));
         Missed.setText("Missed");
+        Missed.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                MissedMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                MissedMouseExited(evt);
+            }
+        });
         Missed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MissedActionPerformed(evt);
@@ -254,7 +291,17 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jPanel1.add(Missed);
         Missed.setBounds(570, 50, 65, 23);
 
+        Finished.setBackground(new java.awt.Color(38, 32, 54));
+        Finished.setForeground(new java.awt.Color(255, 255, 255));
         Finished.setText("Finished");
+        Finished.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                FinishedMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                FinishedMouseExited(evt);
+            }
+        });
         Finished.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FinishedActionPerformed(evt);
@@ -287,22 +334,17 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jPanel1.add(error3);
         error3.setBounds(70, 380, 200, 30);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(52, 45, 71));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
-        jButton2.setText("Dashboard");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 45, 71)));
-        jButton2.setBorderPainted(false);
-        jButton2.setFocusable(false);
-        jButton2.setRequestFocusEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(52, 45, 71));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
+        jLabel3.setText("Dashboard");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(640, 0, 130, 40);
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(630, 10, 130, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -441,12 +483,59 @@ public class Emp_Tasks extends javax.swing.JFrame {
         tableupdate(q);
     }//GEN-LAST:event_FinishedActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void MarkCompleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MarkCompleteMouseEntered
         // TODO add your handling code here:
+                MarkComplete.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_MarkCompleteMouseEntered
+
+    private void PendingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PendingMouseEntered
+        // TODO add your handling code here:
+                Pending.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_PendingMouseEntered
+
+    private void MissedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MissedMouseEntered
+        // TODO add your handling code here:
+                Missed.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_MissedMouseEntered
+
+    private void FinishedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FinishedMouseEntered
+        // TODO add your handling code here:
+                Finished.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_FinishedMouseEntered
+
+    private void MarkCompleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MarkCompleteMouseExited
+        // TODO add your handling code here:
+                MarkComplete.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_MarkCompleteMouseExited
+
+    private void PendingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PendingMouseExited
+        // TODO add your handling code here:
+                Pending.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_PendingMouseExited
+
+    private void MissedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MissedMouseExited
+        // TODO add your handling code here:
+                Missed.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_MissedMouseExited
+
+    private void FinishedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FinishedMouseExited
+        // TODO add your handling code here:
+                Finished.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_FinishedMouseExited
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         Dashboard db = new Dashboard();
         db.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -503,11 +592,11 @@ public class Emp_Tasks extends javax.swing.JFrame {
     private javax.swing.JLabel error1;
     private javax.swing.JLabel error2;
     private javax.swing.JLabel error3;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;

@@ -39,6 +39,12 @@ public class Employee_Salary extends javax.swing.JFrame {
         rs = db.rs;
 
         tableupdate();
+    
+        salrep.getTableHeader().setOpaque(true);
+//        Employee.getTableHeader().setBackground(new java.awt.Color(64, 56, 84));
+        salrep.getTableHeader().setFont(new java.awt.Font("Rockwell", 1, 10));
+        salrep.getTableHeader().setForeground(new java.awt.Color(52, 45, 71));
+
     }
 
     private void tableupdate() { //table updated after every change
@@ -91,7 +97,7 @@ public class Employee_Salary extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         year = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,6 +105,8 @@ public class Employee_Salary extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(744, 490));
         jPanel1.setLayout(null);
 
+        salrep.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
+        salrep.setForeground(new java.awt.Color(52, 45, 71));
         salrep.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -118,6 +126,9 @@ public class Employee_Salary extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        salrep.setFocusable(false);
+        salrep.setGridColor(new java.awt.Color(52, 45, 71));
+        salrep.setSelectionBackground(new java.awt.Color(130, 120, 158));
         jScrollPane1.setViewportView(salrep);
         if (salrep.getColumnModel().getColumnCount() > 0) {
             salrep.getColumnModel().getColumn(5).setResizable(false);
@@ -140,8 +151,18 @@ public class Employee_Salary extends javax.swing.JFrame {
         jPanel1.add(Month);
         Month.setBounds(160, 70, 130, 25);
 
-        search1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/search_16.png"))); // NOI18N
+        search1.setBackground(new java.awt.Color(38, 32, 54));
+        search1.setForeground(new java.awt.Color(255, 255, 255));
+        search1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/search_white.png"))); // NOI18N
         search1.setText("Search");
+        search1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                search1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                search1MouseExited(evt);
+            }
+        });
         search1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 search1ActionPerformed(evt);
@@ -170,22 +191,17 @@ public class Employee_Salary extends javax.swing.JFrame {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(310, 70, 51, 20);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(52, 45, 71));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
-        jButton2.setText("Dashboard");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 45, 71)));
-        jButton2.setBorderPainted(false);
-        jButton2.setFocusable(false);
-        jButton2.setRequestFocusEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(52, 45, 71));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
+        jLabel4.setText("Dashboard");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(620, 0, 130, 40);
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(630, 10, 130, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -255,12 +271,23 @@ public class Employee_Salary extends javax.swing.JFrame {
 
     }//GEN-LAST:event_search1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void search1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search1MouseEntered
         // TODO add your handling code here:
+                search1.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_search1MouseEntered
+
+    private void search1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search1MouseExited
+        // TODO add your handling code here:
+                search1.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_search1MouseExited
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         Dashboard db = new Dashboard();
         db.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -299,10 +326,10 @@ public class Employee_Salary extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Month;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable salrep;

@@ -191,7 +191,7 @@
         <Component class="javax.swing.JButton" name="login">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="47" green="2d" red="34" type="rgb"/>
+              <Color blue="36" green="20" red="26" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Rockwell" size="15" style="1"/>

@@ -108,7 +108,7 @@ public class EmpLogin extends javax.swing.JFrame {
         jPanel1.add(pw);
         pw.setBounds(64, 230, 231, 31);
 
-        login.setBackground(new java.awt.Color(52, 45, 71));
+        login.setBackground(new java.awt.Color(38, 32, 54));
         login.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
         login.setForeground(new java.awt.Color(255, 255, 255));
         login.setText("Login");
@@ -209,12 +209,12 @@ public class EmpLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_loginActionPerformed
 
     private void loginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseEntered
-        setColor(login);
+        login.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_loginMouseEntered
 
     private void loginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseExited
-        setColor(login);
+        login.setBackground(new java.awt.Color(38, 32, 54));
     }//GEN-LAST:event_loginMouseExited
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked

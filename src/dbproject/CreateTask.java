@@ -45,6 +45,11 @@ public class CreateTask extends javax.swing.JFrame {
         rs = db.rs;
 
         tableupdate();
+       
+        Task.getTableHeader().setOpaque(true);
+//        Employee.getTableHeader().setBackground(new java.awt.Color(64, 56, 84));
+        Task.getTableHeader().setFont(new java.awt.Font("Rockwell", 1, 10));
+        Task.getTableHeader().setForeground(new java.awt.Color(52, 45, 71));
     }
 
     private void tableupdate() { //table updated after every change
@@ -183,7 +188,7 @@ public class CreateTask extends javax.swing.JFrame {
         error3 = new javax.swing.JLabel();
         error4 = new javax.swing.JLabel();
         error5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -215,7 +220,8 @@ public class CreateTask extends javax.swing.JFrame {
         jPanel2.add(taskid);
         taskid.setBounds(20, 80, 271, 32);
 
-        Task.setForeground(new java.awt.Color(48, 27, 71));
+        Task.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
+        Task.setForeground(new java.awt.Color(52, 45, 71));
         Task.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -227,12 +233,18 @@ public class CreateTask extends javax.swing.JFrame {
                 "Task ID", "Task Name", "Start Date", "End Date", "Status"
             }
         ));
+        Task.setFocusable(false);
+        Task.setGridColor(new java.awt.Color(52, 45, 71));
+        Task.setSelectionBackground(new java.awt.Color(130, 120, 158));
         Task.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TaskMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(Task);
+        Task.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
+
+        Task.setForeground(new java.awt.Color(52, 45, 71));
 
         jPanel2.add(jScrollPane2);
         jScrollPane2.setBounds(313, 75, 430, 340);
@@ -252,25 +264,25 @@ public class CreateTask extends javax.swing.JFrame {
         jPanel2.add(status);
         status.setBounds(20, 390, 271, 29);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
         jLabel2.setText("Tasks");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(20, 10, 337, 44);
+        jLabel2.setBounds(20, 10, 337, 43);
 
-        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(52, 45, 71));
         jLabel4.setText("Task ID:");
         jPanel2.add(jLabel4);
         jLabel4.setBounds(20, 60, 160, 19);
 
-        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(52, 45, 71));
         jLabel5.setText("*Task Details:");
         jPanel2.add(jLabel5);
         jLabel5.setBounds(20, 170, 163, 22);
 
-        jLabel10.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(52, 45, 71));
         jLabel10.setText("*Start Date: ");
         jPanel2.add(jLabel10);
@@ -297,7 +309,7 @@ public class CreateTask extends javax.swing.JFrame {
         jPanel2.add(startdate3);
         startdate3.setBounds(210, 290, 80, 32);
 
-        jLabel11.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(52, 45, 71));
         jLabel11.setText("*End Date:");
         jPanel2.add(jLabel11);
@@ -324,10 +336,18 @@ public class CreateTask extends javax.swing.JFrame {
         jPanel2.add(enddate3);
         enddate3.setBounds(210, 340, 80, 32);
 
-        add.setBackground(new java.awt.Color(88, 84, 98));
+        add.setBackground(new java.awt.Color(38, 32, 54));
         add.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         add.setForeground(new java.awt.Color(255, 255, 255));
         add.setText("ADD");
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addMouseExited(evt);
+            }
+        });
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
@@ -336,10 +356,18 @@ public class CreateTask extends javax.swing.JFrame {
         jPanel2.add(add);
         add.setBounds(30, 440, 70, 30);
 
-        Update.setBackground(new java.awt.Color(88, 84, 98));
+        Update.setBackground(new java.awt.Color(38, 32, 54));
         Update.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         Update.setForeground(new java.awt.Color(255, 255, 255));
         Update.setText("UPDATE");
+        Update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                UpdateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                UpdateMouseExited(evt);
+            }
+        });
         Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdateActionPerformed(evt);
@@ -348,10 +376,18 @@ public class CreateTask extends javax.swing.JFrame {
         jPanel2.add(Update);
         Update.setBounds(110, 440, 80, 30);
 
-        Rate.setBackground(new java.awt.Color(88, 84, 98));
+        Rate.setBackground(new java.awt.Color(38, 32, 54));
         Rate.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         Rate.setForeground(new java.awt.Color(255, 255, 255));
         Rate.setText("Rate Employee");
+        Rate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                RateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                RateMouseExited(evt);
+            }
+        });
         Rate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RateActionPerformed(evt);
@@ -360,7 +396,7 @@ public class CreateTask extends javax.swing.JFrame {
         jPanel2.add(Rate);
         Rate.setBounds(520, 440, 180, 30);
 
-        jLabel12.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(52, 45, 71));
         jLabel12.setText("*Task Name:");
         jPanel2.add(jLabel12);
@@ -375,10 +411,18 @@ public class CreateTask extends javax.swing.JFrame {
         jPanel2.add(taskname);
         taskname.setBounds(20, 140, 271, 32);
 
-        delete.setBackground(new java.awt.Color(88, 84, 98));
+        delete.setBackground(new java.awt.Color(38, 32, 54));
         delete.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         delete.setForeground(new java.awt.Color(255, 255, 255));
         delete.setText("DELETE");
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                deleteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteMouseExited(evt);
+            }
+        });
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteActionPerformed(evt);
@@ -387,10 +431,18 @@ public class CreateTask extends javax.swing.JFrame {
         jPanel2.add(delete);
         delete.setBounds(200, 440, 80, 30);
 
-        Assign.setBackground(new java.awt.Color(88, 84, 98));
+        Assign.setBackground(new java.awt.Color(38, 32, 54));
         Assign.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         Assign.setForeground(new java.awt.Color(255, 255, 255));
         Assign.setText("Assign Task to Employees");
+        Assign.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AssignMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AssignMouseExited(evt);
+            }
+        });
         Assign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AssignActionPerformed(evt);
@@ -513,22 +565,17 @@ public class CreateTask extends javax.swing.JFrame {
         jPanel2.add(error5);
         error5.setBounds(310, 410, 230, 40);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(52, 45, 71));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
-        jButton2.setText("Dashboard");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 45, 71)));
-        jButton2.setBorderPainted(false);
-        jButton2.setFocusable(false);
-        jButton2.setRequestFocusEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(52, 45, 71));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
+        jLabel3.setText("Dashboard");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
             }
         });
-        jPanel2.add(jButton2);
-        jButton2.setBounds(630, 0, 130, 40);
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(630, 10, 130, 40);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -846,12 +893,71 @@ public class CreateTask extends javax.swing.JFrame {
         startdate1.setText("");
     }//GEN-LAST:event_startdate1FocusGained
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
         // TODO add your handling code here:
+                add.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_addMouseEntered
+
+    private void UpdateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseEntered
+        // TODO add your handling code here:
+                Update.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_UpdateMouseEntered
+
+    private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
+        // TODO add your handling code here:
+                delete.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_deleteMouseEntered
+
+    private void AssignMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AssignMouseEntered
+        // TODO add your handling code here:
+                Assign.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_AssignMouseEntered
+
+    private void RateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RateMouseEntered
+        // TODO add your handling code here:
+                Rate.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_RateMouseEntered
+
+    private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
+        // TODO add your handling code here:
+                add.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_addMouseExited
+
+    private void UpdateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseExited
+        // TODO add your handling code here:
+                Update.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_UpdateMouseExited
+
+    private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
+        // TODO add your handling code here:
+                delete.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_deleteMouseExited
+
+    private void AssignMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AssignMouseExited
+        // TODO add your handling code here:
+                Assign.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_AssignMouseExited
+
+    private void RateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RateMouseExited
+        // TODO add your handling code here:
+                Rate.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_RateMouseExited
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         Dashboard db = new Dashboard();
         db.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -906,12 +1012,12 @@ public class CreateTask extends javax.swing.JFrame {
     private javax.swing.JLabel error3;
     private javax.swing.JLabel error4;
     private javax.swing.JLabel error5;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;

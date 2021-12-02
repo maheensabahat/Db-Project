@@ -51,6 +51,10 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         rs = db.rs;
 
         tableupdate();
+           sal.getTableHeader().setOpaque(true);
+//        sal.getTableHeader().setBackground(new java.awt.Color(64, 56, 84));
+        sal.getTableHeader().setFont(new java.awt.Font("Rockwell", 1, 10));
+        sal.getTableHeader().setForeground(new java.awt.Color(52, 45, 71));
     }
     
     private void tableupdate() { //table updated after every change
@@ -167,7 +171,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         error3 = new javax.swing.JLabel();
         error4 = new javax.swing.JLabel();
         reset = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -177,6 +181,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         sal.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 11)); // NOI18N
+        sal.setForeground(new java.awt.Color(52, 45, 71));
         sal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -196,12 +201,14 @@ public class Ad_Salaryy extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        sal.setGridColor(new java.awt.Color(52, 45, 71));
         sal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 salMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(sal);
+        sal.setForeground(new java.awt.Color(52, 45, 71));
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(279, 90, 480, 350);
@@ -212,7 +219,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(Salary_txt);
         Salary_txt.setBounds(20, 10, 330, 43);
 
-        emp_id_txt.setFont(new java.awt.Font("Rockwell", 1, 11)); // NOI18N
+        emp_id_txt.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         emp_id_txt.setForeground(new java.awt.Color(52, 45, 71));
         emp_id_txt.setText("*Employee ID:");
         jPanel1.add(emp_id_txt);
@@ -231,7 +238,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(empid);
         empid.setBounds(30, 120, 90, 30);
 
-        date_txt.setFont(new java.awt.Font("Rockwell", 1, 11)); // NOI18N
+        date_txt.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         date_txt.setForeground(new java.awt.Color(52, 45, 71));
         date_txt.setText("Date:");
         jPanel1.add(date_txt);
@@ -246,11 +253,11 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(date);
         date.setBounds(140, 120, 100, 30);
 
-        base_salary.setFont(new java.awt.Font("Rockwell", 1, 11)); // NOI18N
+        base_salary.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         base_salary.setForeground(new java.awt.Color(52, 45, 71));
         base_salary.setText("*Base Salary:");
         jPanel1.add(base_salary);
-        base_salary.setBounds(30, 160, 120, 14);
+        base_salary.setBounds(30, 160, 120, 13);
 
         salary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,11 +267,11 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(salary);
         salary.setBounds(30, 180, 210, 30);
 
-        bonus_txt.setFont(new java.awt.Font("Rockwell", 1, 11)); // NOI18N
+        bonus_txt.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         bonus_txt.setForeground(new java.awt.Color(52, 45, 71));
         bonus_txt.setText("Bonus:");
         jPanel1.add(bonus_txt);
-        bonus_txt.setBounds(30, 220, 110, 14);
+        bonus_txt.setBounds(30, 220, 110, 13);
 
         bonus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,11 +281,11 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(bonus);
         bonus.setBounds(30, 240, 210, 30);
 
-        travel_allowance.setFont(new java.awt.Font("Rockwell", 1, 11)); // NOI18N
+        travel_allowance.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         travel_allowance.setForeground(new java.awt.Color(52, 45, 71));
         travel_allowance.setText("Travel allowance:");
         jPanel1.add(travel_allowance);
-        travel_allowance.setBounds(30, 280, 100, 14);
+        travel_allowance.setBounds(30, 280, 100, 13);
 
         travel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,11 +295,11 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(travel);
         travel.setBounds(30, 300, 210, 30);
 
-        empID.setFont(new java.awt.Font("Rockwell", 1, 11)); // NOI18N
+        empID.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         empID.setForeground(new java.awt.Color(52, 45, 71));
         empID.setText("Employee ID:");
         jPanel1.add(empID);
-        empID.setBounds(440, 60, 80, 14);
+        empID.setBounds(440, 60, 80, 13);
 
         emp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,10 +314,18 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(emp);
         emp.setBounds(520, 50, 80, 30);
 
-        add.setBackground(new java.awt.Color(88, 84, 98));
+        add.setBackground(new java.awt.Color(38, 32, 54));
         add.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
         add.setForeground(new java.awt.Color(255, 255, 255));
         add.setText("ADD");
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addMouseExited(evt);
+            }
+        });
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
@@ -319,10 +334,18 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(add);
         add.setBounds(50, 410, 70, 30);
 
-        Update.setBackground(new java.awt.Color(88, 84, 98));
+        Update.setBackground(new java.awt.Color(38, 32, 54));
         Update.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
         Update.setForeground(new java.awt.Color(255, 255, 255));
         Update.setText("UPDATE");
+        Update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                UpdateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                UpdateMouseExited(evt);
+            }
+        });
         Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdateActionPerformed(evt);
@@ -331,15 +354,24 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(Update);
         Update.setBounds(140, 410, 80, 30);
 
+        search1.setBackground(new java.awt.Color(38, 32, 54));
         search1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/search_16.png"))); // NOI18N
         search1.setText("Search ");
+        search1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                search1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                search1MouseExited(evt);
+            }
+        });
         search1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 search1ActionPerformed(evt);
             }
         });
         jPanel1.add(search1);
-        search1.setBounds(610, 53, 89, 20);
+        search1.setBounds(610, 53, 90, 25);
 
         error.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         error.setForeground(new java.awt.Color(255, 0, 51));
@@ -347,11 +379,11 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(error);
         error.setBounds(40, 380, 200, 40);
 
-        medical_allowance.setFont(new java.awt.Font("Rockwell", 1, 11)); // NOI18N
+        medical_allowance.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         medical_allowance.setForeground(new java.awt.Color(52, 45, 71));
         medical_allowance.setText("Medical Allowance:");
         jPanel1.add(medical_allowance);
-        medical_allowance.setBounds(30, 340, 110, 14);
+        medical_allowance.setBounds(30, 340, 110, 13);
 
         medical.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -373,31 +405,35 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(error4);
         error4.setBounds(30, 80, 220, 30);
 
+        reset.setBackground(new java.awt.Color(38, 32, 54));
         reset.setText("Reset Table");
+        reset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                resetMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                resetMouseExited(evt);
+            }
+        });
         reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetActionPerformed(evt);
             }
         });
         jPanel1.add(reset);
-        reset.setBounds(670, 450, 90, 20);
+        reset.setBounds(670, 450, 100, 20);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(52, 45, 71));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
-        jButton2.setText("Dashboard");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 45, 71)));
-        jButton2.setBorderPainted(false);
-        jButton2.setFocusable(false);
-        jButton2.setRequestFocusEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(52, 45, 71));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
+        jLabel2.setText("Dashboard");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(640, 0, 130, 40);
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(630, 10, 130, 40);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 775, 500);
@@ -616,12 +652,59 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         empid.setText("");
     }//GEN-LAST:event_resetActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
         // TODO add your handling code here:
-         Dashboard db=new Dashboard();
+                add.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_addMouseEntered
+
+    private void UpdateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseExited
+        // TODO add your handling code here:
+                Update.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_UpdateMouseExited
+
+    private void UpdateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseEntered
+        // TODO add your handling code here:
+                Update.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_UpdateMouseEntered
+
+    private void search1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search1MouseEntered
+        // TODO add your handling code here:
+                search1.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_search1MouseEntered
+
+    private void resetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseEntered
+        // TODO add your handling code here:
+                reset.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_resetMouseEntered
+
+    private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
+        // TODO add your handling code here:
+                add.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_addMouseExited
+
+    private void search1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search1MouseExited
+        // TODO add your handling code here:
+                search1.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_search1MouseExited
+
+    private void resetMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseExited
+        // TODO add your handling code here:
+                reset.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_resetMouseExited
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        Dashboard db = new Dashboard();
         db.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -675,7 +758,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
     private javax.swing.JLabel error;
     private javax.swing.JLabel error3;
     private javax.swing.JLabel error4;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField medical;

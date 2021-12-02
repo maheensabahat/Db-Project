@@ -53,6 +53,12 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         error2.setVisible(false);
         error3.setVisible(false);
         error4.setVisible(false);
+        
+        Employee.getTableHeader().setOpaque(true);
+//        Employee.getTableHeader().setBackground(new java.awt.Color(64, 56, 84));
+        Employee.getTableHeader().setFont(new java.awt.Font("Rockwell", 1, 10));
+        Employee.getTableHeader().setForeground(new java.awt.Color(52, 45, 71));
+
     }
 
     /**
@@ -82,7 +88,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         error2 = new javax.swing.JLabel();
         error3 = new javax.swing.JLabel();
         error4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,11 +109,19 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         jPanel1.add(empid);
         empid.setBounds(30, 110, 160, 30);
 
-        view.setBackground(new java.awt.Color(88, 84, 98));
+        view.setBackground(new java.awt.Color(38, 32, 54));
         view.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         view.setForeground(new java.awt.Color(255, 255, 255));
         view.setText("VIEW ATTENDANCE");
         view.setFocusPainted(false);
+        view.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                viewMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                viewMouseExited(evt);
+            }
+        });
         view.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewActionPerformed(evt);
@@ -144,6 +158,8 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        Employee.setGridColor(new java.awt.Color(52, 45, 71));
+        Employee.setSelectionBackground(new java.awt.Color(130, 120, 158));
         jScrollPane1.setViewportView(Employee);
         if (Employee.getColumnModel().getColumnCount() > 0) {
             Employee.getColumnModel().getColumn(0).setResizable(false);
@@ -165,10 +181,19 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(30, 10, 210, 43);
 
-        save.setBackground(new java.awt.Color(88, 84, 98));
+        save.setBackground(new java.awt.Color(38, 32, 54));
         save.setFont(new java.awt.Font("Rockwell", 1, 11)); // NOI18N
         save.setForeground(new java.awt.Color(255, 255, 255));
+        save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/save.png"))); // NOI18N
         save.setText("Save Changes");
+        save.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                saveMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                saveMouseExited(evt);
+            }
+        });
         save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveActionPerformed(evt);
@@ -242,22 +267,17 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         jPanel1.add(error4);
         error4.setBounds(30, 310, 220, 30);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(52, 45, 71));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
-        jButton2.setText("Dashboard");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 45, 71)));
-        jButton2.setBorderPainted(false);
-        jButton2.setFocusable(false);
-        jButton2.setRequestFocusEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(52, 45, 71));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
+        jLabel2.setText("Dashboard");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(600, 0, 130, 40);
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(630, 10, 130, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -352,12 +372,35 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         error4.setVisible(false);
     }//GEN-LAST:event_empidKeyTyped
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void saveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseEntered
         // TODO add your handling code here:
+                save.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_saveMouseEntered
+
+    private void viewMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewMouseEntered
+        // TODO add your handling code here:
+                view.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_viewMouseEntered
+
+    private void viewMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewMouseExited
+        // TODO add your handling code here:
+                view.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_viewMouseExited
+
+    private void saveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseExited
+        // TODO add your handling code here:
+                save.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_saveMouseExited
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         Dashboard db = new Dashboard();
         db.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     private boolean checkfields() { //check if required fields are there
         if (empid.getText().equals("")) {
@@ -488,8 +531,8 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
     private javax.swing.JLabel error2;
     private javax.swing.JLabel error3;
     private javax.swing.JLabel error4;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton l;

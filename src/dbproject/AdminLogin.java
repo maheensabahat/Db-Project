@@ -114,7 +114,7 @@ public class AdminLogin extends javax.swing.JFrame {
         jPanel1.add(pw);
         pw.setBounds(64, 230, 231, 31);
 
-        login.setBackground(new java.awt.Color(52, 45, 71));
+        login.setBackground(new java.awt.Color(38, 32, 54));
         login.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
         login.setForeground(new java.awt.Color(255, 255, 255));
         login.setText("Login");
@@ -136,6 +136,11 @@ public class AdminLogin extends javax.swing.JFrame {
         login.setBounds(105, 319, 142, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/back_32.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel1);
         jLabel1.setBounds(10, 10, 40, 40);
 
@@ -214,12 +219,12 @@ public class AdminLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_loginActionPerformed
 
     private void loginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseEntered
-        setColor(login);
+        login.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_loginMouseEntered
 
     private void loginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseExited
-        setColor(login);
+        login.setBackground(new java.awt.Color(38, 32, 54));
     }//GEN-LAST:event_loginMouseExited
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked

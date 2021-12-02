@@ -45,6 +45,11 @@ public class Admin_Dept extends javax.swing.JFrame {
         error3.setVisible(false);
         error4.setVisible(false);
         error5.setVisible(false);
+        
+           Dept.getTableHeader().setOpaque(true);
+//        Dept.getTableHeader().setBackground(new java.awt.Color(64, 56, 84));
+        Dept.getTableHeader().setFont(new java.awt.Font("Rockwell", 1, 10));
+        Dept.getTableHeader().setForeground(new java.awt.Color(52, 45, 71));
     }
 
     private void tableupdate() { //table updated after every change
@@ -149,7 +154,7 @@ public class Admin_Dept extends javax.swing.JFrame {
         error3 = new javax.swing.JLabel();
         error4 = new javax.swing.JLabel();
         error5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,6 +162,8 @@ public class Admin_Dept extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(744, 490));
         jPanel1.setLayout(null);
 
+        Dept.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
+        Dept.setForeground(new java.awt.Color(52, 45, 71));
         Dept.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -183,12 +190,18 @@ public class Admin_Dept extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        Dept.setFocusable(false);
+        Dept.setGridColor(new java.awt.Color(52, 45, 71));
+        Dept.setSelectionBackground(new java.awt.Color(130, 120, 158));
         Dept.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DeptMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(Dept);
+        Dept.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
+
+        Dept.setForeground(new java.awt.Color(52, 45, 71));
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(270, 60, 460, 340);
@@ -246,10 +259,18 @@ public class Admin_Dept extends javax.swing.JFrame {
         jPanel1.add(MgrID);
         MgrID.setBounds(20, 250, 240, 30);
 
-        delete.setBackground(new java.awt.Color(88, 84, 98));
+        delete.setBackground(new java.awt.Color(38, 32, 54));
         delete.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
         delete.setForeground(new java.awt.Color(255, 255, 255));
         delete.setText("DELETE");
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                deleteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteMouseExited(evt);
+            }
+        });
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteActionPerformed(evt);
@@ -258,10 +279,18 @@ public class Admin_Dept extends javax.swing.JFrame {
         jPanel1.add(delete);
         delete.setBounds(190, 310, 70, 30);
 
-        add.setBackground(new java.awt.Color(88, 84, 98));
+        add.setBackground(new java.awt.Color(38, 32, 54));
         add.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
         add.setForeground(new java.awt.Color(255, 255, 255));
         add.setText("ADD");
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addMouseExited(evt);
+            }
+        });
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
@@ -270,10 +299,18 @@ public class Admin_Dept extends javax.swing.JFrame {
         jPanel1.add(add);
         add.setBounds(20, 310, 70, 30);
 
-        Update.setBackground(new java.awt.Color(88, 84, 98));
+        Update.setBackground(new java.awt.Color(38, 32, 54));
         Update.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
         Update.setForeground(new java.awt.Color(255, 255, 255));
         Update.setText("UPDATE");
+        Update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                UpdateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                UpdateMouseExited(evt);
+            }
+        });
         Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdateActionPerformed(evt);
@@ -312,22 +349,17 @@ public class Admin_Dept extends javax.swing.JFrame {
         jPanel1.add(error5);
         error5.setBounds(20, 80, 200, 20);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(52, 45, 71));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
-        jButton2.setText("Dashboard");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 45, 71)));
-        jButton2.setBorderPainted(false);
-        jButton2.setFocusable(false);
-        jButton2.setRequestFocusEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(52, 45, 71));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
+        jLabel2.setText("Dashboard");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(620, 0, 130, 40);
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(630, 10, 130, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -514,12 +546,48 @@ public class Admin_Dept extends javax.swing.JFrame {
         setfieldsEmpty();
     }//GEN-LAST:event_deleteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
         // TODO add your handling code here:
+                add.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_addMouseEntered
+
+    private void UpdateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseEntered
+        // TODO add your handling code here:
+                Update.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_UpdateMouseEntered
+
+    private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
+        // TODO add your handling code here:
+                delete.setBackground(new java.awt.Color(38, 32, 54));
+
+        
+    }//GEN-LAST:event_deleteMouseExited
+
+    private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
+        // TODO add your handling code here:
+                delete.setBackground(new java.awt.Color(79, 70, 102));
+
+    }//GEN-LAST:event_deleteMouseEntered
+
+    private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
+        // TODO add your handling code here:
+                add.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_addMouseExited
+
+    private void UpdateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseExited
+        // TODO add your handling code here:
+                Update.setBackground(new java.awt.Color(38, 32, 54));
+
+    }//GEN-LAST:event_UpdateMouseExited
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         Dashboard db = new Dashboard();
         db.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -572,8 +640,8 @@ public class Admin_Dept extends javax.swing.JFrame {
     private javax.swing.JLabel first_name;
     private javax.swing.JLabel first_name1;
     private javax.swing.JLabel first_name2;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

@@ -330,7 +330,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         search.setBackground(new java.awt.Color(38, 32, 54));
         search.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         search.setForeground(java.awt.Color.white);
-        search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/search_16.png"))); // NOI18N
+        search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/search_white.png"))); // NOI18N
         search.setText("Search");
         search.setFocusable(false);
         search.setRequestFocusEnabled(false);
@@ -394,7 +394,7 @@ public class Admin_Employee extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(620, 10, 130, 40);
+        jLabel2.setBounds(630, 10, 130, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
