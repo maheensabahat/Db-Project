@@ -5,7 +5,7 @@
  */
 package dbproject;
 
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -16,11 +16,28 @@ import javax.swing.*;
  */
 public class EmpLogin extends javax.swing.JFrame {
 
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    Database db;
+
     public EmpLogin() {
         initComponents();
         empIDerror1.setVisible(false);
         pwerror.setVisible(false);
         error.setVisible(false);
+
+        db = new Database();
+        try {
+            db.openConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        con = db.con;
+        pst = db.pst;
+        rs = db.rs;
+
     }
 
     /**
@@ -162,35 +179,46 @@ public class EmpLogin extends javax.swing.JFrame {
         empIDerror1.setVisible(false);
         pwerror.setVisible(false);
 
-        int employeeID = Integer.parseInt(empid.getText());
-        String password = pw.getText();
-
-        if (empid.equals("") || password.equals("")) { //check if both fields are filled
+        if (empid.getText().equals("") || pw.getText().equals("")) { //check if both fields are filled
             error.setVisible(true);
             if (empid.getText().trim().isEmpty()) {
                 empid.grabFocus();
                 return;
-            } else if (password.trim().isEmpty()) {
+            } else if (pw.getText().trim().isEmpty()) {
                 pw.grabFocus();
                 return;
             }
         } else { //when fields are filled
-            try {
-                MainPage.db.pst = MainPage.db.con.prepareStatement("select * from employee where employee_id = ?;");
-                MainPage.db.pst.setInt(1, employeeID);
-                MainPage.db.rs = MainPage.db.pst.executeQuery();
+            int employeeID = Integer.parseInt(empid.getText());
+            String password = pw.getText();
 
-                if (MainPage.db.rs.next() == false) {
+            try {
+                pst = con.prepareStatement("select * from employee where employee_id = ?");
+                pst.setInt(1, employeeID);
+                rs = pst.executeQuery();
+
+                if (rs.next() == false) {
                     //given employee id doesnt exist in record
                     empIDerror1.setVisible(true);
                     empid.setText("");
                     pw.setText("");
                     empid.requestFocus();
                 } else {
-                    String qpw = MainPage.db.rs.getString("Password");
+                    String qpw = rs.getString("Password");
+
+                    //check if employee is manager
+                    pst = con.prepareStatement("select * from department where manager_id = ?");
+                    pst.setInt(1, employeeID);
+                    rs = pst.executeQuery();
+
                     //check user provided password against queried password
                     if (password.equals(qpw)) { //password matches
-                        new DashboardEmp(employeeID).setVisible(true);
+                        //not manager
+                        if (rs.next() == false) {
+                            new DashboardEmp(employeeID).setVisible(true);
+                        } else { //manager
+                            new DashboardMgr(employeeID).setVisible(true);
+                        }
                         this.setVisible(false);
                     } else {
                         pwerror.setVisible(true);
@@ -203,9 +231,7 @@ public class EmpLogin extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(EmpLogin.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
-
     }//GEN-LAST:event_loginActionPerformed
 
     private void loginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseEntered
@@ -245,16 +271,24 @@ public class EmpLogin extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EmpLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpLogin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EmpLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpLogin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EmpLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpLogin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EmpLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpLogin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //checking connection

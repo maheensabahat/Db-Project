@@ -9,15 +9,12 @@ import javax.swing.JButton;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Hp
  */
 public class MainPage extends javax.swing.JFrame {
 
-    static Database db;
-    
     public MainPage() {
         initComponents();
     }
@@ -181,12 +178,9 @@ public class MainPage extends javax.swing.JFrame {
                 new MainPage().setVisible(true);
             }
         });
-        
-        //making connection to database
-        db = new Database();
-        db.openConnection();
+
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel image;
