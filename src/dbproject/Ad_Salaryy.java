@@ -29,7 +29,6 @@ public class Ad_Salaryy extends javax.swing.JFrame {
     ResultSet rs;
     Database db;
 
-        
     /**
      * Creates new form Ad_Salaryy
      */
@@ -38,6 +37,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         error.setVisible(false);
         error3.setVisible(false);
         error4.setVisible(false);
+        error5.setVisible(false);
 
         db = new Database();
         try {
@@ -51,20 +51,20 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         rs = db.rs;
 
         tableupdate();
-           sal.getTableHeader().setOpaque(true);
+        sal.getTableHeader().setOpaque(true);
 //        sal.getTableHeader().setBackground(new java.awt.Color(64, 56, 84));
         sal.getTableHeader().setFont(new java.awt.Font("Rockwell", 1, 10));
         sal.getTableHeader().setForeground(new java.awt.Color(52, 45, 71));
     }
-    
+
     private void tableupdate() { //table updated after every change
         int c;
         try {
 
             pst = con.prepareStatement("SELECT s.Employee_ID, CONCAT_WS(\"-\", e.first_name, e.last_name) as name,"
-                    + " s.date, s.salary, s.bonus, s.travel_allowance, s.medical_allowance\n"
+                    + " s.date, s.salary, s.bonus, s.travel_allowance, s.medical_allowance, e.status\n"
                     + "FROM monthly_salary s\n"
-                    + "INNER JOIN Employee e using (Employee_ID)");
+                    + "INNER JOIN Employee e using (Employee_ID) where status = 'Working'");
             rs = pst.executeQuery();
 
             ResultSetMetaData rsd = rs.getMetaData();
@@ -94,7 +94,8 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         }
 
     }
-     private void setfieldsEmpty() {
+
+    private void setfieldsEmpty() {
         empid.setText("");
         salary.setText("");
         bonus.setText("");
@@ -106,7 +107,8 @@ public class Ad_Salaryy extends javax.swing.JFrame {
 
     public boolean checkEmployeeExist(int emp) {
         try {
-            pst = con.prepareStatement("select * from Employee where employee_ID = ?");
+            pst = con.prepareStatement("select * from Employee where"
+                    + " employee_ID = ? and status = 'Working'");
             pst.setInt(1, emp);
             rs = pst.executeQuery();
 
@@ -135,7 +137,6 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         }
         return false;
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -172,8 +173,10 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         error4 = new javax.swing.JLabel();
         reset = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        error5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(775, 490));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -202,6 +205,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
             }
         });
         sal.setGridColor(new java.awt.Color(52, 45, 71));
+        sal.setSelectionBackground(new java.awt.Color(130, 120, 158));
         sal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 salMouseClicked(evt);
@@ -211,7 +215,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         sal.setForeground(new java.awt.Color(52, 45, 71));
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(279, 90, 480, 350);
+        jScrollPane1.setBounds(270, 100, 480, 310);
 
         Salary_txt.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         Salary_txt.setForeground(new java.awt.Color(52, 45, 71));
@@ -299,7 +303,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         empID.setForeground(new java.awt.Color(52, 45, 71));
         empID.setText("Employee ID:");
         jPanel1.add(empID);
-        empID.setBounds(440, 60, 80, 13);
+        empID.setBounds(480, 70, 80, 13);
 
         emp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -312,7 +316,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(emp);
-        emp.setBounds(520, 50, 80, 30);
+        emp.setBounds(560, 60, 80, 30);
 
         add.setBackground(new java.awt.Color(38, 32, 54));
         add.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
@@ -355,7 +359,8 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         Update.setBounds(140, 410, 80, 30);
 
         search1.setBackground(new java.awt.Color(38, 32, 54));
-        search1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/search_16.png"))); // NOI18N
+        search1.setForeground(new java.awt.Color(255, 255, 255));
+        search1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/search_white.png"))); // NOI18N
         search1.setText("Search ");
         search1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -371,7 +376,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(search1);
-        search1.setBounds(610, 53, 90, 25);
+        search1.setBounds(650, 62, 90, 25);
 
         error.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         error.setForeground(new java.awt.Color(255, 0, 51));
@@ -406,6 +411,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         error4.setBounds(30, 80, 220, 30);
 
         reset.setBackground(new java.awt.Color(38, 32, 54));
+        reset.setForeground(new java.awt.Color(255, 255, 255));
         reset.setText("Reset Table");
         reset.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -421,7 +427,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(reset);
-        reset.setBounds(670, 450, 100, 20);
+        reset.setBounds(650, 420, 100, 20);
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
@@ -435,15 +441,24 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(630, 10, 130, 40);
 
+        error5.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        error5.setForeground(new java.awt.Color(255, 0, 51));
+        error5.setText("Select a record from table to update.");
+        jPanel1.add(error5);
+        error5.setBounds(30, 390, 280, 20);
+
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 775, 500);
+        jPanel1.setBounds(0, 0, 780, 500);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void salMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salMouseClicked
+        error5.setVisible(false);
+
         // TODO add your handling code here:
-         DefaultTableModel model = (DefaultTableModel) sal.getModel();
+        DefaultTableModel model = (DefaultTableModel) sal.getModel();
         int selectedIndex = sal.getSelectedRow();
 
         empid.setText(model.getValueAt(selectedIndex, 0).toString());
@@ -460,7 +475,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
 
     private void empidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_empidKeyTyped
         // TODO add your handling code here:
-         error.setVisible(false);
+        error.setVisible(false);
         error3.setVisible(false);
         error4.setVisible(false);
     }//GEN-LAST:event_empidKeyTyped
@@ -487,19 +502,28 @@ public class Ad_Salaryy extends javax.swing.JFrame {
 
     private void empKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_empKeyTyped
         // TODO add your handling code here:
-         tableupdate();
+        tableupdate();
         empid.setText("");
     }//GEN-LAST:event_empKeyTyped
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
-        
-         if (!checkfields()) {
+
+        if (!checkfields()) {
 
             Double bsal = Double.parseDouble(salary.getText());
-            Double b = Double.parseDouble(bonus.getText());
-            Double TA = Double.parseDouble(travel.getText());
-            Double MA = Double.parseDouble(medical.getText());
+            Double b = 0.0;
+            Double TA = 0.0;
+            Double MA = 0.0;
+            if (!bonus.getText().isEmpty()) {
+                b = Double.parseDouble(bonus.getText());
+            }
+            if (!medical.getText().isEmpty()) {
+                b = Double.parseDouble(medical.getText());
+            }
+            if (!travel.getText().isEmpty()) {
+                b = Double.parseDouble(travel.getText());
+            }
 
             try {
 
@@ -521,7 +545,13 @@ public class Ad_Salaryy extends javax.swing.JFrame {
 
                     //Table updates after insertion
                     tableupdate();
+                    //fields are set empty again
+                    setfieldsEmpty();
+                    error.setVisible(false);
 
+                } catch (com.mysql.cj.jdbc.exceptions.MysqlDataTruncation e) {
+                    salary.setText("");
+                    salary.grabFocus();
                 } catch (SQLIntegrityConstraintViolationException e) {
                     if (checkEmployeeExist(id)) {
                         error3.setVisible(true);
@@ -533,9 +563,6 @@ public class Ad_Salaryy extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, ex);
                 }
 
-                //fields are set empty again
-                setfieldsEmpty();
-                error.setVisible(false);
             } catch (NumberFormatException ex) {
                 setfieldsEmpty();
             }
@@ -545,7 +572,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
         // TODO add your handling code here:
-         error3.setVisible(false);
+        error3.setVisible(false);
         error4.setVisible(false);
 
         //req fields are there
@@ -556,56 +583,70 @@ public class Ad_Salaryy extends javax.swing.JFrame {
             int selectedIndex = sal.getSelectedRow();
 
             Double bsal = Double.parseDouble(salary.getText());
-            Double b = Double.parseDouble(bonus.getText());
-            Double TA = Double.parseDouble(travel.getText());
-            Double MA = Double.parseDouble(medical.getText());
-
-            try {
-                int id = Integer.parseInt(empid.getText());
-
-                try {
-
-                    String query = "update Monthly_salary set Salary = ?, bonus = ?,"
-                            + " medical_allowance = ?, travel_allowance= ? "
-                            + "where Employee_ID = ?";
-                    pst = con.prepareStatement(query);
-                    pst.setDouble(1, bsal);
-                    pst.setDouble(2, b);
-                    pst.setDouble(3, MA);
-                    pst.setDouble(4, TA);
-                    pst.setInt(5, id);
-                    pst.executeUpdate();
-                    pst.close();
-                    JOptionPane.showMessageDialog(this, "Record Updated.");
-
-                    //Table updated after edits
-                    tableupdate();
-
-                } catch (SQLIntegrityConstraintViolationException e) {
-                    if (checkEmployeeExist(id)) {
-                        error3.setVisible(true);
-                    } else {
-                        error4.setVisible(true);
-                    }
-                } catch (SQLException ex) {
-                    java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(this, ex);
-                }
-
-                //fields set empty
-                setfieldsEmpty();
-                error.setVisible(false);
-            } catch (NumberFormatException ex) {
-                error.setVisible(true);
+            Double b = 0.0;
+            Double TA = 0.0;
+            Double MA = 0.0;
+            if (!bonus.getText().isEmpty()) {
+                b = Double.parseDouble(bonus.getText());
+            }
+            if (!medical.getText().isEmpty()) {
+                b = Double.parseDouble(medical.getText());
+            }
+            if (!travel.getText().isEmpty()) {
+                b = Double.parseDouble(travel.getText());
             }
 
+            if (selectedIndex != -1) {
+                try {
+                    int id = Integer.parseInt(empid.getText());
+
+                    try {
+
+                        String query = "update Monthly_salary set Salary = ?, bonus = ?,"
+                                + " medical_allowance = ?, travel_allowance= ? "
+                                + "where Employee_ID = ?";
+                        pst = con.prepareStatement(query);
+                        pst.setDouble(1, bsal);
+                        pst.setDouble(2, b);
+                        pst.setDouble(3, MA);
+                        pst.setDouble(4, TA);
+                        pst.setInt(5, id);
+                        pst.executeUpdate();
+                        pst.close();
+                        JOptionPane.showMessageDialog(this, "Record Updated.");
+
+                        //Table updated after edits
+                        tableupdate();
+
+                    } catch (SQLIntegrityConstraintViolationException e) {
+                        if (checkEmployeeExist(id)) {
+                            error3.setVisible(true);
+                        } else {
+                            error4.setVisible(true);
+
+                        }
+                    } catch (SQLException ex) {
+                        java.util.logging.Logger.getLogger(Admin_Employee.class
+                                .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(this, ex);
+                    }
+
+                    //fields set empty
+                    setfieldsEmpty();
+                    error.setVisible(false);
+                } catch (NumberFormatException ex) {
+                    error.setVisible(true);
+                }
+            } else {
+                error5.setVisible(true);
+            }
         }
 
     }//GEN-LAST:event_UpdateActionPerformed
 
     private void search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search1ActionPerformed
         // TODO add your handling code here:
-         if (!emp.getText().isEmpty()) {
+        if (!emp.getText().isEmpty()) {
             try {
                 int vemp = Integer.parseInt(emp.getText());
 
@@ -621,7 +662,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
                     DefaultTableModel dft = (DefaultTableModel) sal.getModel();
                     dft.setRowCount(0);
 
-                    if (rs.next()) {
+                    while (rs.next()) {
                         Vector v2 = new Vector();
                         v2.add(rs.getString("employee_id"));
                         v2.add(rs.getString("name"));
@@ -631,10 +672,12 @@ public class Ad_Salaryy extends javax.swing.JFrame {
                         v2.add(rs.getString("travel_allowance"));
                         v2.add(rs.getString("medical_allowance"));
                         dft.addRow(v2);
+
                     }
 
                 } catch (SQLException ex) {
-                    Logger.getLogger(Admin_Employee.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Admin_Employee.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             } catch (NumberFormatException ex) {
                 empid.setText("");
@@ -654,49 +697,49 @@ public class Ad_Salaryy extends javax.swing.JFrame {
 
     private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
         // TODO add your handling code here:
-                add.setBackground(new java.awt.Color(79, 70, 102));
+        add.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_addMouseEntered
 
     private void UpdateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseExited
         // TODO add your handling code here:
-                Update.setBackground(new java.awt.Color(38, 32, 54));
+        Update.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_UpdateMouseExited
 
     private void UpdateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseEntered
         // TODO add your handling code here:
-                Update.setBackground(new java.awt.Color(79, 70, 102));
+        Update.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_UpdateMouseEntered
 
     private void search1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search1MouseEntered
         // TODO add your handling code here:
-                search1.setBackground(new java.awt.Color(79, 70, 102));
+        search1.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_search1MouseEntered
 
     private void resetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseEntered
         // TODO add your handling code here:
-                reset.setBackground(new java.awt.Color(79, 70, 102));
+        reset.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_resetMouseEntered
 
     private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
         // TODO add your handling code here:
-                add.setBackground(new java.awt.Color(38, 32, 54));
+        add.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_addMouseExited
 
     private void search1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search1MouseExited
         // TODO add your handling code here:
-                search1.setBackground(new java.awt.Color(38, 32, 54));
+        search1.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_search1MouseExited
 
     private void resetMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseExited
         // TODO add your handling code here:
-                reset.setBackground(new java.awt.Color(38, 32, 54));
+        reset.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_resetMouseExited
 
@@ -720,16 +763,24 @@ public class Ad_Salaryy extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ad_Salaryy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ad_Salaryy.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ad_Salaryy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ad_Salaryy.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ad_Salaryy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ad_Salaryy.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ad_Salaryy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ad_Salaryy.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -758,6 +809,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
     private javax.swing.JLabel error;
     private javax.swing.JLabel error3;
     private javax.swing.JLabel error4;
+    private javax.swing.JLabel error5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

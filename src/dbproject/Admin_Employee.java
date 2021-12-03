@@ -27,6 +27,8 @@ public class Admin_Employee extends javax.swing.JFrame {
 
         error.setVisible(false);
         error1.setVisible(false);
+        error2.setVisible(false);
+        error3.setVisible(false);
 
         db = new Database();
         db.openConnection();
@@ -83,6 +85,8 @@ public class Admin_Employee extends javax.swing.JFrame {
         error1 = new javax.swing.JLabel();
         reset = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        error2 = new javax.swing.JLabel();
+        error3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(755, 520));
@@ -95,20 +99,20 @@ public class Admin_Employee extends javax.swing.JFrame {
         Employee.setForeground(new java.awt.Color(52, 45, 71));
         Employee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Employee ID", "First Name", "Last Name", "Email", "Department"
+                "Employee ID", "First Name", "Last Name", "Email", "Department", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -242,6 +246,11 @@ public class Admin_Employee extends javax.swing.JFrame {
         deptid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deptidActionPerformed(evt);
+            }
+        });
+        deptid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                deptidKeyPressed(evt);
             }
         });
         jPanel1.add(deptid);
@@ -396,6 +405,18 @@ public class Admin_Employee extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(630, 10, 130, 40);
 
+        error2.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
+        error2.setForeground(new java.awt.Color(255, 0, 51));
+        error2.setText("Invalid Department ID");
+        jPanel1.add(error2);
+        error2.setBounds(114, 265, 200, 30);
+
+        error3.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        error3.setForeground(new java.awt.Color(255, 0, 51));
+        error3.setText("Select a record from table to delete/update.");
+        jPanel1.add(error3);
+        error3.setBounds(28, 418, 280, 30);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -451,52 +472,63 @@ public class Admin_Employee extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) Employee.getModel();
             int selectedIndex = Employee.getSelectedRow();
 
-            //emp id of selected record, used to update record
-            int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
+            if (Employee.getSelectedRow() != -1) {
 
-            String Fname = fname.getText();
-            String Lname = lname.getText();
-            String Email = email.getText();
-            String add = address.getText();
-            String bacc = bankacc.getText();
-            String pw = password.getText();
-            try {
-                int dept = Integer.parseInt(deptid.getText());
+                //emp id of selected record, used to update record
+                int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
+                String s = model.getValueAt(selectedIndex, 5).toString();
 
-                try {
+                if (s.equals("Working")) {
+                    String Fname = fname.getText().trim();
+                    Fname = Fname.substring(0, 1).toUpperCase() + Fname.substring(1).toLowerCase();
+                    String Lname = lname.getText().trim();
+                    Lname = Lname.substring(0, 1).toUpperCase() + Lname.substring(1).toLowerCase();
+                    String Email = email.getText();
+                    String add = address.getText();
+                    String bacc = bankacc.getText();
+                    String pw = password.getText();
+                    try {
+                        int dept = Integer.parseInt(deptid.getText());
 
-                    String query = "update Employee set first_name = ?, last_name = ?,"
-                            + " address = ?, Bank_account = ?, password = ?, "
-                            + "department_id = ? where Employee_ID = ?";
-                    pst = con.prepareStatement(query);
-                    pst.setString(1, Fname);
-                    pst.setString(2, Lname);
-                    pst.setString(3, add);
-                    pst.setString(4, bacc);
-                    pst.setString(5, pw);
-                    pst.setInt(6, dept);
-                    pst.setInt(7, id);
-                    pst.executeUpdate();
-                    pst.close();
-                    JOptionPane.showMessageDialog(this, "Record Updated.");
+                        try {
 
-                    //Table updated after edits
-                    tableupdate();
+                            String query = "update Employee set first_name = ?, last_name = ?,"
+                                    + " address = ?, Bank_account = ?, password = ?, "
+                                    + "department_id = ? where Employee_ID = ?";
+                            pst = con.prepareStatement(query);
+                            pst.setString(1, Fname);
+                            pst.setString(2, Lname);
+                            pst.setString(3, add);
+                            pst.setString(4, bacc);
+                            pst.setString(5, pw);
+                            pst.setInt(6, dept);
+                            pst.setInt(7, id);
+                            pst.executeUpdate();
+                            JOptionPane.showMessageDialog(this, "Record Updated.");
 
-                } catch (SQLException ex) {
-                    java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(this, ex);
+                            //Table updated after edits
+                            tableupdate();
+
+                            //fields set empty
+                            setfieldsEmpty();
+                            error.setVisible(false);
+
+                        } catch (SQLIntegrityConstraintViolationException e) {
+                            error2.setVisible(true);
+                        } catch (SQLException ex) {
+                            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                            JOptionPane.showMessageDialog(this, ex);
+                        }
+
+                    } catch (NumberFormatException ex) {
+                        error.setVisible(true);
+                    }
+                } else {
+                    setfieldsEmpty();
                 }
-
-                //fields set empty
-                setfieldsEmpty();
-                error.setVisible(false);
-            } catch (NumberFormatException ex) {
-                error.setVisible(true);
+            } else {
+                error3.setVisible(true);
             }
-
-            error1.setVisible(false);
-
         }
     }//GEN-LAST:event_UpdateActionPerformed
 
@@ -533,7 +565,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         try {
 
             pst = con.prepareStatement("select employee_id, first_name, last_name,"
-                    + " email,department_id from Employee");
+                    + " email,department_id, status from Employee");
             rs = pst.executeQuery();
 
             ResultSetMetaData rsd = rs.getMetaData();
@@ -549,13 +581,16 @@ public class Admin_Employee extends javax.swing.JFrame {
                     v2.add(rs.getString("last_name"));
                     v2.add(rs.getString("email"));
                     v2.add(rs.getString("department_id"));
+                    v2.add(rs.getString("status"));
                 }
 
                 dft.addRow(v2);
+
             }
 
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_Employee.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
     }
@@ -576,9 +611,11 @@ public class Admin_Employee extends javax.swing.JFrame {
         //req fields are there
         if (!checkfields()) {
 
-            String Fname = fname.getText();
-            String Lname = lname.getText();
-            String Email = Fname + "." + Lname + "@emp.com.pk";
+            String Fname = fname.getText().trim();
+            Fname = Fname.substring(0, 1).toUpperCase() + Fname.substring(1).toLowerCase();
+            String Lname = lname.getText().trim();
+            Lname = Lname.substring(0, 1).toUpperCase() + Lname.substring(1).toLowerCase();
+            String Email = Fname.toLowerCase() + "." + Lname.toLowerCase() + "@emp.com.pk";
             String add = address.getText();
             String bacc = bankacc.getText();
             String pw = password.getText();
@@ -587,7 +624,8 @@ public class Admin_Employee extends javax.swing.JFrame {
 
                 try {
                     String query = "insert into Employee(first_name, last_name, address, "
-                            + "email, bank_account, password, department_id) values(?,?,?,?,?,?,?)";
+                            + "email, bank_account, password, department_id, status)"
+                            + " values(?,?,?,?,?,?,?,?)";
                     pst = con.prepareStatement(query);
                     pst.setString(1, Fname);
                     pst.setString(2, Lname);
@@ -596,6 +634,7 @@ public class Admin_Employee extends javax.swing.JFrame {
                     pst.setString(5, bacc);
                     pst.setString(6, pw);
                     pst.setInt(7, dept);
+                    pst.setString(8, "Working");
                     pst.execute();
                     pst.close();
                     JOptionPane.showMessageDialog(this, "Record Addedd.");
@@ -603,8 +642,12 @@ public class Admin_Employee extends javax.swing.JFrame {
                     //Table updates after insertion
                     tableupdate();
 
+                } catch (SQLIntegrityConstraintViolationException e) {
+                    error2.setVisible(true);
+
                 } catch (SQLException ex) {
-                    java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                    java.util.logging.Logger.getLogger(Admin_Employee.class
+                            .getName()).log(java.util.logging.Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(this, ex);
                 }
 
@@ -614,12 +657,14 @@ public class Admin_Employee extends javax.swing.JFrame {
             } catch (NumberFormatException ex) {
                 error.setVisible(true);
             }
-
-            error1.setVisible(false);
         }
     }//GEN-LAST:event_addActionPerformed
 
     private void EmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmployeeMouseClicked
+        error1.setVisible(false);
+        error2.setVisible(false);
+        error3.setVisible(false);
+
         //setting text fields as a record is selected
         DefaultTableModel model = (DefaultTableModel) Employee.getModel();
         int selectedIndex = Employee.getSelectedRow();
@@ -642,40 +687,64 @@ public class Admin_Employee extends javax.swing.JFrame {
                 hiredate.setText(rs.getString("hire_date"));
                 password.setText(rs.getString("password"));
                 deptid.setText(rs.getString("Department_ID"));
+
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(Admin_Employee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admin_Employee.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_EmployeeMouseClicked
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        //getting selected record
+
+        //gets Data of selected record from table
         DefaultTableModel model = (DefaultTableModel) Employee.getModel();
         int selectedIndex = Employee.getSelectedRow();
 
-        int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
+        if (Employee.getSelectedRow() != -1) {
+            //emp id of selected record, used to update record
+            int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
+            String s = model.getValueAt(selectedIndex, 5).toString();
 
-        int dialogresult = JOptionPane.showConfirmDialog(null, "Do you want to delete the record?", "Warning", JOptionPane.YES_NO_OPTION);
+            if (s.equals("Working")) {
+                Object[] options1 = {"Left?", "Fired?", "Cancel"};
 
-        if (dialogresult == JOptionPane.YES_NO_OPTION) {
-            try {
+                int dialogresult = JOptionPane.showOptionDialog(null, "How did the employee leave?",
+                        "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                        null,
+                        options1,
+                        null);
 
-                pst = con.prepareStatement("delete from employee where employee_id = ?");
-                pst.setInt(1, id);
-                pst.executeUpdate();
-                JOptionPane.showMessageDialog(this, "Record Deleted.");
+                String status = "";
+                if (dialogresult == 0) {
+                    status = "Left";
+                } else if (dialogresult == 1) {
+                    status = "Fired";
+                }
+                if (dialogresult != 2) {
+                    try {
 
-                tableupdate();
+                        String query = "update Employee set status = ?"
+                                + "where Employee_ID = ?";
+                        pst = con.prepareStatement(query);
+                        pst.setString(1, status);
+                        pst.setInt(2, id);
+                        pst.executeUpdate();
+                        pst.close();
+                        JOptionPane.showMessageDialog(this, "Employee status updated.");
 
-            } catch (SQLException ex) {
-                java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                        //Table updated after edits
+                        tableupdate();
+
+                    } catch (SQLException ex) {
+                        java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(this, ex);
+                    }
+                }
+                setfieldsEmpty();
             }
-
         }
-
-        //fields set empty
-        setfieldsEmpty();
     }//GEN-LAST:event_deleteActionPerformed
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
@@ -699,11 +768,14 @@ public class Admin_Employee extends javax.swing.JFrame {
                         v2.add(rs.getString("last_name"));
                         v2.add(rs.getString("email"));
                         v2.add(rs.getString("department_id"));
+                        v2.add(rs.getString("status"));
                         dft.addRow(v2);
+
                     }
 
                 } catch (SQLException ex) {
-                    Logger.getLogger(Admin_Employee.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Admin_Employee.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             } catch (NumberFormatException ex) {
                 empid.setText("");
@@ -762,6 +834,11 @@ public class Admin_Employee extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void deptidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_deptidKeyPressed
+        error1.setVisible(false);
+        error2.setVisible(false);
+    }//GEN-LAST:event_deptidKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -776,16 +853,24 @@ public class Admin_Employee extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_Employee.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_Employee.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_Employee.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_Employee.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -794,8 +879,10 @@ public class Admin_Employee extends javax.swing.JFrame {
             public void run() {
                 try {
                     new Admin_Employee().setVisible(true);
+
                 } catch (SQLException ex) {
-                    Logger.getLogger(Admin_Employee.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Admin_Employee.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -814,6 +901,8 @@ public class Admin_Employee extends javax.swing.JFrame {
     private javax.swing.JTextField empid;
     private javax.swing.JLabel error;
     private javax.swing.JLabel error1;
+    private javax.swing.JLabel error2;
+    private javax.swing.JLabel error3;
     private javax.swing.JLabel first_name;
     private javax.swing.JLabel first_name1;
     private javax.swing.JLabel first_name2;

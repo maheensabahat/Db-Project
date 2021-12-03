@@ -163,7 +163,8 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TaskActionPerformed
-        // TODO add your handling code here:
+        new Admin_Tasks().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_TaskActionPerformed
 
     private void DeptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeptActionPerformed
@@ -180,8 +181,8 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_EmpActionPerformed
 
     private void SalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalaryActionPerformed
-       new Ad_Salaryy().setVisible(true);
-       this.setVisible(false);
+        new Ad_Salaryy().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_SalaryActionPerformed
 
     private void AttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AttendanceActionPerformed
@@ -190,7 +191,8 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_AttendanceActionPerformed
 
     private void MAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MAActionPerformed
-        // TODO add your handling code here:
+        new PerformanceAnalysis().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_MAActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

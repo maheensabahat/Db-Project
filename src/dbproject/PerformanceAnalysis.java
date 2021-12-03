@@ -59,7 +59,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Sbdate = new javax.swing.JLabel();
         empid = new javax.swing.JTextField();
-        search1 = new javax.swing.JButton();
+        searchemp = new javax.swing.JButton();
         Date = new javax.swing.JLabel();
         Month = new javax.swing.JTextField();
         search2 = new javax.swing.JButton();
@@ -70,6 +70,8 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         searchbemp1 = new javax.swing.JLabel();
         empid1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        Generate_Analysis = new javax.swing.JButton();
+        setstar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,19 +99,19 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         jScrollPane1.setViewportView(PA);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(30, 130, 690, 280);
+        jScrollPane1.setBounds(30, 180, 690, 280);
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(52, 45, 71));
         jLabel1.setText("Performance Analysis");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(30, 20, 340, 40);
+        jLabel1.setBounds(20, 10, 340, 40);
 
-        Sbdate.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        Sbdate.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         Sbdate.setForeground(new java.awt.Color(52, 45, 71));
         Sbdate.setText("Search by Date:");
         jPanel1.add(Sbdate);
-        Sbdate.setBounds(350, 70, 120, 20);
+        Sbdate.setBounds(350, 120, 120, 20);
 
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,33 +119,33 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
             }
         });
         jPanel1.add(empid);
-        empid.setBounds(320, 420, 190, 30);
+        empid.setBounds(150, 70, 180, 30);
 
-        search1.setBackground(new java.awt.Color(38, 32, 54));
-        search1.setForeground(new java.awt.Color(255, 255, 255));
-        search1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/search_white.png"))); // NOI18N
-        search1.setText("Search");
-        search1.addMouseListener(new java.awt.event.MouseAdapter() {
+        searchemp.setBackground(new java.awt.Color(38, 32, 54));
+        searchemp.setForeground(new java.awt.Color(255, 255, 255));
+        searchemp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/search_white.png"))); // NOI18N
+        searchemp.setText("search");
+        searchemp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                search1MouseEntered(evt);
+                searchempMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                search1MouseExited(evt);
+                searchempMouseExited(evt);
             }
         });
-        search1.addActionListener(new java.awt.event.ActionListener() {
+        searchemp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search1ActionPerformed(evt);
+                searchempActionPerformed(evt);
             }
         });
-        jPanel1.add(search1);
-        search1.setBounds(230, 92, 90, 25);
+        jPanel1.add(searchemp);
+        searchemp.setBounds(220, 140, 90, 25);
 
         Date.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         Date.setForeground(new java.awt.Color(52, 45, 71));
         Date.setText("Month: ");
         jPanel1.add(Date);
-        Date.setBounds(350, 100, 80, 14);
+        Date.setBounds(350, 150, 80, 14);
 
         Month.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,7 +153,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Month);
-        Month.setBounds(390, 90, 90, 30);
+        Month.setBounds(390, 140, 90, 30);
 
         search2.setBackground(new java.awt.Color(38, 32, 54));
         search2.setForeground(new java.awt.Color(255, 255, 255));
@@ -171,25 +173,25 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
             }
         });
         jPanel1.add(search2);
-        search2.setBounds(630, 92, 90, 25);
+        search2.setBounds(630, 140, 90, 25);
 
         empID2.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         empID2.setForeground(new java.awt.Color(52, 45, 71));
         empID2.setText("Employee ID:");
         jPanel1.add(empID2);
-        empID2.setBounds(30, 100, 80, 14);
+        empID2.setBounds(30, 150, 80, 14);
 
-        searchbemp.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        searchbemp.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         searchbemp.setForeground(new java.awt.Color(52, 45, 71));
         searchbemp.setText("Star Employee:");
         jPanel1.add(searchbemp);
-        searchbemp.setBounds(210, 430, 100, 18);
+        searchbemp.setBounds(30, 80, 110, 18);
 
         Date1.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         Date1.setForeground(new java.awt.Color(52, 45, 71));
         Date1.setText("Year:");
         jPanel1.add(Date1);
-        Date1.setBounds(490, 100, 80, 14);
+        Date1.setBounds(490, 150, 80, 14);
 
         year.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,13 +199,13 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
             }
         });
         jPanel1.add(year);
-        year.setBounds(520, 90, 90, 30);
+        year.setBounds(520, 140, 90, 30);
 
-        searchbemp1.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        searchbemp1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         searchbemp1.setForeground(new java.awt.Color(52, 45, 71));
         searchbemp1.setText("Search by Employee:");
         jPanel1.add(searchbemp1);
-        searchbemp1.setBounds(30, 70, 150, 18);
+        searchbemp1.setBounds(30, 120, 150, 18);
 
         empid1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,7 +213,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
             }
         });
         jPanel1.add(empid1);
-        empid1.setBounds(110, 90, 100, 30);
+        empid1.setBounds(110, 140, 100, 30);
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
@@ -224,6 +226,45 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel2);
         jLabel2.setBounds(630, 10, 130, 40);
+
+        Generate_Analysis.setBackground(new java.awt.Color(38, 32, 54));
+        Generate_Analysis.setForeground(new java.awt.Color(255, 255, 255));
+        Generate_Analysis.setText("Generate Analysis for this month");
+        Generate_Analysis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Generate_AnalysisMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Generate_AnalysisMouseExited(evt);
+            }
+        });
+        Generate_Analysis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Generate_AnalysisActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Generate_Analysis);
+        Generate_Analysis.setBounds(520, 70, 190, 25);
+
+        setstar.setBackground(new java.awt.Color(38, 32, 54));
+        setstar.setForeground(new java.awt.Color(255, 255, 255));
+        setstar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/search_white.png"))); // NOI18N
+        setstar.setText("Search");
+        setstar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                setstarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                setstarMouseExited(evt);
+            }
+        });
+        setstar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setstarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(setstar);
+        setstar.setBounds(340, 70, 90, 25);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -300,7 +341,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_empid1ActionPerformed
 
-    private void search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search1ActionPerformed
+    private void searchempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchempActionPerformed
         // TODO add your handling code here:
         int c;
 
@@ -338,7 +379,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_search1ActionPerformed
+    }//GEN-LAST:event_searchempActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         Dashboard db = new Dashboard();
@@ -346,18 +387,18 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void search1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search1MouseEntered
+    private void searchempMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchempMouseEntered
         // TODO add your handling code here:
-        search1.setBackground(new java.awt.Color(79, 70, 102));
+        searchemp.setBackground(new java.awt.Color(79, 70, 102));
 
-    }//GEN-LAST:event_search1MouseEntered
+    }//GEN-LAST:event_searchempMouseEntered
 
-    private void search1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search1MouseExited
+    private void searchempMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchempMouseExited
         // TODO add your handling code here:
-        search1.setBackground(new java.awt.Color(38, 32, 54));
+        searchemp.setBackground(new java.awt.Color(38, 32, 54));
 
 
-    }//GEN-LAST:event_search1MouseExited
+    }//GEN-LAST:event_searchempMouseExited
 
     private void search2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search2MouseEntered
         // TODO add your handling code here:
@@ -367,9 +408,35 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
 
     private void search2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search2MouseExited
         // TODO add your handling code here:
-        search1.setBackground(new java.awt.Color(38, 32, 54));
+        searchemp.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_search2MouseExited
+
+    private void Generate_AnalysisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Generate_AnalysisMouseEntered
+        Generate_Analysis.setBackground(new java.awt.Color(79, 70, 102));
+    }//GEN-LAST:event_Generate_AnalysisMouseEntered
+
+    private void Generate_AnalysisMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Generate_AnalysisMouseExited
+        // TODO add your handling code here:
+        Generate_Analysis.setBackground(new java.awt.Color(38, 32, 54));
+    }//GEN-LAST:event_Generate_AnalysisMouseExited
+
+    private void Generate_AnalysisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Generate_AnalysisActionPerformed
+        //Generate Analysis
+        
+    }//GEN-LAST:event_Generate_AnalysisActionPerformed
+
+    private void setstarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setstarMouseEntered
+        setstar.setBackground(new java.awt.Color(79, 70, 102));
+    }//GEN-LAST:event_setstarMouseEntered
+
+    private void setstarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setstarMouseExited
+        setstar.setBackground(new java.awt.Color(38, 32, 54));
+    }//GEN-LAST:event_setstarMouseExited
+
+    private void setstarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setstarActionPerformed
+       
+    }//GEN-LAST:event_setstarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -409,6 +476,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Date;
     private javax.swing.JLabel Date1;
+    private javax.swing.JButton Generate_Analysis;
     private javax.swing.JTextField Month;
     private javax.swing.JTable PA;
     private javax.swing.JLabel Sbdate;
@@ -419,10 +487,11 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton search1;
     private javax.swing.JButton search2;
     private javax.swing.JLabel searchbemp;
     private javax.swing.JLabel searchbemp1;
+    private javax.swing.JButton searchemp;
+    private javax.swing.JButton setstar;
     private javax.swing.JTextField year;
     // End of variables declaration//GEN-END:variables
 }

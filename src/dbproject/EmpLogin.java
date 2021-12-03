@@ -193,7 +193,8 @@ public class EmpLogin extends javax.swing.JFrame {
             String password = pw.getText();
 
             try {
-                pst = con.prepareStatement("select * from employee where employee_id = ?");
+                pst = con.prepareStatement("select * from employee where"
+                        + " employee_id = ? and status = 'Working'");
                 pst.setInt(1, employeeID);
                 rs = pst.executeQuery();
 

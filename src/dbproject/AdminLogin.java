@@ -185,8 +185,8 @@ public class AdminLogin extends javax.swing.JFrame {
         //when fields are filled
             try {
                 pst = con.prepareStatement("select * from department d inner join"
-                        + " employee e on  e.employee_id = d.manager_id"
-                        + " where employee_id = ? and department_name = 'Administration'");
+                        + " employee e using (department_id)"
+                        + " where employee_id = ? and status = 'Working' and department_name = 'Administration'");
                 pst.setInt(1, employeeID);
                 rs = pst.executeQuery();
 

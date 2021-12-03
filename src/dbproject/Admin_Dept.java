@@ -45,8 +45,10 @@ public class Admin_Dept extends javax.swing.JFrame {
         error3.setVisible(false);
         error4.setVisible(false);
         error5.setVisible(false);
-        
-           Dept.getTableHeader().setOpaque(true);
+        error6.setVisible(false);
+        error7.setVisible(false);
+
+        Dept.getTableHeader().setOpaque(true);
 //        Dept.getTableHeader().setBackground(new java.awt.Color(64, 56, 84));
         Dept.getTableHeader().setFont(new java.awt.Font("Rockwell", 1, 10));
         Dept.getTableHeader().setForeground(new java.awt.Color(52, 45, 71));
@@ -125,6 +127,23 @@ public class Admin_Dept extends javax.swing.JFrame {
         return false;
     }
 
+    public boolean checkManagerExist(int emp) {
+        try {
+            pst = con.prepareStatement("select * from Department where manager_ID = ?");
+            pst.setInt(1, emp);
+            rs = pst.executeQuery();
+
+            if (!rs.isBeforeFirst()) { //Manager not exists
+                return false;
+            } else {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Admin_Dept.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
     private void setfieldsEmpty() {
         DeptID.setText("");
         DeptName.setText("");
@@ -155,6 +174,8 @@ public class Admin_Dept extends javax.swing.JFrame {
         error4 = new javax.swing.JLabel();
         error5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        error6 = new javax.swing.JLabel();
+        error7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -256,6 +277,11 @@ public class Admin_Dept extends javax.swing.JFrame {
                 MgrIDActionPerformed(evt);
             }
         });
+        MgrID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MgrIDKeyPressed(evt);
+            }
+        });
         jPanel1.add(MgrID);
         MgrID.setBounds(20, 250, 240, 30);
 
@@ -347,7 +373,7 @@ public class Admin_Dept extends javax.swing.JFrame {
         error5.setForeground(new java.awt.Color(255, 0, 51));
         error5.setText("Department already exists.");
         jPanel1.add(error5);
-        error5.setBounds(20, 80, 200, 20);
+        error5.setBounds(20, 80, 240, 20);
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
@@ -360,6 +386,18 @@ public class Admin_Dept extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel2);
         jLabel2.setBounds(630, 10, 130, 40);
+
+        error6.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        error6.setForeground(new java.awt.Color(255, 0, 51));
+        error6.setText("Select a record from table to delete/update.");
+        jPanel1.add(error6);
+        error6.setBounds(10, 280, 280, 40);
+
+        error7.setFont(new java.awt.Font("Rockwell", 1, 11)); // NOI18N
+        error7.setForeground(new java.awt.Color(255, 0, 51));
+        error7.setText("This employee manages another department.");
+        jPanel1.add(error7);
+        error7.setBounds(10, 210, 260, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -407,32 +445,36 @@ public class Admin_Dept extends javax.swing.JFrame {
                 int dept = Integer.parseInt(DeptID.getText());
                 int mgr = Integer.parseInt(MgrID.getText());
 
-                try {
+                if (!checkManagerExist(mgr)) {
+                    try {
 
-                    String query = "update Department set department_name = ?, manager_ID = ?"
-                            + " where department_id = ?";
-                    pst = con.prepareStatement(query);
-                    pst.setString(1, Dname);
-                    pst.setInt(2, mgr);
-                    pst.setInt(3, dept);
-                    pst.executeUpdate();
-                    pst.close();
-                    JOptionPane.showMessageDialog(this, "Record Updated.");
+                        String query = "update Department set department_name = ?, manager_ID = ?"
+                                + " where department_id = ?";
+                        pst = con.prepareStatement(query);
+                        pst.setString(1, Dname);
+                        pst.setInt(2, mgr);
+                        pst.setInt(3, dept);
+                        pst.executeUpdate();
+                        pst.close();
+                        JOptionPane.showMessageDialog(this, "Record Updated.");
 
-                    //Table updated after edits
-                    tableupdate();
-                    //fields set empty
-                    setfieldsEmpty();
+                        //Table updated after edits
+                        tableupdate();
+                        //fields set empty
+                        setfieldsEmpty();
 
-                } catch (SQLIntegrityConstraintViolationException e) {
-                    if (checkEmployeeExist(mgr)) {
-                        error5.setVisible(true);
-                    } else {
-                        error4.setVisible(true);
+                    } catch (SQLIntegrityConstraintViolationException e) {
+                        if (checkEmployeeExist(mgr)) {
+                            error5.setVisible(true);
+                        } else {
+                            error4.setVisible(true);
+                        }
+                    } catch (SQLException ex) {
+                        java.util.logging.Logger.getLogger(Admin_Dept.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(this, ex);
                     }
-                } catch (SQLException ex) {
-                    java.util.logging.Logger.getLogger(Admin_Dept.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(this, ex);
+                } else {
+                    error7.setVisible(true);
                 }
 
             } catch (NumberFormatException ex) {
@@ -459,31 +501,35 @@ public class Admin_Dept extends javax.swing.JFrame {
                 int dept = Integer.parseInt(DeptID.getText());
                 int mgr = Integer.parseInt(MgrID.getText());
 
-                try {
-                    String query = "insert into Department(department_id, department_name, manager_id)"
-                            + " values(?,?,?)";
-                    pst = con.prepareStatement(query);
-                    pst.setInt(1, dept);
-                    pst.setString(2, Dname);
-                    pst.setInt(3, mgr);
-                    pst.execute();
-                    pst.close();
-                    JOptionPane.showMessageDialog(this, "Record Addedd.");
+                if (!checkManagerExist(mgr)) {
+                    try {
+                        String query = "insert into Department(department_id, department_name, manager_id)"
+                                + " values(?,?,?)";
+                        pst = con.prepareStatement(query);
+                        pst.setInt(1, dept);
+                        pst.setString(2, Dname);
+                        pst.setInt(3, mgr);
+                        pst.execute();
+                        pst.close();
+                        JOptionPane.showMessageDialog(this, "Record Addedd.");
 
-                    //Table updates after insertion
-                    tableupdate();
-                    //fields are set empty again
-                    setfieldsEmpty();
+                        //Table updates after insertion
+                        tableupdate();
+                        //fields are set empty again
+                        setfieldsEmpty();
 
-                } catch (SQLIntegrityConstraintViolationException e) {
-                    if (checkEmployeeExist(mgr)) {
-                        error5.setVisible(true);
-                    } else {
-                        error4.setVisible(true);
+                    } catch (SQLIntegrityConstraintViolationException e) {
+                        if (checkEmployeeExist(mgr)) {
+                            error5.setVisible(true);
+                        } else {
+                            error4.setVisible(true);
+                        }
+                    } catch (SQLException ex) {
+                        java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(this, ex);
                     }
-                } catch (SQLException ex) {
-                    java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(this, ex);
+                } else {
+                    error7.setVisible(true);
                 }
 
             } catch (NumberFormatException ex) {
@@ -500,6 +546,8 @@ public class Admin_Dept extends javax.swing.JFrame {
     }//GEN-LAST:event_DeptIDKeyTyped
 
     private void DeptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeptMouseClicked
+        error6.setVisible(false);
+
         //setting text fields as a record is selected
         DefaultTableModel model = (DefaultTableModel) Dept.getModel();
         int selectedIndex = Dept.getSelectedRow();
@@ -522,64 +570,68 @@ public class Admin_Dept extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) Dept.getModel();
         int selectedIndex = Dept.getSelectedRow();
 
-        int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
+        if (selectedIndex != -1) {
+            int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
 
-        int dialogresult = JOptionPane.showConfirmDialog(null, "Do you want to delete the record?", "Warning", JOptionPane.YES_NO_OPTION);
+            int dialogresult = JOptionPane.showConfirmDialog(null, "Do you want to delete the record?", "Warning", JOptionPane.YES_NO_OPTION);
 
-        if (dialogresult == JOptionPane.YES_NO_OPTION) {
-            try {
+            if (dialogresult == JOptionPane.YES_NO_OPTION) {
+                try {
 
-                pst = con.prepareStatement("delete from Department where department_id = ?");
-                pst.setInt(1, id);
-                pst.executeUpdate();
-                JOptionPane.showMessageDialog(this, "Record Deleted.");
+                    pst = con.prepareStatement("delete from Department where department_id = ?");
+                    pst.setInt(1, id);
+                    pst.executeUpdate();
+                    JOptionPane.showMessageDialog(this, "Record Deleted.");
 
-                tableupdate();
+                    tableupdate();
 
-            } catch (SQLException ex) {
-                java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                }
+
             }
 
+            //fields set empty
+            setfieldsEmpty();
+        } else {
+            error6.setVisible(false);
         }
-
-        //fields set empty
-        setfieldsEmpty();
     }//GEN-LAST:event_deleteActionPerformed
 
     private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
         // TODO add your handling code here:
-                add.setBackground(new java.awt.Color(79, 70, 102));
+        add.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_addMouseEntered
 
     private void UpdateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseEntered
         // TODO add your handling code here:
-                Update.setBackground(new java.awt.Color(79, 70, 102));
+        Update.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_UpdateMouseEntered
 
     private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
         // TODO add your handling code here:
-                delete.setBackground(new java.awt.Color(38, 32, 54));
+        delete.setBackground(new java.awt.Color(38, 32, 54));
 
-        
+
     }//GEN-LAST:event_deleteMouseExited
 
     private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
         // TODO add your handling code here:
-                delete.setBackground(new java.awt.Color(79, 70, 102));
+        delete.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_deleteMouseEntered
 
     private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
         // TODO add your handling code here:
-                add.setBackground(new java.awt.Color(38, 32, 54));
+        add.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_addMouseExited
 
     private void UpdateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseExited
         // TODO add your handling code here:
-                Update.setBackground(new java.awt.Color(38, 32, 54));
+        Update.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_UpdateMouseExited
 
@@ -588,6 +640,10 @@ public class Admin_Dept extends javax.swing.JFrame {
         db.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void MgrIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MgrIDKeyPressed
+        error7.setVisible(false);
+    }//GEN-LAST:event_MgrIDKeyPressed
 
     /**
      * @param args the command line arguments
@@ -637,6 +693,8 @@ public class Admin_Dept extends javax.swing.JFrame {
     private javax.swing.JLabel error3;
     private javax.swing.JLabel error4;
     private javax.swing.JLabel error5;
+    private javax.swing.JLabel error6;
+    private javax.swing.JLabel error7;
     private javax.swing.JLabel first_name;
     private javax.swing.JLabel first_name1;
     private javax.swing.JLabel first_name2;

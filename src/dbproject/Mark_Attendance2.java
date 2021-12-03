@@ -112,7 +112,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         view.setBackground(new java.awt.Color(38, 32, 54));
         view.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         view.setForeground(new java.awt.Color(255, 255, 255));
-        view.setText("VIEW ATTENDANCE");
+        view.setText("View Attendance");
         view.setFocusPainted(false);
         view.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -200,7 +200,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(save);
-        save.setBounds(50, 335, 120, 30);
+        save.setBounds(40, 340, 130, 30);
 
         empID1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         empID1.setForeground(new java.awt.Color(52, 45, 71));
@@ -225,19 +225,19 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         empID2.setBounds(30, 150, 80, 15);
 
         l.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
-        l.setForeground(new java.awt.Color(255, 255, 255));
+        l.setForeground(new java.awt.Color(52, 45, 71));
         l.setText("On Leave");
         jPanel1.add(l);
         l.setBounds(30, 290, 160, 23);
 
         p.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
-        p.setForeground(new java.awt.Color(255, 255, 255));
+        p.setForeground(new java.awt.Color(52, 45, 71));
         p.setText("Present");
         jPanel1.add(p);
         p.setBounds(30, 230, 160, 23);
 
         a.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
-        a.setForeground(new java.awt.Color(255, 255, 255));
+        a.setForeground(new java.awt.Color(52, 45, 71));
         a.setText("Absent");
         jPanel1.add(a);
         a.setBounds(30, 260, 160, 23);
@@ -277,7 +277,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(630, 10, 130, 40);
+        jLabel2.setBounds(600, 0, 130, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
