@@ -243,48 +243,48 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
     }//GEN-LAST:event_yearActionPerformed
 
     private void search2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search2ActionPerformed
-        // TODO add your handling code here:
-         int c;
-
-        String m = Month.getText();
-        String y = year.getText();
-        String d = m + " " + y;
-
-        try {
-
-            pst = con.prepareStatement("SELECT substr(date, 1, instr(date, \" \")) as month,"
-                    + "substr(date, instr(date, \" \"))as year, task_rating, absences,\n"
-                    + " tasks_completed FROM Performance_analysis"
-                    + " where date = ? ");
-           
-            pst.setString(1, d);
-            rs = pst.executeQuery();
-
-            ResultSetMetaData rsd = rs.getMetaData();
-            c = rsd.getColumnCount();
-            DefaultTableModel dft = (DefaultTableModel) salrep.getModel();
-            dft.setRowCount(0);
-
-            while (rs.next()) {
-                Vector v2 = new Vector();
-                for (int i = 1; i <= c; i++) {
-                    v2.add(rs.getString("month"));
-                    v2.add(rs.getString("year"));
-                    v2.add(rs.getString("task_rating"));
-                    v2.add(rs.getString("absences"));
-                    v2.add(rs.getString("tasks_completed"));
-                }
-
-                dft.addRow(v2);
-
-            }
-
-        } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(Employee_Salary.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-      }
-
-
+//        // TODO add your handling code here:
+//         int c;
+//
+//        String m = Month.getText();
+//        String y = year.getText();
+//        String d = m + " " + y;
+//
+//        try {
+//
+//            pst = con.prepareStatement("SELECT substr(date, 1, instr(date, \" \")) as month,"
+//                    + "substr(date, instr(date, \" \"))as year, task_rating, absences,\n"
+//                    + " tasks_completed FROM Performance_analysis"
+//                    + " where date = ? ");
+//           
+//            pst.setString(1, d);
+//            rs = pst.executeQuery();
+//
+//            ResultSetMetaData rsd = rs.getMetaData();
+//            c = rsd.getColumnCount();
+//            DefaultTableModel dft = (DefaultTableModel) salrep.getModel();
+//            dft.setRowCount(0);
+//
+//            while (rs.next()) {
+//                Vector v2 = new Vector();
+//                for (int i = 1; i <= c; i++) {
+//                    v2.add(rs.getString("month"));
+//                    v2.add(rs.getString("year"));
+//                    v2.add(rs.getString("task_rating"));
+//                    v2.add(rs.getString("absences"));
+//                    v2.add(rs.getString("tasks_completed"));
+//                }
+//
+//                dft.addRow(v2);
+//
+//            }
+//
+//        } catch (SQLException ex) {
+//            java.util.logging.Logger.getLogger(Employee_Salary.class
+//                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//      }
+//
+//
     }//GEN-LAST:event_search2ActionPerformed
 
     private void empid1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empid1ActionPerformed
@@ -292,43 +292,43 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
     }//GEN-LAST:event_empid1ActionPerformed
 
     private void search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search1ActionPerformed
-        // TODO add your handling code here:
-               int c;
-
-        String empid = empid1.getText();
-        try {
-
-            pst = con.prepareStatement("SELECT substr(date, 1, instr(date, \" \")) as month,"
-                    + "substr(date, instr(date, \" \"))as year, task_rating, absences,\n"
-                    + " tasks_completed FROM Performance_analysis"
-                    + " where employee_id = ?");
-            pst.setInt(1, empid);
-            rs = pst.executeQuery();
-
-            ResultSetMetaData rsd = rs.getMetaData();
-            c = rsd.getColumnCount();
-            DefaultTableModel dft = (DefaultTableModel) salrep.getModel();
-            dft.setRowCount(0);
-
-            while (rs.next()) {
-                Vector v2 = new Vector();
-                for (int i = 1; i <= c; i++) {
-                    v2.add(rs.getString("month"));
-                    v2.add(rs.getString("year"));
-                    v2.add(rs.getString("task_rating"));
-                    v2.add(rs.getString("absences"));
-                    v2.add(rs.getString("tasks_completed"));
-                }
-
-                dft.addRow(v2);
-
-            }
-
-        } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(Employee_Salary.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
+//        // TODO add your handling code here:
+//               int c;
+//
+//        String empid = empid1.getText();
+//        try {
+//
+//            pst = con.prepareStatement("SELECT substr(date, 1, instr(date, \" \")) as month,"
+//                    + "substr(date, instr(date, \" \"))as year, task_rating, absences,\n"
+//                    + " tasks_completed FROM Performance_analysis"
+//                    + " where employee_id = ?");
+//            pst.setInt(1, empid);
+//            rs = pst.executeQuery();
+//
+//            ResultSetMetaData rsd = rs.getMetaData();
+//            c = rsd.getColumnCount();
+//            DefaultTableModel dft = (DefaultTableModel) salrep.getModel();
+//            dft.setRowCount(0);
+//
+//            while (rs.next()) {
+//                Vector v2 = new Vector();
+//                for (int i = 1; i <= c; i++) {
+//                    v2.add(rs.getString("month"));
+//                    v2.add(rs.getString("year"));
+//                    v2.add(rs.getString("task_rating"));
+//                    v2.add(rs.getString("absences"));
+//                    v2.add(rs.getString("tasks_completed"));
+//                }
+//
+//                dft.addRow(v2);
+//
+//            }
+//
+//        } catch (SQLException ex) {
+//            java.util.logging.Logger.getLogger(Employee_Salary.class
+//                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//
     }//GEN-LAST:event_search1ActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -392,7 +392,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PerformanceAnalysis1().setVisible(true);
+    //            new PerformanceAnalysis1().setVisible(true);
             }
         });
     }
