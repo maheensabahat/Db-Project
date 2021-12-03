@@ -34,7 +34,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Task = new javax.swing.JButton();
-        CP = new javax.swing.JButton();
+        Dept = new javax.swing.JButton();
         Emp = new javax.swing.JButton();
         Salary = new javax.swing.JButton();
         Attendance = new javax.swing.JButton();
@@ -72,19 +72,19 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1.add(Task);
         Task.setBounds(510, 120, 230, 100);
 
-        CP.setBackground(new java.awt.Color(105, 103, 115));
-        CP.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
-        CP.setForeground(new java.awt.Color(255, 255, 255));
-        CP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/Department.png"))); // NOI18N
-        CP.setText("Department Info");
-        CP.setFocusPainted(false);
-        CP.addActionListener(new java.awt.event.ActionListener() {
+        Dept.setBackground(new java.awt.Color(105, 103, 115));
+        Dept.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
+        Dept.setForeground(new java.awt.Color(255, 255, 255));
+        Dept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/Department.png"))); // NOI18N
+        Dept.setText("Department Info");
+        Dept.setFocusPainted(false);
+        Dept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CPActionPerformed(evt);
+                DeptActionPerformed(evt);
             }
         });
-        jPanel1.add(CP);
-        CP.setBounds(30, 120, 230, 100);
+        jPanel1.add(Dept);
+        Dept.setBounds(30, 120, 230, 100);
 
         Emp.setBackground(new java.awt.Color(105, 103, 115));
         Emp.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
@@ -166,9 +166,10 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TaskActionPerformed
 
-    private void CPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CPActionPerformed
+    private void DeptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeptActionPerformed
+        new Admin_Dept().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_DeptActionPerformed
 
     private void EmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpActionPerformed
         try {
@@ -179,7 +180,8 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_EmpActionPerformed
 
     private void SalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalaryActionPerformed
-        // TODO add your handling code here:
+       new Ad_Salaryy().setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_SalaryActionPerformed
 
     private void AttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AttendanceActionPerformed
@@ -233,7 +235,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Attendance;
-    private javax.swing.JButton CP;
+    private javax.swing.JButton Dept;
     private javax.swing.JButton Emp;
     private javax.swing.JButton MA;
     private javax.swing.JButton Salary;
