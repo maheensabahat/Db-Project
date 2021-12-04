@@ -94,6 +94,9 @@
               <Image iconType="3" name="/dbproject/TaskManager.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Tasks Report "/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TaskActionPerformed"/>
@@ -145,6 +148,9 @@
               <Image iconType="3" name="/dbproject/Employee.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Employee Data"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmpActionPerformed"/>
@@ -170,6 +176,9 @@
               <Image iconType="3" name="/dbproject/Salary.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Salary"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SalaryActionPerformed"/>
@@ -195,6 +204,9 @@
               <Image iconType="3" name="/dbproject/Attendancee.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Attendance"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AttendanceActionPerformed"/>
@@ -220,6 +232,9 @@
               <Image iconType="3" name="/dbproject/PerformanceAnalysis(2).png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Monthly Analysis"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MAActionPerformed"/>
@@ -242,6 +257,9 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sign out"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>

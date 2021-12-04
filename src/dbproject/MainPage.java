@@ -33,8 +33,6 @@ public class MainPage extends javax.swing.JFrame {
         image = new javax.swing.JLabel();
         login_admin = new javax.swing.JButton();
         login_emp = new javax.swing.JButton();
-        login_admin1 = new javax.swing.JButton();
-        login_emp1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(47, 27, 71));
@@ -56,9 +54,11 @@ public class MainPage extends javax.swing.JFrame {
         image.setBounds(0, 40, 660, 250);
 
         login_admin.setBackground(new java.awt.Color(88, 84, 98));
-        login_admin.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        login_admin.setFont(new java.awt.Font("Rockwell", 1, 13)); // NOI18N
         login_admin.setForeground(new java.awt.Color(255, 255, 255));
         login_admin.setText("Login as Admin");
+        login_admin.setFocusPainted(false);
+        login_admin.setFocusable(false);
         login_admin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 login_adminMouseEntered(evt);
@@ -73,13 +73,14 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(login_admin);
-        login_admin.setBounds(390, 330, 160, 30);
+        login_admin.setBounds(390, 330, 160, 40);
 
         login_emp.setBackground(new java.awt.Color(88, 84, 98));
-        login_emp.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        login_emp.setFont(new java.awt.Font("Rockwell", 1, 13)); // NOI18N
         login_emp.setForeground(new java.awt.Color(255, 255, 255));
         login_emp.setText("Login as Employee");
         login_emp.setFocusPainted(false);
+        login_emp.setFocusable(false);
         login_emp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 login_empMouseEntered(evt);
@@ -94,48 +95,7 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(login_emp);
-        login_emp.setBounds(170, 330, 160, 30);
-
-        login_admin1.setBackground(new java.awt.Color(105, 103, 115));
-        login_admin1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        login_admin1.setForeground(new java.awt.Color(255, 255, 255));
-        login_admin1.setText("Login as Admin");
-        login_admin1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                login_admin1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                login_admin1MouseExited(evt);
-            }
-        });
-        login_admin1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                login_admin1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(login_admin1);
-        login_admin1.setBounds(390, 370, 160, 30);
-
-        login_emp1.setBackground(new java.awt.Color(105, 103, 115));
-        login_emp1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        login_emp1.setForeground(new java.awt.Color(255, 255, 255));
-        login_emp1.setText("Login as Employee");
-        login_emp1.setFocusPainted(false);
-        login_emp1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                login_emp1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                login_emp1MouseExited(evt);
-            }
-        });
-        login_emp1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                login_emp1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(login_emp1);
-        login_emp1.setBounds(170, 370, 160, 30);
+        login_emp.setBounds(170, 330, 160, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,30 +148,6 @@ public class MainPage extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_login_empActionPerformed
 
-    private void login_admin1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_admin1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_login_admin1MouseEntered
-
-    private void login_admin1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_admin1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_login_admin1MouseExited
-
-    private void login_admin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_admin1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_login_admin1ActionPerformed
-
-    private void login_emp1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_emp1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_login_emp1MouseEntered
-
-    private void login_emp1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_emp1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_login_emp1MouseExited
-
-    private void login_emp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_emp1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_login_emp1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -253,9 +189,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel image;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton login_admin;
-    private javax.swing.JButton login_admin1;
     private javax.swing.JButton login_emp;
-    private javax.swing.JButton login_emp1;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

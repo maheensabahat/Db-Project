@@ -543,7 +543,6 @@ public class Ad_Salaryy extends javax.swing.JFrame {
                     pst.setDouble(5, MA);
                     pst.execute();
                     pst.close();
-                    JOptionPane.showMessageDialog(this, "Record Addedd.");
 
                     //Table updates after insertion
                     tableupdate();
@@ -615,7 +614,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
                         pst.setInt(5, id);
                         pst.executeUpdate();
                         pst.close();
-                        JOptionPane.showMessageDialog(this, "Record Updated.");
+                       
 
                         //Table updated after edits
                         tableupdate();

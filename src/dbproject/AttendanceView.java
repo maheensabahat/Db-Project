@@ -149,6 +149,7 @@ public class AttendanceView extends javax.swing.JFrame {
         search1.setText("Search");
         search1.setFocusPainted(false);
         search1.setFocusable(false);
+        search1.setRequestFocusEnabled(false);
         search1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 search1MouseEntered(evt);
@@ -177,6 +178,7 @@ public class AttendanceView extends javax.swing.JFrame {
         markAtt.setText("Mark Attendance");
         markAtt.setFocusPainted(false);
         markAtt.setFocusable(false);
+        markAtt.setRequestFocusEnabled(false);
         markAtt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 markAttMouseEntered(evt);
@@ -260,6 +262,7 @@ public class AttendanceView extends javax.swing.JFrame {
         reset.setText("Reset Table");
         reset.setFocusPainted(false);
         reset.setFocusable(false);
+        reset.setRequestFocusEnabled(false);
         reset.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 resetMouseEntered(evt);
@@ -350,6 +353,9 @@ public class AttendanceView extends javax.swing.JFrame {
         search2.setForeground(new java.awt.Color(255, 255, 255));
         search2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/search_white.png"))); // NOI18N
         search2.setText("Search");
+        search2.setFocusPainted(false);
+        search2.setFocusable(false);
+        search2.setRequestFocusEnabled(false);
         search2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 search2MouseEntered(evt);

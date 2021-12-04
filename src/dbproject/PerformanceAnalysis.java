@@ -27,6 +27,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         initComponents();
 
         error1.setVisible(false);
+        error2.setVisible(false);
 
         db = new Database();
         try {
@@ -125,6 +126,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         year = new javax.swing.JComboBox<>();
         reset = new javax.swing.JButton();
         error1 = new javax.swing.JLabel();
+        error2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -388,6 +390,12 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         error1.setText("Select a record from table to proceed.");
         jPanel1.add(error1);
         error1.setBounds(120, 40, 280, 40);
+
+        error2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        error2.setForeground(new java.awt.Color(102, 255, 102));
+        error2.setText("saved!");
+        jPanel1.add(error2);
+        error2.setBounds(350, 50, 50, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -660,6 +668,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
                 pst.setInt(1, id);
                 pst.executeUpdate();
 
+                error2.setVisible(true);
                 setStarName();
             } catch (SQLIntegrityConstraintViolationException e) {
                 String query = "update staremployees set employee_id = ?\n"
@@ -669,6 +678,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
                     pst.setInt(1, id);
                     pst.executeUpdate();
 
+                    error2.setVisible(true);
                     setStarName();
                 } catch (SQLException ex) {
                     Logger.getLogger(PerformanceAnalysis.class.getName()).log(Level.SEVERE, null, ex);
@@ -722,6 +732,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
 
     private void PAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAMouseClicked
         error1.setVisible(false);
+        error2.setVisible(false);
         //setting text fields as a record is selected
         DefaultTableModel model = (DefaultTableModel) PA.getModel();
         int selectedIndex = PA.getSelectedRow();
@@ -732,7 +743,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
             String query = "Select * from employee where employee_id = ? ";
             pst = con.prepareStatement(query);
             pst.setInt(1, id);
-            pst.executeUpdate();
+            rs = pst.executeQuery();
 
             if (rs.next()) {
                 name.setText(rs.getString("first_name") + " " + rs.getString("last_name"));
@@ -797,6 +808,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
     private javax.swing.JLabel empID2;
     private javax.swing.JTextField empid1;
     private javax.swing.JLabel error1;
+    private javax.swing.JLabel error2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

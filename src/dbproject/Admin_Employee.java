@@ -380,6 +380,8 @@ public class Admin_Employee extends javax.swing.JFrame {
         reset.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
         reset.setForeground(java.awt.Color.white);
         reset.setText("Reset Table");
+        reset.setFocusPainted(false);
+        reset.setFocusable(false);
         reset.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 resetMouseEntered(evt);
@@ -406,7 +408,7 @@ public class Admin_Employee extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(630, 10, 130, 40);
+        jLabel2.setBounds(600, 10, 130, 40);
 
         error2.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         error2.setForeground(new java.awt.Color(255, 0, 51));
@@ -507,7 +509,7 @@ public class Admin_Employee extends javax.swing.JFrame {
                             pst.setInt(6, dept);
                             pst.setInt(7, id);
                             pst.executeUpdate();
-                            JOptionPane.showMessageDialog(this, "Record Updated.");
+                            
 
                             //Table updated after edits
                             tableupdate();
@@ -629,12 +631,12 @@ public class Admin_Employee extends javax.swing.JFrame {
                 if (!deptid.getText().isEmpty()) {
                     dept = Integer.parseInt(deptid.getText());
                     query = "insert into Employee(first_name, last_name, address, "
-                            + "email, bank_account, password, department_id, status)"
+                            + "email, bank_account, password, status, department_id)"
                             + " values(?,?,?,?,?,?,?,?)";
                     x = true;
                 } else {
                     query = "insert into Employee(first_name, last_name, address, "
-                            + "email, bank_account, password,status)"
+                            + "email, bank_account, password, status)"
                             + " values(?,?,?,?,?,?,?)";
                     x = false;
                 }
@@ -647,13 +649,14 @@ public class Admin_Employee extends javax.swing.JFrame {
                     pst.setString(4, Email);
                     pst.setString(5, bacc);
                     pst.setString(6, pw);
+                    pst.setString(7, "Working");
                     if (x) {
-                        pst.setInt(7, dept);
+                        pst.setInt(8, dept);
+                        
                     }
-                    pst.setString(8, "Working");
+                    
                     pst.execute();
                     pst.close();
-                    JOptionPane.showMessageDialog(this, "Record Addedd.");
 
                     //Table updates after insertion
                     tableupdate();
@@ -747,6 +750,13 @@ public class Admin_Employee extends javax.swing.JFrame {
                         pst = con.prepareStatement(query);
                         pst.setString(1, status);
                         pst.setInt(2, id);
+                        pst.executeUpdate();
+                        pst.close();
+                        
+                        query = "update department set manager_id = Null "
+                                + "where manager_ID = ?";
+                        pst = con.prepareStatement(query);
+                        pst.setInt(1, id);
                         pst.executeUpdate();
                         pst.close();
                         JOptionPane.showMessageDialog(this, "Employee status updated.");
