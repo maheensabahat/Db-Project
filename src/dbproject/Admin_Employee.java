@@ -620,12 +620,23 @@ public class Admin_Employee extends javax.swing.JFrame {
             String bacc = bankacc.getText();
             String pw = password.getText();
             try {
-                int dept = Integer.parseInt(deptid.getText());
-
-                try {
-                    String query = "insert into Employee(first_name, last_name, address, "
+                int dept = 0;
+                String query = "";
+                boolean x;
+                if (!deptid.getText().isEmpty()) {
+                    dept = Integer.parseInt(deptid.getText());
+                    query = "insert into Employee(first_name, last_name, address, "
                             + "email, bank_account, password, department_id, status)"
                             + " values(?,?,?,?,?,?,?,?)";
+                    x = true;
+                } else {
+                    query = "insert into Employee(first_name, last_name, address, "
+                            + "email, bank_account, password,status)"
+                            + " values(?,?,?,?,?,?,?)";
+                    x = false;
+                }
+                try {
+
                     pst = con.prepareStatement(query);
                     pst.setString(1, Fname);
                     pst.setString(2, Lname);
@@ -633,7 +644,9 @@ public class Admin_Employee extends javax.swing.JFrame {
                     pst.setString(4, Email);
                     pst.setString(5, bacc);
                     pst.setString(6, pw);
-                    pst.setInt(7, dept);
+                    if (x) {
+                        pst.setInt(7, dept);
+                    }
                     pst.setString(8, "Working");
                     pst.execute();
                     pst.close();
@@ -654,6 +667,7 @@ public class Admin_Employee extends javax.swing.JFrame {
                 //fields are set empty again
                 setfieldsEmpty();
                 error.setVisible(false);
+
             } catch (NumberFormatException ex) {
                 error.setVisible(true);
             }
@@ -673,7 +687,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         fname.setText(model.getValueAt(selectedIndex, 1).toString());
         lname.setText(model.getValueAt(selectedIndex, 2).toString());
         email.setText(model.getValueAt(selectedIndex, 3).toString());
-        deptid.setText(model.getValueAt(selectedIndex, 3).toString());
+        deptid.setText(model.getValueAt(selectedIndex, 4).toString());
 
         //bring other fields from table
         try {

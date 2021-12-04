@@ -11,10 +11,12 @@ package dbproject;
 public class DashboardMgr extends javax.swing.JFrame {
 
     int emp;
-    
+    boolean isMgr;
+
     public DashboardMgr(int emp) {
         initComponents();
         this.emp = emp;
+        this.isMgr = true;
     }
 
     /**
@@ -29,14 +31,14 @@ public class DashboardMgr extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        TaskAssign = new javax.swing.JButton();
+        Subordinates = new javax.swing.JButton();
+        Attendance = new javax.swing.JButton();
+        Salrep = new javax.swing.JButton();
+        ViewProfile = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jButton7 = new javax.swing.JButton();
+        generateSalary = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -57,84 +59,71 @@ public class DashboardMgr extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(20, 40, 220, 40);
 
-        jButton1.setBackground(new java.awt.Color(105, 103, 115));
-        jButton1.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/TaskManager.png"))); // NOI18N
-        jButton1.setText("Task Assignment");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        TaskAssign.setBackground(new java.awt.Color(105, 103, 115));
+        TaskAssign.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
+        TaskAssign.setForeground(new java.awt.Color(255, 255, 255));
+        TaskAssign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/TaskManager.png"))); // NOI18N
+        TaskAssign.setText("Task Assignment");
+        TaskAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                TaskAssignActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(510, 120, 230, 100);
+        jPanel1.add(TaskAssign);
+        TaskAssign.setBounds(510, 120, 230, 100);
 
-        jButton2.setBackground(new java.awt.Color(105, 103, 115));
-        jButton2.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/Subordinates.png"))); // NOI18N
-        jButton2.setText("Subordinates");
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Subordinates.setBackground(new java.awt.Color(105, 103, 115));
+        Subordinates.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
+        Subordinates.setForeground(new java.awt.Color(255, 255, 255));
+        Subordinates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/Subordinates.png"))); // NOI18N
+        Subordinates.setText("Subordinates");
+        Subordinates.setFocusPainted(false);
+        Subordinates.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                SubordinatesActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(510, 260, 230, 100);
+        jPanel1.add(Subordinates);
+        Subordinates.setBounds(510, 260, 230, 100);
 
-        jButton3.setBackground(new java.awt.Color(105, 103, 115));
-        jButton3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/ComplaintPortal.png"))); // NOI18N
-        jButton3.setText("Attendance Report");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Attendance.setBackground(new java.awt.Color(105, 103, 115));
+        Attendance.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        Attendance.setForeground(new java.awt.Color(255, 255, 255));
+        Attendance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/ComplaintPortal.png"))); // NOI18N
+        Attendance.setText("Attendance Report");
+        Attendance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                AttendanceActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3);
-        jButton3.setBounds(270, 120, 230, 100);
+        jPanel1.add(Attendance);
+        Attendance.setBounds(270, 120, 230, 100);
 
-        jButton4.setBackground(new java.awt.Color(105, 103, 115));
-        jButton4.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/SalaryReport.png"))); // NOI18N
-        jButton4.setText("Salary Report");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Salrep.setBackground(new java.awt.Color(105, 103, 115));
+        Salrep.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
+        Salrep.setForeground(new java.awt.Color(255, 255, 255));
+        Salrep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/SalaryReport.png"))); // NOI18N
+        Salrep.setText("Salary Report");
+        Salrep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                SalrepActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4);
-        jButton4.setBounds(30, 260, 230, 100);
+        jPanel1.add(Salrep);
+        Salrep.setBounds(30, 260, 230, 100);
 
-        jButton5.setBackground(new java.awt.Color(105, 103, 115));
-        jButton5.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/ViewProfile.png"))); // NOI18N
-        jButton5.setText("View Profile");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        ViewProfile.setBackground(new java.awt.Color(105, 103, 115));
+        ViewProfile.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
+        ViewProfile.setForeground(new java.awt.Color(255, 255, 255));
+        ViewProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/ViewProfile.png"))); // NOI18N
+        ViewProfile.setText("View Profile");
+        ViewProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                ViewProfileActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5);
-        jButton5.setBounds(30, 120, 230, 100);
-
-        jButton6.setBackground(new java.awt.Color(105, 103, 115));
-        jButton6.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/EmpofMonth.png"))); // NOI18N
-        jButton6.setText("Star Employee");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton6);
-        jButton6.setBounds(270, 260, 230, 100);
+        jPanel1.add(ViewProfile);
+        ViewProfile.setBounds(30, 120, 230, 100);
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(630, 320, 2, 2);
 
@@ -146,6 +135,20 @@ public class DashboardMgr extends javax.swing.JFrame {
         });
         jPanel1.add(jButton7);
         jButton7.setBounds(660, 30, 73, 23);
+
+        generateSalary.setBackground(new java.awt.Color(105, 103, 115));
+        generateSalary.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
+        generateSalary.setForeground(new java.awt.Color(255, 255, 255));
+        generateSalary.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/PayGrade.png"))); // NOI18N
+        generateSalary.setText("Generate Salary");
+        generateSalary.setFocusPainted(false);
+        generateSalary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateSalaryActionPerformed(evt);
+            }
+        });
+        jPanel1.add(generateSalary);
+        generateSalary.setBounds(270, 260, 230, 100);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,35 +165,40 @@ public class DashboardMgr extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        new View_profile(emp).setVisible(true);
+    private void TaskAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TaskAssignActionPerformed
+        new CreateTask(emp).setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_TaskAssignActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void SubordinatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubordinatesActionPerformed
+        new Subordinates(emp).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_SubordinatesActionPerformed
+
+    private void AttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AttendanceActionPerformed
+        new Emp_AttendanceView(emp, isMgr).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_AttendanceActionPerformed
+
+    private void SalrepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalrepActionPerformed
+        new Employee_Salary(emp, isMgr).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_SalrepActionPerformed
+
+    private void ViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProfileActionPerformed
+        new View_profile(emp, isMgr).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_ViewProfileActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         this.setVisible(false);
         new MainPage().setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void generateSalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateSalaryActionPerformed
+        new Generate_Salary(emp, isMgr).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_generateSalaryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,12 +239,12 @@ public class DashboardMgr extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton Attendance;
+    private javax.swing.JButton Salrep;
+    private javax.swing.JButton Subordinates;
+    private javax.swing.JButton TaskAssign;
+    private javax.swing.JButton ViewProfile;
+    private javax.swing.JButton generateSalary;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -20,14 +20,16 @@ import javax.swing.table.TableModel;
 public class TaskAssignment extends javax.swing.JFrame {
 
     int taskid;
+    int mgr;
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
     Database db;
 
-    public TaskAssignment(int id) {
+    public TaskAssignment(int id, int mgr) {
         initComponents();
         taskid = id;
+        this.mgr = mgr;
 
         error1.setVisible(false);
         error2.setVisible(false);
@@ -45,7 +47,7 @@ public class TaskAssignment extends javax.swing.JFrame {
 
         setFields();
         tableupdate();
-      
+
         ATask.getTableHeader().setOpaque(true);
 //        Employee.getTableHeader().setBackground(new java.awt.Color(64, 56, 84));
         ATask.getTableHeader().setFont(new java.awt.Font("Rockwell", 1, 10));
@@ -61,7 +63,6 @@ public class TaskAssignment extends javax.swing.JFrame {
             rs = pst.executeQuery();
 
             if (rs.next()) {
-
                 taskID.setText(rs.getString("task_id"));
                 Taskname.setText(rs.getString("task_name"));
                 Taskdetail.setText(rs.getString("task_details"));
@@ -352,19 +353,18 @@ public class TaskAssignment extends javax.swing.JFrame {
 
     private void add1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add1MouseEntered
         // TODO add your handling code here:
-                add1.setBackground(new java.awt.Color(79, 70, 102));
+        add1.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_add1MouseEntered
 
     private void add1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add1MouseExited
         // TODO add your handling code here:
-                add1.setBackground(new java.awt.Color(38, 32, 54));
+        add1.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_add1MouseExited
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        Dashboard db = new Dashboard();
-        db.setVisible(true);
+        DashboardMgr db = new DashboardMgr(mgr);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel6MouseClicked
 

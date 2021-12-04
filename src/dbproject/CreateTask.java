@@ -19,13 +19,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CreateTask extends javax.swing.JFrame {
 
+    int empid;
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
     Database db;
 
-    public CreateTask() {
+    public CreateTask(int empid) {
         initComponents();
+        this.empid = empid;
 
         error1.setVisible(false);
         error2.setVisible(false);
@@ -45,7 +47,7 @@ public class CreateTask extends javax.swing.JFrame {
         rs = db.rs;
 
         tableupdate();
-       
+
         Task.getTableHeader().setOpaque(true);
 //        Employee.getTableHeader().setBackground(new java.awt.Color(64, 56, 84));
         Task.getTableHeader().setFont(new java.awt.Font("Rockwell", 1, 10));
@@ -768,11 +770,11 @@ public class CreateTask extends javax.swing.JFrame {
             int selectedIndex = Task.getSelectedRow();
             int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
 
-            new TaskAssignment(id).setVisible(true);
+            new TaskAssignment(id, empid).setVisible(true);
             this.setVisible(false);
-        } else if(st.equals("Closed") || st.equals("Cancelled")){
+        } else if (st.equals("Closed") || st.equals("Cancelled")) {
             error5.setVisible(true);
-        }else {
+        } else {
             error3.setVisible(true);
         }
 
@@ -895,66 +897,66 @@ public class CreateTask extends javax.swing.JFrame {
 
     private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
         // TODO add your handling code here:
-                add.setBackground(new java.awt.Color(79, 70, 102));
+        add.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_addMouseEntered
 
     private void UpdateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseEntered
         // TODO add your handling code here:
-                Update.setBackground(new java.awt.Color(79, 70, 102));
+        Update.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_UpdateMouseEntered
 
     private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
         // TODO add your handling code here:
-                delete.setBackground(new java.awt.Color(79, 70, 102));
+        delete.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_deleteMouseEntered
 
     private void AssignMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AssignMouseEntered
         // TODO add your handling code here:
-                Assign.setBackground(new java.awt.Color(79, 70, 102));
+        Assign.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_AssignMouseEntered
 
     private void RateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RateMouseEntered
         // TODO add your handling code here:
-                Rate.setBackground(new java.awt.Color(79, 70, 102));
+        Rate.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_RateMouseEntered
 
     private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
         // TODO add your handling code here:
-                add.setBackground(new java.awt.Color(38, 32, 54));
+        add.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_addMouseExited
 
     private void UpdateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseExited
         // TODO add your handling code here:
-                Update.setBackground(new java.awt.Color(38, 32, 54));
+        Update.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_UpdateMouseExited
 
     private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
         // TODO add your handling code here:
-                delete.setBackground(new java.awt.Color(38, 32, 54));
+        delete.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_deleteMouseExited
 
     private void AssignMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AssignMouseExited
         // TODO add your handling code here:
-                Assign.setBackground(new java.awt.Color(38, 32, 54));
+        Assign.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_AssignMouseExited
 
     private void RateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RateMouseExited
         // TODO add your handling code here:
-                Rate.setBackground(new java.awt.Color(38, 32, 54));
+        Rate.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_RateMouseExited
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        Dashboard db = new Dashboard();
+        DashboardMgr db = new DashboardMgr(empid);
         db.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel3MouseClicked
@@ -992,7 +994,7 @@ public class CreateTask extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateTask().setVisible(true);
+//                new CreateTask().setVisible(true);
             }
         });
     }

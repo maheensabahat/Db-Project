@@ -532,7 +532,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
     }//GEN-LAST:event_FinishedMouseExited
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        Dashboard db = new Dashboard();
+        DashboardEmp db = new DashboardEmp(empid);
         db.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel3MouseClicked

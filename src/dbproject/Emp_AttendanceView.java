@@ -21,10 +21,15 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
     ResultSet rs;
     Database db;
     int emp;
+    boolean isMgr;
 
-    public Emp_AttendanceView(int emp) {
+    public Emp_AttendanceView(int emp, boolean isMgr) {
         initComponents();
         this.emp = emp;
+        this.isMgr = isMgr;
+
+        error1.setVisible(false);
+        error2.setVisible(false);
 
         //making connection to database
         db = new Database();
@@ -39,8 +44,8 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         rs = db.rs;
 
         tableupdate();
-        
-         Employee.getTableHeader().setOpaque(true);
+
+        Employee.getTableHeader().setOpaque(true);
 //        Employee.getTableHeader().setBackground(new java.awt.Color(64, 56, 84));
         Employee.getTableHeader().setFont(new java.awt.Font("Rockwell", 1, 10));
         Employee.getTableHeader().setForeground(new java.awt.Color(52, 45, 71));
@@ -100,10 +105,13 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Employee = new javax.swing.JTable();
         Date1 = new javax.swing.JLabel();
-        month = new javax.swing.JTextField();
         Date2 = new javax.swing.JLabel();
-        year = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        month = new javax.swing.JComboBox<>();
+        year = new javax.swing.JComboBox<>();
+        error1 = new javax.swing.JLabel();
+        error2 = new javax.swing.JLabel();
+        reset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,25 +125,33 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(30, 10, 230, 43);
 
-        Sbdate.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        Sbdate.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         Sbdate.setForeground(new java.awt.Color(52, 45, 71));
         Sbdate.setText("Search by Date:");
         jPanel1.add(Sbdate);
         Sbdate.setBounds(30, 120, 120, 20);
 
-        Date.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        Date.setFont(new java.awt.Font("Rockwell", 1, 11)); // NOI18N
         Date.setForeground(new java.awt.Color(52, 45, 71));
         Date.setText("Day: ");
         jPanel1.add(Date);
-        Date.setBounds(30, 160, 80, 15);
+        Date.setBounds(30, 170, 80, 14);
 
         day.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dayActionPerformed(evt);
             }
         });
+        day.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                dayKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                dayKeyReleased(evt);
+            }
+        });
         jPanel1.add(day);
-        day.setBounds(80, 150, 110, 30);
+        day.setBounds(80, 160, 110, 30);
 
         search2.setBackground(new java.awt.Color(38, 32, 54));
         search2.setForeground(new java.awt.Color(255, 255, 255));
@@ -155,7 +171,7 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
             }
         });
         jPanel1.add(search2);
-        search2.setBounds(90, 300, 90, 30);
+        search2.setBounds(90, 280, 90, 30);
 
         Employee.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
         Employee.setForeground(new java.awt.Color(52, 45, 71));
@@ -191,35 +207,19 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Employee);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(260, 70, 460, 350);
+        jScrollPane1.setBounds(230, 70, 490, 330);
 
-        Date1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        Date1.setFont(new java.awt.Font("Rockwell", 1, 11)); // NOI18N
         Date1.setForeground(new java.awt.Color(52, 45, 71));
         Date1.setText("Month:");
         jPanel1.add(Date1);
-        Date1.setBounds(30, 210, 80, 15);
+        Date1.setBounds(30, 210, 80, 14);
 
-        month.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                monthActionPerformed(evt);
-            }
-        });
-        jPanel1.add(month);
-        month.setBounds(80, 200, 110, 30);
-
-        Date2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        Date2.setFont(new java.awt.Font("Rockwell", 1, 11)); // NOI18N
         Date2.setForeground(new java.awt.Color(52, 45, 71));
         Date2.setText("Year:");
         jPanel1.add(Date2);
-        Date2.setBounds(30, 260, 80, 15);
-
-        year.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yearActionPerformed(evt);
-            }
-        });
-        jPanel1.add(year);
-        year.setBounds(80, 250, 110, 30);
+        Date2.setBounds(30, 250, 80, 14);
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
@@ -233,6 +233,67 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(630, 10, 130, 40);
 
+        month.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
+        month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", " " }));
+        month.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                monthMouseClicked(evt);
+            }
+        });
+        month.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                monthActionPerformed(evt);
+            }
+        });
+        jPanel1.add(month);
+        month.setBounds(80, 200, 110, 29);
+
+        year.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
+        year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", " " }));
+        year.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                yearMouseClicked(evt);
+            }
+        });
+        year.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yearActionPerformed(evt);
+            }
+        });
+        jPanel1.add(year);
+        year.setBounds(80, 240, 110, 29);
+
+        error1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        error1.setForeground(new java.awt.Color(255, 0, 51));
+        error1.setText("enter day to proceed");
+        jPanel1.add(error1);
+        error1.setBounds(70, 140, 140, 20);
+
+        error2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        error2.setForeground(new java.awt.Color(255, 0, 51));
+        error2.setText("numeric values only");
+        jPanel1.add(error2);
+        error2.setBounds(70, 140, 140, 20);
+
+        reset.setBackground(new java.awt.Color(38, 32, 54));
+        reset.setForeground(new java.awt.Color(255, 255, 255));
+        reset.setText("Reset Table");
+        reset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                resetMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                resetMouseExited(evt);
+            }
+        });
+        reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetActionPerformed(evt);
+            }
+        });
+        jPanel1.add(reset);
+        reset.setBounds(620, 400, 100, 20);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -241,7 +302,7 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
         );
 
         pack();
@@ -252,74 +313,123 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dayActionPerformed
 
-    private void monthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_monthActionPerformed
-
-    private void yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_yearActionPerformed
-
     private void search2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search2ActionPerformed
         int c;
 
-        String d = day.getText();
-        String m = month.getText();
-        String D = year.getText();
-        String date = D + "-" + m + "-" + d;
+        if (!day.getText().isEmpty()) {
+            try {
 
-        try {
+                String d = day.getText();
+                int day = Integer.parseInt(d);
 
-            pst = con.prepareStatement("SELECT Date_format(date, \"%d\") as day, "
-                    + "Date_format(date, \"%M\") as month, Date_format(date, \"%Y\") as year,"
-                    + " attendance\n"
-                    + "from attendance where employee_id = ? and date = str_to_date(?,'%Y-%M-%d')");
-            pst.setInt(1, emp);
-            pst.setString(2, date);
-            rs = pst.executeQuery();
+                String m = (String) month.getSelectedItem();
+                String D = (String) month.getSelectedItem();
+                String date = D + "-" + m + "-" + d;
 
-            ResultSetMetaData rsd = rs.getMetaData();
-            c = rsd.getColumnCount();
-            DefaultTableModel dft = (DefaultTableModel) Employee.getModel();
-            dft.setRowCount(0);
+                try {
 
-            while (rs.next()) {
-                Vector v2 = new Vector();
-                for (int i = 1; i <= c; i++) {
-                    v2.add(rs.getString("day"));
-                    v2.add(rs.getString("month"));
-                    v2.add(rs.getString("year"));
-                    v2.add(rs.getString("attendance"));
+                    pst = con.prepareStatement("SELECT Date_format(date, \"%d\") as day, "
+                            + "Date_format(date, \"%M\") as month, Date_format(date, \"%Y\") as year,"
+                            + " attendance\n"
+                            + "from attendance where employee_id = ? and date = str_to_date(?,'%Y-%M-%d')");
+                    pst.setInt(1, emp);
+                    pst.setString(2, date);
+                    rs = pst.executeQuery();
+
+                    ResultSetMetaData rsd = rs.getMetaData();
+                    c = rsd.getColumnCount();
+                    DefaultTableModel dft = (DefaultTableModel) Employee.getModel();
+                    dft.setRowCount(0);
+
+                    while (rs.next()) {
+                        Vector v2 = new Vector();
+                        for (int i = 1; i <= c; i++) {
+                            v2.add(rs.getString("day"));
+                            v2.add(rs.getString("month"));
+                            v2.add(rs.getString("year"));
+                            v2.add(rs.getString("attendance"));
+                        }
+
+                        dft.addRow(v2);
+
+                    }
+
+                } catch (SQLException ex) {
+                    java.util.logging.Logger.getLogger(Admin_Employee.class
+                            .getName()).log(java.util.logging.Level.SEVERE, null, ex);
                 }
-
-                dft.addRow(v2);
-
+            } catch (NumberFormatException ex) {
+                error2.setVisible(true);
             }
-
-        } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(Admin_Employee.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } else {
+            error1.setVisible(true);
         }
-
     }//GEN-LAST:event_search2ActionPerformed
 
     private void search2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search2MouseEntered
         // TODO add your handling code here:
-                search2.setBackground(new java.awt.Color(79, 70, 102));
+        search2.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_search2MouseEntered
 
     private void search2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search2MouseExited
         // TODO add your handling code here:
-                search2.setBackground(new java.awt.Color(38, 32, 54));
+        search2.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_search2MouseExited
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        Dashboard db = new Dashboard();
-        db.setVisible(true);
+        if (isMgr) {
+            DashboardMgr db = new DashboardMgr(emp);
+            db.setVisible(true);
+        } else {
+            DashboardMgr db = new DashboardMgr(emp);
+            db.setVisible(true);
+        }
         this.setVisible(false);
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void monthMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_monthMouseClicked
+
+    }//GEN-LAST:event_monthMouseClicked
+
+    private void monthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_monthActionPerformed
+
+    private void yearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yearMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_yearMouseClicked
+
+    private void yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_yearActionPerformed
+
+    private void dayKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dayKeyPressed
+        error1.setVisible(true);
+        error2.setVisible(true);
+    }//GEN-LAST:event_dayKeyPressed
+
+    private void dayKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dayKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dayKeyReleased
+
+    private void resetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseEntered
+        // TODO add your handling code here:
+        reset.setBackground(new java.awt.Color(79, 70, 102));
+    }//GEN-LAST:event_resetMouseEntered
+
+    private void resetMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseExited
+        // TODO add your handling code here:
+        reset.setBackground(new java.awt.Color(38, 32, 54));
+    }//GEN-LAST:event_resetMouseExited
+
+    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
+        tableupdate();
+        day.setText("");
+        month.setSelectedIndex(0);
+        year.setSelectedIndex(0);
+    }//GEN-LAST:event_resetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -351,7 +461,7 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Emp_AttendanceView(1).setVisible(true);
+//                new Emp_AttendanceView(1).setVisible(true);
             }
         });
     }
@@ -363,12 +473,15 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
     private javax.swing.JTable Employee;
     private javax.swing.JLabel Sbdate;
     private javax.swing.JTextField day;
+    private javax.swing.JLabel error1;
+    private javax.swing.JLabel error2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField month;
+    private javax.swing.JComboBox<String> month;
+    private javax.swing.JButton reset;
     private javax.swing.JButton search2;
-    private javax.swing.JTextField year;
+    private javax.swing.JComboBox<String> year;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,14 +15,16 @@ import java.util.logging.Logger;
 public class View_profile extends javax.swing.JFrame {
 
     int emp;
+    boolean isMgr;
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
     Database db;
 
-    public View_profile(int emp) {
+    public View_profile(int emp, boolean isMgr) {
         initComponents();
         this.emp = emp;
+        this.isMgr = isMgr;
 
         //making connection to database
         db = new Database();
@@ -373,9 +375,13 @@ public class View_profile extends javax.swing.JFrame {
     }//GEN-LAST:event_mnameActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        Dashboard db = new Dashboard();
-        db.setVisible(true);
+        if (isMgr) {
+            DashboardMgr db = new DashboardMgr(emp);
+            db.setVisible(true);
+        } else {
+            DashboardMgr db = new DashboardMgr(emp);
+            db.setVisible(true);
+        }
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -409,7 +415,7 @@ public class View_profile extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new View_profile(0).setVisible(true);
+//                new View_profile(0).setVisible(true);
             }
         });
     }
