@@ -127,6 +127,8 @@ public class DashboardMgr extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(630, 320, 2, 2);
 
+        jButton7.setBackground(new java.awt.Color(105, 103, 115));
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Sign out");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +136,7 @@ public class DashboardMgr extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton7);
-        jButton7.setBounds(660, 30, 73, 23);
+        jButton7.setBounds(650, 20, 90, 25);
 
         generateSalary.setBackground(new java.awt.Color(105, 103, 115));
         generateSalary.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N

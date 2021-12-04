@@ -191,7 +191,7 @@ public class Admin_Employee extends javax.swing.JFrame {
             }
         });
         jPanel1.add(email);
-        email.setBounds(30, 140, 240, 30);
+        email.setBounds(30, 140, 245, 30);
 
         first_name3.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         first_name3.setForeground(new java.awt.Color(52, 45, 71));
@@ -205,7 +205,7 @@ public class Admin_Employee extends javax.swing.JFrame {
             }
         });
         jPanel1.add(address);
-        address.setBounds(30, 190, 240, 30);
+        address.setBounds(30, 190, 245, 30);
 
         first_name4.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         first_name4.setForeground(new java.awt.Color(52, 45, 71));
@@ -219,7 +219,7 @@ public class Admin_Employee extends javax.swing.JFrame {
             }
         });
         jPanel1.add(bankacc);
-        bankacc.setBounds(30, 240, 240, 30);
+        bankacc.setBounds(30, 240, 245, 30);
 
         first_name6.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         first_name6.setForeground(new java.awt.Color(52, 45, 71));
@@ -235,7 +235,7 @@ public class Admin_Employee extends javax.swing.JFrame {
             }
         });
         jPanel1.add(hiredate);
-        hiredate.setBounds(30, 340, 240, 30);
+        hiredate.setBounds(30, 340, 245, 30);
 
         first_name7.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         first_name7.setForeground(new java.awt.Color(52, 45, 71));
@@ -254,7 +254,7 @@ public class Admin_Employee extends javax.swing.JFrame {
             }
         });
         jPanel1.add(deptid);
-        deptid.setBounds(30, 290, 240, 30);
+        deptid.setBounds(30, 290, 245, 30);
 
         first_name8.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         first_name8.setForeground(new java.awt.Color(52, 45, 71));
@@ -277,9 +277,10 @@ public class Admin_Employee extends javax.swing.JFrame {
         empid.setBounds(370, 55, 80, 30);
 
         delete.setBackground(new java.awt.Color(38, 32, 54));
-        delete.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
+        delete.setFont(new java.awt.Font("Rockwell", 1, 9)); // NOI18N
         delete.setForeground(new java.awt.Color(255, 255, 255));
-        delete.setText("DELETE");
+        delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/delete.png"))); // NOI18N
+        delete.setText("Delete");
         delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 deleteMouseEntered(evt);
@@ -294,12 +295,13 @@ public class Admin_Employee extends javax.swing.JFrame {
             }
         });
         jPanel1.add(delete);
-        delete.setBounds(200, 440, 80, 30);
+        delete.setBounds(192, 440, 86, 30);
 
         add.setBackground(new java.awt.Color(38, 32, 54));
-        add.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
+        add.setFont(new java.awt.Font("Rockwell", 1, 9)); // NOI18N
         add.setForeground(new java.awt.Color(255, 255, 255));
-        add.setText("ADD");
+        add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/add_new.png"))); // NOI18N
+        add.setText("Add");
         add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 addMouseEntered(evt);
@@ -314,12 +316,13 @@ public class Admin_Employee extends javax.swing.JFrame {
             }
         });
         jPanel1.add(add);
-        add.setBounds(30, 440, 70, 30);
+        add.setBounds(29, 440, 70, 30);
 
         Update.setBackground(new java.awt.Color(38, 32, 54));
-        Update.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
+        Update.setFont(new java.awt.Font("Rockwell", 1, 9)); // NOI18N
         Update.setForeground(new java.awt.Color(255, 255, 255));
-        Update.setText("UPDATE");
+        Update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/update.png"))); // NOI18N
+        Update.setText("Update");
         Update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 UpdateMouseEntered(evt);
@@ -334,7 +337,7 @@ public class Admin_Employee extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Update);
-        Update.setBounds(110, 440, 80, 30);
+        Update.setBounds(102, 440, 87, 30);
 
         search.setBackground(new java.awt.Color(38, 32, 54));
         search.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
@@ -359,7 +362,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         jPanel1.add(search);
         search.setBounds(460, 57, 90, 25);
         jPanel1.add(password);
-        password.setBounds(30, 390, 240, 30);
+        password.setBounds(30, 390, 245, 30);
 
         error.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         error.setForeground(new java.awt.Color(255, 0, 51));

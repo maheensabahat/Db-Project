@@ -211,7 +211,7 @@ public class Star_Employee extends javax.swing.JFrame {
             }
         });
         jPanel1.add(star);
-        star.setBounds(380, 310, 271, 32);
+        star.setBounds(380, 315, 271, 32);
 
         abs.setBackground(new java.awt.Color(52, 45, 71));
         abs.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N

@@ -138,6 +138,9 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1.add(MA);
         MA.setBounds(510, 260, 230, 100);
 
+        jButton1.setBackground(new java.awt.Color(105, 103, 115));
+        jButton1.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Sign out");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +148,7 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(660, 20, 71, 23);
+        jButton1.setBounds(641, 25, 90, 25);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -341,7 +341,8 @@ public class CreateTask extends javax.swing.JFrame {
         add.setBackground(new java.awt.Color(38, 32, 54));
         add.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         add.setForeground(new java.awt.Color(255, 255, 255));
-        add.setText("ADD");
+        add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/add.png"))); // NOI18N
+        add.setText("Add");
         add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 addMouseEntered(evt);
@@ -356,12 +357,13 @@ public class CreateTask extends javax.swing.JFrame {
             }
         });
         jPanel2.add(add);
-        add.setBounds(30, 440, 70, 30);
+        add.setBounds(20, 440, 72, 30);
 
         Update.setBackground(new java.awt.Color(38, 32, 54));
         Update.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         Update.setForeground(new java.awt.Color(255, 255, 255));
-        Update.setText("UPDATE");
+        Update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/update.png"))); // NOI18N
+        Update.setText("Update");
         Update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 UpdateMouseEntered(evt);
@@ -376,7 +378,7 @@ public class CreateTask extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Update);
-        Update.setBounds(110, 440, 80, 30);
+        Update.setBounds(105, 440, 87, 30);
 
         Rate.setBackground(new java.awt.Color(38, 32, 54));
         Rate.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
@@ -416,7 +418,8 @@ public class CreateTask extends javax.swing.JFrame {
         delete.setBackground(new java.awt.Color(38, 32, 54));
         delete.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         delete.setForeground(new java.awt.Color(255, 255, 255));
-        delete.setText("DELETE");
+        delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/delete.png"))); // NOI18N
+        delete.setText("Delete");
         delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 deleteMouseEntered(evt);
@@ -431,7 +434,7 @@ public class CreateTask extends javax.swing.JFrame {
             }
         });
         jPanel2.add(delete);
-        delete.setBounds(200, 440, 80, 30);
+        delete.setBounds(205, 440, 86, 30);
 
         Assign.setBackground(new java.awt.Color(38, 32, 54));
         Assign.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
@@ -451,7 +454,7 @@ public class CreateTask extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Assign);
-        Assign.setBounds(320, 440, 180, 30);
+        Assign.setBounds(312, 440, 180, 30);
 
         error1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         error1.setForeground(new java.awt.Color(255, 0, 51));

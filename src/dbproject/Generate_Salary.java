@@ -225,6 +225,7 @@ public class Generate_Salary extends javax.swing.JFrame {
         Generate.setBackground(new java.awt.Color(38, 32, 54));
         Generate.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
         Generate.setForeground(new java.awt.Color(255, 255, 255));
+        Generate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/generate.png"))); // NOI18N
         Generate.setText("Generate Pay Check");
         Generate.setFocusPainted(false);
         Generate.setFocusable(false);
@@ -243,7 +244,7 @@ public class Generate_Salary extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Generate);
-        Generate.setBounds(230, 225, 130, 30);
+        Generate.setBounds(220, 225, 160, 30);
 
         medical_allowance.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         medical_allowance.setForeground(new java.awt.Color(52, 45, 71));

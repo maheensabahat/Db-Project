@@ -313,7 +313,8 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
 
         setstar.setBackground(new java.awt.Color(38, 32, 54));
         setstar.setForeground(new java.awt.Color(255, 255, 255));
-        setstar.setText("save");
+        setstar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/save.png"))); // NOI18N
+        setstar.setText("Save");
         setstar.setFocusPainted(false);
         setstar.setFocusable(false);
         setstar.setRequestFocusEnabled(false);
@@ -331,7 +332,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
             }
         });
         jPanel1.add(setstar);
-        setstar.setBounds(340, 70, 55, 25);
+        setstar.setBounds(340, 72, 80, 25);
 
         month.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", " " }));

@@ -102,6 +102,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         jPanel1.add(Sbdate);
         Sbdate.setBounds(350, 70, 120, 20);
 
+        empid.setEditable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);

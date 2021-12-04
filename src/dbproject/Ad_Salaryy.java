@@ -321,6 +321,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         add.setBackground(new java.awt.Color(38, 32, 54));
         add.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
         add.setForeground(new java.awt.Color(255, 255, 255));
+        add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/add_new.png"))); // NOI18N
         add.setText("ADD");
         add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -336,11 +337,12 @@ public class Ad_Salaryy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(add);
-        add.setBounds(50, 410, 70, 30);
+        add.setBounds(30, 410, 100, 30);
 
         Update.setBackground(new java.awt.Color(38, 32, 54));
         Update.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
         Update.setForeground(new java.awt.Color(255, 255, 255));
+        Update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/update.png"))); // NOI18N
         Update.setText("UPDATE");
         Update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -356,7 +358,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Update);
-        Update.setBounds(140, 410, 80, 30);
+        Update.setBounds(140, 410, 100, 30);
 
         search1.setBackground(new java.awt.Color(38, 32, 54));
         search1.setForeground(new java.awt.Color(255, 255, 255));

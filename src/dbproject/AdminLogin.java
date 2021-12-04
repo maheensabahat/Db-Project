@@ -117,6 +117,7 @@ public class AdminLogin extends javax.swing.JFrame {
         login.setBackground(new java.awt.Color(38, 32, 54));
         login.setFont(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
         login.setForeground(new java.awt.Color(255, 255, 255));
+        login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/login_new (2).png"))); // NOI18N
         login.setText("Login");
         login.setFocusPainted(false);
         login.addMouseListener(new java.awt.event.MouseAdapter() {
