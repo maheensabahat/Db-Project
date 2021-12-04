@@ -370,7 +370,7 @@ public class Generate_Salary extends javax.swing.JFrame {
             DashboardMgr db = new DashboardMgr(emp);
             db.setVisible(true);
         } else {
-            DashboardMgr db = new DashboardMgr(emp);
+            DashboardEmp db = new DashboardEmp(emp);
             db.setVisible(true);
         }
         this.setVisible(false);

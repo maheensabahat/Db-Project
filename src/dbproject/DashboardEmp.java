@@ -190,7 +190,8 @@ public class DashboardEmp extends javax.swing.JFrame {
     }//GEN-LAST:event_ProfileActionPerformed
 
     private void starActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_starActionPerformed
-        // TODO add your handling code here:
+        new Star_Employee(emp).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_starActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

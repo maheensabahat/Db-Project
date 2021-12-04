@@ -718,8 +718,9 @@ public class CreateTask extends javax.swing.JFrame {
             int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
             String st = (String) status.getSelectedItem();
 
+            //only completed tasks can be rated
             if (st.equals("Complete")) {
-                new RateEmployee(id).setVisible(true);
+                new RateEmployee(id, empid).setVisible(true);
                 this.setVisible(false);
             } else {
                 error4.setVisible(true);

@@ -234,7 +234,7 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         jLabel2.setBounds(630, 10, 130, 40);
 
         month.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
-        month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", " " }));
+        month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
         month.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 monthMouseClicked(evt);
@@ -323,8 +323,8 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
                 int day = Integer.parseInt(d);
 
                 String m = (String) month.getSelectedItem();
-                String D = (String) month.getSelectedItem();
-                String date = D + "-" + m + "-" + d;
+                String Y = (String) year.getSelectedItem();
+                String date = Y + "-" + m + "-" + d;
 
                 try {
 
@@ -383,7 +383,7 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
             DashboardMgr db = new DashboardMgr(emp);
             db.setVisible(true);
         } else {
-            DashboardMgr db = new DashboardMgr(emp);
+            DashboardEmp db = new DashboardEmp(emp);
             db.setVisible(true);
         }
         this.setVisible(false);
@@ -406,8 +406,8 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
     }//GEN-LAST:event_yearActionPerformed
 
     private void dayKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dayKeyPressed
-        error1.setVisible(true);
-        error2.setVisible(true);
+        error1.setVisible(false);
+        error2.setVisible(false);
     }//GEN-LAST:event_dayKeyPressed
 
     private void dayKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dayKeyReleased
@@ -461,7 +461,7 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                new Emp_AttendanceView(1).setVisible(true);
+               new Emp_AttendanceView(1, true).setVisible(true);
             }
         });
     }

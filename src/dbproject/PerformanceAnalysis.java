@@ -26,6 +26,8 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
     public PerformanceAnalysis() {
         initComponents();
 
+        error1.setVisible(false);
+
         db = new Database();
         try {
             db.openConnection();
@@ -43,6 +45,22 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         PA.getTableHeader().setForeground(new java.awt.Color(52, 45, 71));
 
         tableupdate();
+        setStarName();
+    }
+
+    private void setStarName() {
+        String query = "select * from staremployees join employee using (employee_id)"
+                + " where month = Date_format(sysdate(),'%M %Y')";
+        try {
+            pst = con.prepareStatement(query);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                name.setText(rs.getString("first_name") + " " + rs.getString("last_name"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PerformanceAnalysis.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     private void tableupdate() { //table updated after every change
@@ -91,7 +109,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         PA = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         Sbdate = new javax.swing.JLabel();
-        empid = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
         searchemp = new javax.swing.JButton();
         Date = new javax.swing.JLabel();
         search2 = new javax.swing.JButton();
@@ -106,6 +124,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         month = new javax.swing.JComboBox<>();
         year = new javax.swing.JComboBox<>();
         reset = new javax.swing.JButton();
+        error1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,9 +146,22 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
             new String [] {
                 "Employee ID", "Month", "Year", "Task Scores", "Absences", "Tasks completed"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         PA.setGridColor(new java.awt.Color(52, 45, 71));
         PA.setSelectionBackground(new java.awt.Color(130, 120, 158));
+        PA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PAMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(PA);
 
         jPanel1.add(jScrollPane1);
@@ -147,13 +179,19 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         jPanel1.add(Sbdate);
         Sbdate.setBounds(350, 120, 120, 20);
 
-        empid.addActionListener(new java.awt.event.ActionListener() {
+        name.setEditable(false);
+        name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                empidActionPerformed(evt);
+                nameActionPerformed(evt);
             }
         });
-        jPanel1.add(empid);
-        empid.setBounds(150, 70, 180, 30);
+        name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nameKeyPressed(evt);
+            }
+        });
+        jPanel1.add(name);
+        name.setBounds(150, 70, 180, 30);
 
         searchemp.setBackground(new java.awt.Color(38, 32, 54));
         searchemp.setForeground(new java.awt.Color(255, 255, 255));
@@ -344,6 +382,12 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         jPanel1.add(reset);
         reset.setBounds(620, 450, 100, 20);
 
+        error1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        error1.setForeground(new java.awt.Color(255, 0, 51));
+        error1.setText("Select a record from table to proceed.");
+        jPanel1.add(error1);
+        error1.setBounds(120, 40, 280, 40);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -356,18 +400,19 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void empidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empidActionPerformed
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_empidActionPerformed
+    }//GEN-LAST:event_nameActionPerformed
 
     private void search2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search2ActionPerformed
         // TODO add your handling code here:
         int c;
 
-        String m = (String)month.getSelectedItem();
-        String y = (String)year.getSelectedItem();
+        String m = (String) month.getSelectedItem();
+        String y = (String) year.getSelectedItem();
         String d = m + " " + y;
 
         try {
@@ -454,8 +499,8 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
                         .getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
         } catch (NumberFormatException ex) {
-            empid.setText("");
-            empid.grabFocus();
+            empid1.setText("");
+            empid1.grabFocus();
         }
 
     }//GEN-LAST:event_searchempActionPerformed
@@ -602,6 +647,40 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
     }//GEN-LAST:event_setstarMouseExited
 
     private void setstarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setstarActionPerformed
+        DefaultTableModel model = (DefaultTableModel) PA.getModel();
+        int selectedIndex = PA.getSelectedRow();
+
+        if (selectedIndex != -1) {
+            int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
+            try {
+
+                String query = "insert into staremployees values (?, Date_format(sysdate(),'%M %Y'));";
+                pst = con.prepareStatement(query);
+                pst.setInt(1, id);
+                pst.executeUpdate();
+
+                setStarName();
+            } catch (SQLIntegrityConstraintViolationException e) {
+                String query = "update staremployees set employee_id = ?\n"
+                        + "where month = Date_format(sysdate(),'%M %Y');";
+                try {
+                    pst = con.prepareStatement(query);
+                    pst.setInt(1, id);
+                    pst.executeUpdate();
+
+                    setStarName();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PerformanceAnalysis.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } catch (SQLException ex) {
+                java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, ex);
+            }
+
+        } else {
+            error1.setVisible(true);
+        }
 
     }//GEN-LAST:event_setstarActionPerformed
 
@@ -634,8 +713,36 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
         // TODO add your handling code here:
         tableupdate();
-        empid.setText("");
     }//GEN-LAST:event_resetActionPerformed
+
+    private void nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyPressed
+
+    }//GEN-LAST:event_nameKeyPressed
+
+    private void PAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAMouseClicked
+        error1.setVisible(false);
+        //setting text fields as a record is selected
+        DefaultTableModel model = (DefaultTableModel) PA.getModel();
+        int selectedIndex = PA.getSelectedRow();
+
+        int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
+        try {
+
+            String query = "Select * from employee where employee_id = ? ";
+            pst = con.prepareStatement(query);
+            pst.setInt(1, id);
+            pst.executeUpdate();
+
+            if (rs.next()) {
+                name.setText(rs.getString("first_name") + " " + rs.getString("last_name"));
+            }
+
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex);
+        }
+
+    }//GEN-LAST:event_PAMouseClicked
 
     /**
      * @param args the command line arguments
@@ -687,13 +794,14 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
     private javax.swing.JTable PA;
     private javax.swing.JLabel Sbdate;
     private javax.swing.JLabel empID2;
-    private javax.swing.JTextField empid;
     private javax.swing.JTextField empid1;
+    private javax.swing.JLabel error1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> month;
+    private javax.swing.JTextField name;
     private javax.swing.JButton reset;
     private javax.swing.JButton search2;
     private javax.swing.JLabel searchbemp;

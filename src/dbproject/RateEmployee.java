@@ -23,11 +23,14 @@ public class RateEmployee extends javax.swing.JFrame {
     ResultSet rs;
     Database db;
     int taskid;
+    int mgr;
+    int dept;
 
-    public RateEmployee(int id) {
+    public RateEmployee(int taskid, int mgr) {
         initComponents();
 
-        taskid = id;
+        taskid = taskid;
+        this.mgr = mgr;
 
         error3.setVisible(false);
         error4.setVisible(false);
@@ -43,6 +46,7 @@ public class RateEmployee extends javax.swing.JFrame {
         pst = db.pst;
         rs = db.rs;
 
+        getDept();
         setFields();
         tableupdate();
 
@@ -72,12 +76,30 @@ public class RateEmployee extends javax.swing.JFrame {
 
     }
 
+    private void getDept() {
+        try {
+
+            pst = con.prepareStatement("select * from department where manager_id = ? ");
+            pst.setInt(1, mgr);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                dept = rs.getInt("department_id");
+            }
+
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+    }
+
     private void tableupdate() { //table updated after every change
         int c;
         try {
 
             pst = con.prepareStatement("select * from Employee_task inner join employee using (employee_id)"
-                    + "where hours is not null");
+                    + "where hours is not null and department_id = ?");
+            pst.setInt(1, dept);
             rs = pst.executeQuery();
 
             ResultSetMetaData rsd = rs.getMetaData();
@@ -106,7 +128,7 @@ public class RateEmployee extends javax.swing.JFrame {
     private void setfieldsEmpty() {
         empid.setText("");
         hours.setText("");
-        rating.setText(""); 
+        rating.setText("");
         task.clearSelection();
     }
 
@@ -397,18 +419,18 @@ public class RateEmployee extends javax.swing.JFrame {
 
     private void add1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add1MouseEntered
         // TODO add your handling code here:
-                add1.setBackground(new java.awt.Color(79, 70, 102));
+        add1.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_add1MouseEntered
 
     private void add1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add1MouseExited
         // TODO add your handling code here:
-                add1.setBackground(new java.awt.Color(38, 32, 54));
+        add1.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_add1MouseExited
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        Dashboard db = new Dashboard();
+        DashboardMgr db = new DashboardMgr(mgr);
         db.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel5MouseClicked
@@ -446,7 +468,7 @@ public class RateEmployee extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RateEmployee(0).setVisible(true);
+//                new RateEmployee(0).setVisible(true);
             }
         });
     }

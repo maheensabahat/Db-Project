@@ -21,6 +21,7 @@ public class TaskAssignment extends javax.swing.JFrame {
 
     int taskid;
     int mgr;
+    int dept;
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
@@ -33,6 +34,7 @@ public class TaskAssignment extends javax.swing.JFrame {
 
         error1.setVisible(false);
         error2.setVisible(false);
+        error3.setVisible(false);
 
         db = new Database();
         try {
@@ -45,6 +47,7 @@ public class TaskAssignment extends javax.swing.JFrame {
         pst = db.pst;
         rs = db.rs;
 
+        getDept();
         setFields();
         tableupdate();
 
@@ -52,6 +55,23 @@ public class TaskAssignment extends javax.swing.JFrame {
 //        Employee.getTableHeader().setBackground(new java.awt.Color(64, 56, 84));
         ATask.getTableHeader().setFont(new java.awt.Font("Rockwell", 1, 10));
         ATask.getTableHeader().setForeground(new java.awt.Color(52, 45, 71));
+
+    }
+
+    private void getDept() {
+        try {
+
+            pst = con.prepareStatement("select * from department where manager_id = ? ");
+            pst.setInt(1, mgr);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                dept = rs.getInt("department_id");
+            }
+
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -71,14 +91,15 @@ public class TaskAssignment extends javax.swing.JFrame {
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-
     }
 
     private void tableupdate() { //table updated after every change
         int c;
         try {
 
-            pst = con.prepareStatement("select * from Employee_task inner join employee using (employee_id)");
+            pst = con.prepareStatement("select * from Employee_task inner join"
+                    + " employee using (employee_id) where department_id = ?");
+            pst.setInt(1, dept);
             rs = pst.executeQuery();
 
             ResultSetMetaData rsd = rs.getMetaData();
@@ -127,6 +148,7 @@ public class TaskAssignment extends javax.swing.JFrame {
         error1 = new javax.swing.JLabel();
         error2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        error3 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -273,6 +295,12 @@ public class TaskAssignment extends javax.swing.JFrame {
         jPanel2.add(jLabel6);
         jLabel6.setBounds(630, 10, 130, 40);
 
+        error3.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        error3.setForeground(new java.awt.Color(255, 0, 51));
+        error3.setText("Invalid Employee ID");
+        jPanel2.add(error3);
+        error3.setBounds(100, 300, 200, 40);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -318,25 +346,29 @@ public class TaskAssignment extends javax.swing.JFrame {
             try {
                 int id = Integer.parseInt(empid.getText());
 
-                try {
-                    String query = "insert into Employee_task(task_id, employee_id)"
-                            + "values(?,?)";
-                    pst = con.prepareStatement(query);
-                    pst.setInt(1, taskid);
-                    pst.setInt(2, id);
-                    pst.execute();
-                    pst.close();
-                    JOptionPane.showMessageDialog(this, "Record Addedd.");
+                if (checkEmployee(id)) {
+                    try {
+                        String query = "insert into Employee_task(task_id, employee_id)"
+                                + "values(?,?)";
+                        pst = con.prepareStatement(query);
+                        pst.setInt(1, taskid);
+                        pst.setInt(2, id);
+                        pst.execute();
+                        pst.close();
+                        JOptionPane.showMessageDialog(this, "Record Addedd.");
 
-                    //Table updates after insertion
-                    tableupdate();
-                    empid.setText("");
+                        //Table updates after insertion
+                        tableupdate();
+                        empid.setText("");
 
-                } catch (SQLIntegrityConstraintViolationException e) {
-                    error2.setVisible(true);
-                } catch (SQLException ex) {
-                    java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(this, ex);
+                    } catch (SQLIntegrityConstraintViolationException e) {
+                        error2.setVisible(true);
+                    } catch (SQLException ex) {
+                        java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(this, ex);
+                    }
+                } else {
+                     error3.setVisible(true);
                 }
             } catch (NumberFormatException ex) {
 
@@ -346,9 +378,33 @@ public class TaskAssignment extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_add1ActionPerformed
 
+    public boolean checkEmployee(int emp) {
+        //manager can not 
+        if (mgr == emp) {
+            return false;
+        }
+        try {
+            pst = con.prepareStatement("select * from Employee where "
+                    + "employee_ID = ? and department_id = ?");
+            pst.setInt(1, emp);
+            pst.setInt(2, dept);
+            rs = pst.executeQuery();
+
+            if (!rs.isBeforeFirst()) { //employee is not a sub ordinate of this manager
+                return false;
+            } else {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Admin_Dept.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
     private void empidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_empidKeyTyped
         error1.setVisible(false);
         error2.setVisible(false);
+        error3.setVisible(false);
     }//GEN-LAST:event_empidKeyTyped
 
     private void add1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add1MouseEntered
@@ -412,6 +468,7 @@ public class TaskAssignment extends javax.swing.JFrame {
     private javax.swing.JTextField empid;
     private javax.swing.JLabel error1;
     private javax.swing.JLabel error2;
+    private javax.swing.JLabel error3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

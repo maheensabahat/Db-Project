@@ -100,7 +100,7 @@ public class View_profile extends javax.swing.JFrame {
         mid = new javax.swing.JTextField();
         first_name11 = new javax.swing.JLabel();
         mname = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -178,7 +178,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name4.setForeground(new java.awt.Color(52, 45, 71));
         first_name4.setText("Bank Account:");
         jPanel1.add(first_name4);
-        first_name4.setBounds(340, 200, 80, 15);
+        first_name4.setBounds(340, 200, 90, 15);
 
         bankacc.setEditable(false);
         bankacc.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +208,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name7.setForeground(new java.awt.Color(52, 45, 71));
         first_name7.setText("Department ID:");
         jPanel1.add(first_name7);
-        first_name7.setBounds(50, 290, 80, 15);
+        first_name7.setBounds(50, 290, 100, 15);
 
         deptid.setEditable(false);
         deptid.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +238,7 @@ public class View_profile extends javax.swing.JFrame {
         empID.setForeground(new java.awt.Color(52, 45, 71));
         empID.setText("Employee ID:");
         jPanel1.add(empID);
-        empID.setBounds(340, 140, 80, 15);
+        empID.setBounds(340, 140, 100, 15);
 
         lname.setEditable(false);
         lname.addActionListener(new java.awt.event.ActionListener() {
@@ -253,7 +253,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name9.setForeground(new java.awt.Color(52, 45, 71));
         first_name9.setText("Department Name:");
         jPanel1.add(first_name9);
-        first_name9.setBounds(340, 290, 100, 15);
+        first_name9.setBounds(340, 290, 120, 15);
 
         dname.setEditable(false);
         dname.addActionListener(new java.awt.event.ActionListener() {
@@ -283,7 +283,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name11.setForeground(new java.awt.Color(52, 45, 71));
         first_name11.setText("Manager Name:");
         jPanel1.add(first_name11);
-        first_name11.setBounds(340, 350, 90, 15);
+        first_name11.setBounds(340, 350, 100, 15);
 
         mname.setEditable(false);
         mname.addActionListener(new java.awt.event.ActionListener() {
@@ -294,22 +294,17 @@ public class View_profile extends javax.swing.JFrame {
         jPanel1.add(mname);
         mname.setBounds(340, 370, 240, 30);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(52, 45, 71));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
-        jButton2.setText("Dashboard");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 45, 71)));
-        jButton2.setBorderPainted(false);
-        jButton2.setFocusable(false);
-        jButton2.setRequestFocusEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(52, 45, 71));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
+        jLabel2.setText("Dashboard");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(500, 0, 130, 40);
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(500, 0, 130, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -374,16 +369,16 @@ public class View_profile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mnameActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         if (isMgr) {
             DashboardMgr db = new DashboardMgr(emp);
             db.setVisible(true);
         } else {
-            DashboardMgr db = new DashboardMgr(emp);
+            DashboardEmp db = new DashboardEmp(emp);
             db.setVisible(true);
         }
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -441,8 +436,8 @@ public class View_profile extends javax.swing.JFrame {
     private javax.swing.JLabel first_name9;
     private javax.swing.JTextField fname;
     private javax.swing.JTextField hiredate;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField lname;
     private javax.swing.JTextField mid;

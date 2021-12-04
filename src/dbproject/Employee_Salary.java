@@ -210,7 +210,7 @@ public class Employee_Salary extends javax.swing.JFrame {
         reset.setBounds(610, 460, 100, 20);
 
         month.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
-        month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", " " }));
+        month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
         month.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 monthMouseClicked(evt);
@@ -316,7 +316,7 @@ public class Employee_Salary extends javax.swing.JFrame {
             DashboardMgr db = new DashboardMgr(emp);
             db.setVisible(true);
         } else {
-            DashboardMgr db = new DashboardMgr(emp);
+            DashboardEmp db = new DashboardEmp(emp);
             db.setVisible(true);
         }
         this.setVisible(false);
