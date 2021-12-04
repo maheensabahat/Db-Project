@@ -165,6 +165,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jLabel4.setBounds(20, 80, 160, 19);
 
         taskid.setEditable(false);
+        taskid.setFocusable(false);
         taskid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 taskidActionPerformed(evt);
@@ -180,6 +181,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jLabel12.setBounds(20, 140, 160, 19);
 
         taskname.setEditable(false);
+        taskname.setFocusable(false);
         taskname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tasknameActionPerformed(evt);
@@ -197,6 +199,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         taskdet.setEditable(false);
         taskdet.setColumns(20);
         taskdet.setRows(5);
+        taskdet.setFocusable(false);
         jScrollPane1.setViewportView(taskdet);
 
         jPanel1.add(jScrollPane1);
@@ -209,6 +212,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jLabel10.setBounds(20, 280, 160, 19);
 
         startdate.setEditable(false);
+        startdate.setFocusable(false);
         startdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startdateActionPerformed(evt);
@@ -224,6 +228,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jLabel11.setBounds(20, 330, 160, 19);
 
         enddate.setEditable(false);
+        enddate.setFocusable(false);
         enddate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enddateActionPerformed(evt);
@@ -237,6 +242,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         MarkComplete.setForeground(new java.awt.Color(255, 255, 255));
         MarkComplete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/mark.png"))); // NOI18N
         MarkComplete.setText("Mark Done");
+        MarkComplete.setFocusable(false);
         MarkComplete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 MarkCompleteMouseEntered(evt);
@@ -256,6 +262,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         Pending.setBackground(new java.awt.Color(38, 32, 54));
         Pending.setForeground(new java.awt.Color(255, 255, 255));
         Pending.setText("Pending");
+        Pending.setFocusable(false);
         Pending.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 PendingMouseEntered(evt);
@@ -270,11 +277,12 @@ public class Emp_Tasks extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Pending);
-        Pending.setBounds(480, 50, 73, 23);
+        Pending.setBounds(470, 50, 80, 23);
 
         Missed.setBackground(new java.awt.Color(38, 32, 54));
         Missed.setForeground(new java.awt.Color(255, 255, 255));
         Missed.setText("Missed");
+        Missed.setFocusable(false);
         Missed.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 MissedMouseEntered(evt);
@@ -289,11 +297,12 @@ public class Emp_Tasks extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Missed);
-        Missed.setBounds(570, 50, 65, 23);
+        Missed.setBounds(555, 50, 80, 23);
 
         Finished.setBackground(new java.awt.Color(38, 32, 54));
         Finished.setForeground(new java.awt.Color(255, 255, 255));
         Finished.setText("Finished");
+        Finished.setFocusable(false);
         Finished.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 FinishedMouseEntered(evt);
@@ -308,7 +317,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Finished);
-        Finished.setBounds(650, 50, 71, 23);
+        Finished.setBounds(641, 50, 80, 23);
 
         alert1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         alert1.setForeground(new java.awt.Color(102, 255, 102));
@@ -338,6 +347,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(52, 45, 71));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel3.setText("Dashboard");
+        jLabel3.setFocusable(false);
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);

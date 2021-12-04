@@ -168,6 +168,7 @@ public class RateEmployee extends javax.swing.JFrame {
         jPanel2.setLayout(null);
 
         TaskID.setEditable(false);
+        TaskID.setFocusable(false);
         TaskID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TaskIDActionPerformed(evt);
@@ -177,6 +178,7 @@ public class RateEmployee extends javax.swing.JFrame {
         TaskID.setBounds(20, 117, 271, 28);
 
         Taskname.setEditable(false);
+        Taskname.setFocusable(false);
         Taskname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TasknameActionPerformed(evt);
@@ -236,6 +238,7 @@ public class RateEmployee extends javax.swing.JFrame {
         jLabel10.setBounds(20, 210, 130, 24);
 
         empid.setEditable(false);
+        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -249,6 +252,7 @@ public class RateEmployee extends javax.swing.JFrame {
         add1.setForeground(new java.awt.Color(255, 255, 255));
         add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/save.png"))); // NOI18N
         add1.setText("Save");
+        add1.setFocusable(false);
         add1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 add1MouseEntered(evt);
@@ -271,6 +275,7 @@ public class RateEmployee extends javax.swing.JFrame {
         jPanel2.add(jLabel11);
         jLabel11.setBounds(20, 310, 130, 24);
 
+        rating.setFocusable(false);
         rating.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ratingActionPerformed(evt);
@@ -286,6 +291,7 @@ public class RateEmployee extends javax.swing.JFrame {
         jLabel12.setBounds(20, 260, 130, 24);
 
         hours.setEditable(false);
+        hours.setFocusable(false);
         hours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hoursActionPerformed(evt);
@@ -310,6 +316,7 @@ public class RateEmployee extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(52, 45, 71));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel5.setText("Dashboard");
+        jLabel5.setFocusable(false);
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);

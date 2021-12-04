@@ -161,6 +161,7 @@ public class TaskAssignment extends javax.swing.JFrame {
         jPanel2.setLayout(null);
 
         taskID.setEditable(false);
+        taskID.setFocusable(false);
         taskID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 taskIDActionPerformed(evt);
@@ -172,12 +173,14 @@ public class TaskAssignment extends javax.swing.JFrame {
         Taskdetail.setEditable(false);
         Taskdetail.setColumns(20);
         Taskdetail.setRows(5);
+        Taskdetail.setFocusable(false);
         jScrollPane1.setViewportView(Taskdetail);
 
         jPanel2.add(jScrollPane1);
         jScrollPane1.setBounds(20, 230, 271, 70);
 
         Taskname.setEditable(false);
+        Taskname.setFocusable(false);
         Taskname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TasknameActionPerformed(evt);
@@ -237,6 +240,7 @@ public class TaskAssignment extends javax.swing.JFrame {
         jPanel2.add(jLabel10);
         jLabel10.setBounds(20, 310, 130, 24);
 
+        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -255,6 +259,7 @@ public class TaskAssignment extends javax.swing.JFrame {
         add1.setForeground(new java.awt.Color(255, 255, 255));
         add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/assign_20.png"))); // NOI18N
         add1.setText("Assign");
+        add1.setFocusable(false);
         add1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 add1MouseEntered(evt);
@@ -287,6 +292,7 @@ public class TaskAssignment extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(52, 45, 71));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel6.setText("Dashboard");
+        jLabel6.setFocusable(false);
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);

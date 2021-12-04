@@ -156,6 +156,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="DeptID">
           <Properties>
+            <Property name="focusable" type="boolean" value="false"/>
             <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="9e" green="78" red="82" type="rgb"/>
             </Property>
@@ -188,6 +189,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="DeptName">
           <Properties>
+            <Property name="focusable" type="boolean" value="false"/>
             <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="9e" green="78" red="82" type="rgb"/>
             </Property>
@@ -219,6 +221,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="MgrID">
           <Properties>
+            <Property name="focusable" type="boolean" value="false"/>
             <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="9e" green="78" red="82" type="rgb"/>
             </Property>
@@ -248,6 +251,7 @@
               <Image iconType="3" name="/dbproject/delete.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Delete"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deleteMouseEntered"/>
@@ -275,6 +279,7 @@
               <Image iconType="3" name="/dbproject/add_new.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Add"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addMouseEntered"/>
@@ -302,6 +307,7 @@
               <Image iconType="3" name="/dbproject/update.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Update"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="UpdateMouseEntered"/>
@@ -406,6 +412,7 @@
               <Image iconType="3" name="/dbproject/dashboard_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Dashboard"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseClicked"/>

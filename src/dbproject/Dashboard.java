@@ -81,6 +81,7 @@ public class Dashboard extends javax.swing.JFrame {
         Dept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/Department.png"))); // NOI18N
         Dept.setText("Department Info");
         Dept.setFocusPainted(false);
+        Dept.setFocusable(false);
         Dept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeptActionPerformed(evt);

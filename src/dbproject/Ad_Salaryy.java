@@ -176,6 +176,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         error5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusable(false);
         setPreferredSize(new java.awt.Dimension(775, 490));
         getContentPane().setLayout(null);
 
@@ -204,6 +205,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        sal.setFocusable(false);
         sal.setGridColor(new java.awt.Color(52, 45, 71));
         sal.setSelectionBackground(new java.awt.Color(130, 120, 158));
         sal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -229,6 +231,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(emp_id_txt);
         emp_id_txt.setBounds(30, 100, 90, 20);
 
+        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -249,6 +252,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         date_txt.setBounds(140, 100, 90, 20);
 
         date.setEditable(false);
+        date.setFocusable(false);
         date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dateActionPerformed(evt);
@@ -263,6 +267,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(base_salary);
         base_salary.setBounds(30, 160, 120, 13);
 
+        salary.setFocusable(false);
         salary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salaryActionPerformed(evt);
@@ -277,6 +282,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(bonus_txt);
         bonus_txt.setBounds(30, 220, 110, 13);
 
+        bonus.setFocusable(false);
         bonus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bonusActionPerformed(evt);
@@ -291,6 +297,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(travel_allowance);
         travel_allowance.setBounds(30, 280, 100, 13);
 
+        travel.setFocusable(false);
         travel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 travelActionPerformed(evt);
@@ -305,6 +312,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(empID);
         empID.setBounds(480, 70, 80, 13);
 
+        emp.setFocusable(false);
         emp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empActionPerformed(evt);
@@ -323,6 +331,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         add.setForeground(new java.awt.Color(255, 255, 255));
         add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/add_new.png"))); // NOI18N
         add.setText("ADD");
+        add.setFocusable(false);
         add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 addMouseEntered(evt);
@@ -344,6 +353,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         Update.setForeground(new java.awt.Color(255, 255, 255));
         Update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/update.png"))); // NOI18N
         Update.setText("UPDATE");
+        Update.setFocusable(false);
         Update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 UpdateMouseEntered(evt);
@@ -364,6 +374,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         search1.setForeground(new java.awt.Color(255, 255, 255));
         search1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/search_white.png"))); // NOI18N
         search1.setText("Search ");
+        search1.setFocusable(false);
         search1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 search1MouseEntered(evt);
@@ -392,6 +403,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(medical_allowance);
         medical_allowance.setBounds(30, 340, 110, 13);
 
+        medical.setFocusable(false);
         medical.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 medicalActionPerformed(evt);
@@ -415,6 +427,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         reset.setBackground(new java.awt.Color(38, 32, 54));
         reset.setForeground(new java.awt.Color(255, 255, 255));
         reset.setText("Reset Table");
+        reset.setFocusable(false);
         reset.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 resetMouseEntered(evt);
@@ -435,6 +448,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel2.setText("Dashboard");
+        jLabel2.setFocusable(false);
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);

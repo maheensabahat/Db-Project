@@ -95,6 +95,7 @@
               <Image iconType="3" name="/dbproject/TaskAssignment.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="My Tasks"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TasksActionPerformed"/>
@@ -121,6 +122,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Generate Salary"/>
             <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generateSalaryActionPerformed"/>
@@ -146,6 +148,7 @@
               <Image iconType="3" name="/dbproject/ComplaintPortal.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Attendance Report"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AttendanceActionPerformed"/>
@@ -171,6 +174,7 @@
               <Image iconType="3" name="/dbproject/SalaryReport.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Salary Report"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SreportActionPerformed"/>
@@ -196,6 +200,7 @@
               <Image iconType="3" name="/dbproject/ViewProfile.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="View Profile"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ProfileActionPerformed"/>
@@ -221,6 +226,7 @@
               <Image iconType="3" name="/dbproject/EmpofMonth.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Star Employee"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="starActionPerformed"/>
@@ -255,6 +261,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sign out"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>

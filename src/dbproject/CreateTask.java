@@ -205,6 +205,7 @@ public class CreateTask extends javax.swing.JFrame {
         taskdet.setColumns(20);
         taskdet.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         taskdet.setRows(5);
+        taskdet.setFocusable(false);
         jScrollPane1.setViewportView(taskdet);
 
         jPanel2.add(jScrollPane1);
@@ -253,6 +254,7 @@ public class CreateTask extends javax.swing.JFrame {
 
         status.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Status", "Closed", "Open", "Canceled" }));
+        status.setFocusable(false);
         status.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 statusMouseClicked(evt);
@@ -293,6 +295,7 @@ public class CreateTask extends javax.swing.JFrame {
         startdate3.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         startdate3.setForeground(new java.awt.Color(204, 204, 204));
         startdate3.setText("Year");
+        startdate3.setFocusable(false);
         startdate3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 startdate3FocusGained(evt);
@@ -320,6 +323,7 @@ public class CreateTask extends javax.swing.JFrame {
         enddate3.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         enddate3.setForeground(new java.awt.Color(204, 204, 204));
         enddate3.setText("Year");
+        enddate3.setFocusable(false);
         enddate3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 enddate3FocusGained(evt);
@@ -343,6 +347,7 @@ public class CreateTask extends javax.swing.JFrame {
         add.setForeground(new java.awt.Color(255, 255, 255));
         add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/add.png"))); // NOI18N
         add.setText("Add");
+        add.setFocusable(false);
         add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 addMouseEntered(evt);
@@ -364,6 +369,7 @@ public class CreateTask extends javax.swing.JFrame {
         Update.setForeground(new java.awt.Color(255, 255, 255));
         Update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/update.png"))); // NOI18N
         Update.setText("Update");
+        Update.setFocusable(false);
         Update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 UpdateMouseEntered(evt);
@@ -384,6 +390,7 @@ public class CreateTask extends javax.swing.JFrame {
         Rate.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         Rate.setForeground(new java.awt.Color(255, 255, 255));
         Rate.setText("Rate Employee");
+        Rate.setFocusable(false);
         Rate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 RateMouseEntered(evt);
@@ -407,6 +414,7 @@ public class CreateTask extends javax.swing.JFrame {
         jLabel12.setBounds(20, 120, 160, 19);
 
         taskname.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
+        taskname.setFocusable(false);
         taskname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tasknameActionPerformed(evt);
@@ -420,6 +428,7 @@ public class CreateTask extends javax.swing.JFrame {
         delete.setForeground(new java.awt.Color(255, 255, 255));
         delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/delete.png"))); // NOI18N
         delete.setText("Delete");
+        delete.setFocusable(false);
         delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 deleteMouseEntered(evt);
@@ -440,6 +449,7 @@ public class CreateTask extends javax.swing.JFrame {
         Assign.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         Assign.setForeground(new java.awt.Color(255, 255, 255));
         Assign.setText("Assign Task to Employees");
+        Assign.setFocusable(false);
         Assign.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 AssignMouseEntered(evt);
@@ -465,6 +475,7 @@ public class CreateTask extends javax.swing.JFrame {
         startdate1.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         startdate1.setForeground(new java.awt.Color(204, 204, 204));
         startdate1.setText("Day");
+        startdate1.setFocusable(false);
         startdate1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 startdate1FocusGained(evt);
@@ -486,6 +497,7 @@ public class CreateTask extends javax.swing.JFrame {
         startdate2.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         startdate2.setForeground(new java.awt.Color(204, 204, 204));
         startdate2.setText("Month");
+        startdate2.setFocusable(false);
         startdate2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 startdate2FocusGained(evt);
@@ -507,6 +519,7 @@ public class CreateTask extends javax.swing.JFrame {
         enddate1.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         enddate1.setForeground(new java.awt.Color(204, 204, 204));
         enddate1.setText("Day");
+        enddate1.setFocusable(false);
         enddate1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 enddate1FocusGained(evt);
@@ -528,6 +541,7 @@ public class CreateTask extends javax.swing.JFrame {
         enddate2.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         enddate2.setForeground(new java.awt.Color(204, 204, 204));
         enddate2.setText("Month");
+        enddate2.setFocusable(false);
         enddate2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 enddate2FocusGained(evt);
@@ -574,6 +588,7 @@ public class CreateTask extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(52, 45, 71));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel3.setText("Dashboard");
+        jLabel3.setFocusable(false);
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);

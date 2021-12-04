@@ -159,6 +159,7 @@ public class Admin_Tasks extends javax.swing.JFrame {
         jLabel4.setBounds(20, 100, 160, 19);
 
         taskid.setEditable(false);
+        taskid.setFocusable(false);
         taskid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 taskidActionPerformed(evt);
@@ -174,6 +175,7 @@ public class Admin_Tasks extends javax.swing.JFrame {
         jLabel12.setBounds(20, 160, 160, 19);
 
         taskname.setEditable(false);
+        taskname.setFocusable(false);
         taskname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tasknameActionPerformed(evt);
@@ -191,6 +193,7 @@ public class Admin_Tasks extends javax.swing.JFrame {
         taskdet.setEditable(false);
         taskdet.setColumns(20);
         taskdet.setRows(5);
+        taskdet.setFocusable(false);
         jScrollPane1.setViewportView(taskdet);
 
         jPanel1.add(jScrollPane1);
@@ -203,6 +206,7 @@ public class Admin_Tasks extends javax.swing.JFrame {
         jLabel10.setBounds(20, 300, 160, 19);
 
         startdate.setEditable(false);
+        startdate.setFocusable(false);
         startdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startdateActionPerformed(evt);
@@ -218,6 +222,7 @@ public class Admin_Tasks extends javax.swing.JFrame {
         jLabel11.setBounds(20, 350, 160, 19);
 
         enddate.setEditable(false);
+        enddate.setFocusable(false);
         enddate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enddateActionPerformed(evt);
@@ -230,6 +235,7 @@ public class Admin_Tasks extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(52, 45, 71));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel3.setText("Dashboard");
+        jLabel3.setFocusable(false);
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);

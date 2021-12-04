@@ -239,6 +239,7 @@ public class Admin_Dept extends javax.swing.JFrame {
         jPanel1.add(first_name);
         first_name.setBounds(20, 100, 110, 15);
 
+        DeptID.setFocusable(false);
         DeptID.setSelectionColor(new java.awt.Color(130, 120, 158));
         DeptID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,6 +260,7 @@ public class Admin_Dept extends javax.swing.JFrame {
         jPanel1.add(first_name1);
         first_name1.setBounds(20, 170, 130, 15);
 
+        DeptName.setFocusable(false);
         DeptName.setSelectionColor(new java.awt.Color(130, 120, 158));
         DeptName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,6 +276,7 @@ public class Admin_Dept extends javax.swing.JFrame {
         jPanel1.add(first_name2);
         first_name2.setBounds(20, 230, 120, 15);
 
+        MgrID.setFocusable(false);
         MgrID.setSelectionColor(new java.awt.Color(130, 120, 158));
         MgrID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -293,6 +296,7 @@ public class Admin_Dept extends javax.swing.JFrame {
         delete.setForeground(new java.awt.Color(255, 255, 255));
         delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/delete.png"))); // NOI18N
         delete.setText("Delete");
+        delete.setFocusable(false);
         delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 deleteMouseEntered(evt);
@@ -314,6 +318,7 @@ public class Admin_Dept extends javax.swing.JFrame {
         add.setForeground(new java.awt.Color(255, 255, 255));
         add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/add_new.png"))); // NOI18N
         add.setText("Add");
+        add.setFocusable(false);
         add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 addMouseEntered(evt);
@@ -335,6 +340,7 @@ public class Admin_Dept extends javax.swing.JFrame {
         Update.setForeground(new java.awt.Color(255, 255, 255));
         Update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/update.png"))); // NOI18N
         Update.setText("Update");
+        Update.setFocusable(false);
         Update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 UpdateMouseEntered(evt);
@@ -385,6 +391,7 @@ public class Admin_Dept extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel2.setText("Dashboard");
+        jLabel2.setFocusable(false);
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);

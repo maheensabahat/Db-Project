@@ -137,6 +137,7 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         jPanel1.add(Date);
         Date.setBounds(30, 170, 80, 14);
 
+        day.setFocusable(false);
         day.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dayActionPerformed(evt);
@@ -157,6 +158,7 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         search2.setForeground(new java.awt.Color(255, 255, 255));
         search2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/search_white.png"))); // NOI18N
         search2.setText("Search");
+        search2.setFocusable(false);
         search2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 search2MouseEntered(evt);
@@ -225,6 +227,7 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel2.setText("Dashboard");
+        jLabel2.setFocusable(false);
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -235,6 +238,7 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
 
         month.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
+        month.setFocusable(false);
         month.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 monthMouseClicked(evt);
@@ -250,6 +254,7 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
 
         year.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", " " }));
+        year.setFocusable(false);
         year.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 yearMouseClicked(evt);
@@ -278,6 +283,7 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         reset.setBackground(new java.awt.Color(38, 32, 54));
         reset.setForeground(new java.awt.Color(255, 255, 255));
         reset.setText("Reset Table");
+        reset.setFocusable(false);
         reset.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 resetMouseEntered(evt);

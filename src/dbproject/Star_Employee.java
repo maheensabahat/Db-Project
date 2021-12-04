@@ -185,6 +185,7 @@ public class Star_Employee extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(52, 45, 71));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel3.setText("Dashboard");
+        jLabel3.setFocusable(false);
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);

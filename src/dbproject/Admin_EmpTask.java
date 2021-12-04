@@ -139,6 +139,7 @@ public class Admin_EmpTask extends javax.swing.JFrame {
         jPanel2.setLayout(null);
 
         taskID.setEditable(false);
+        taskID.setFocusable(false);
         taskID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 taskIDActionPerformed(evt);
@@ -150,12 +151,14 @@ public class Admin_EmpTask extends javax.swing.JFrame {
         Taskdetail.setEditable(false);
         Taskdetail.setColumns(20);
         Taskdetail.setRows(5);
+        Taskdetail.setFocusable(false);
         jScrollPane1.setViewportView(Taskdetail);
 
         jPanel2.add(jScrollPane1);
         jScrollPane1.setBounds(20, 200, 271, 70);
 
         Taskname.setEditable(false);
+        Taskname.setFocusable(false);
         Taskname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TasknameActionPerformed(evt);
@@ -221,6 +224,7 @@ public class Admin_EmpTask extends javax.swing.JFrame {
         jLabel10.setBounds(20, 270, 130, 24);
 
         empid.setEditable(false);
+        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -238,6 +242,7 @@ public class Admin_EmpTask extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(52, 45, 71));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel6.setText("Dashboard");
+        jLabel6.setFocusable(false);
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -253,6 +258,7 @@ public class Admin_EmpTask extends javax.swing.JFrame {
         jLabel11.setBounds(20, 320, 130, 24);
 
         hrs.setEditable(false);
+        hrs.setFocusable(false);
         hrs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hrsActionPerformed(evt);
@@ -273,6 +279,7 @@ public class Admin_EmpTask extends javax.swing.JFrame {
         jLabel12.setBounds(20, 370, 130, 24);
 
         rating.setEditable(false);
+        rating.setFocusable(false);
         rating.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ratingActionPerformed(evt);
@@ -290,6 +297,7 @@ public class Admin_EmpTask extends javax.swing.JFrame {
         Assign.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         Assign.setForeground(new java.awt.Color(255, 255, 255));
         Assign.setText("Back to all tasks");
+        Assign.setFocusable(false);
         Assign.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 AssignMouseEntered(evt);

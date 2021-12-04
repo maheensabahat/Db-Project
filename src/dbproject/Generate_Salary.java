@@ -149,6 +149,7 @@ public class Generate_Salary extends javax.swing.JFrame {
         emp_id_txt.setBounds(30, 70, 90, 20);
 
         empid.setEditable(false);
+        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -169,6 +170,7 @@ public class Generate_Salary extends javax.swing.JFrame {
         date_txt.setBounds(140, 70, 90, 20);
 
         date.setEditable(false);
+        date.setFocusable(false);
         date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dateActionPerformed(evt);
@@ -184,6 +186,7 @@ public class Generate_Salary extends javax.swing.JFrame {
         base_salary.setBounds(310, 70, 120, 20);
 
         salary.setEditable(false);
+        salary.setFocusable(false);
         salary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salaryActionPerformed(evt);
@@ -199,6 +202,7 @@ public class Generate_Salary extends javax.swing.JFrame {
         bonus_txt.setBounds(30, 170, 110, 20);
 
         bonus.setEditable(false);
+        bonus.setFocusable(false);
         bonus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bonusActionPerformed(evt);
@@ -214,6 +218,7 @@ public class Generate_Salary extends javax.swing.JFrame {
         travel_allowance.setBounds(30, 120, 100, 20);
 
         travel.setEditable(false);
+        travel.setFocusable(false);
         travel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 travelActionPerformed(evt);
@@ -253,6 +258,7 @@ public class Generate_Salary extends javax.swing.JFrame {
         medical_allowance.setBounds(310, 120, 110, 20);
 
         medical.setEditable(false);
+        medical.setFocusable(false);
         medical.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 medicalActionPerformed(evt);
@@ -271,6 +277,7 @@ public class Generate_Salary extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel2.setText("Dashboard");
+        jLabel2.setFocusable(false);
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -286,6 +293,7 @@ public class Generate_Salary extends javax.swing.JFrame {
         medical_allowance1.setBounds(310, 170, 110, 20);
 
         total.setEditable(false);
+        total.setFocusable(false);
         total.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 totalActionPerformed(evt);
@@ -295,14 +303,17 @@ public class Generate_Salary extends javax.swing.JFrame {
         total.setBounds(310, 190, 260, 30);
 
         Date.setText("Date");
+        Date.setFocusable(false);
         jPanel1.add(Date);
         Date.setBounds(430, 300, 140, 20);
 
         Name.setText("Name");
+        Name.setFocusable(false);
         jPanel1.add(Name);
         Name.setBounds(140, 344, 290, 30);
 
         Amount.setText("Amount");
+        Amount.setFocusable(false);
         jPanel1.add(Amount);
         Amount.setBounds(470, 350, 90, 20);
 

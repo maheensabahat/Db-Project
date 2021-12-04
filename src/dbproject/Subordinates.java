@@ -100,6 +100,7 @@ public class Subordinates extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        Employee.setFocusable(false);
         Employee.setGridColor(new java.awt.Color(52, 45, 71));
         Employee.setSelectionBackground(new java.awt.Color(130, 120, 158));
         Employee.getTableHeader().setReorderingAllowed(false);
@@ -131,6 +132,7 @@ public class Subordinates extends javax.swing.JFrame {
         jPanel1.add(empID);
         empID.setBounds(290, 70, 80, 14);
 
+        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -166,6 +168,7 @@ public class Subordinates extends javax.swing.JFrame {
         reset.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
         reset.setForeground(java.awt.Color.white);
         reset.setText("Reset Table");
+        reset.setFocusable(false);
         reset.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 resetMouseEntered(evt);
@@ -186,6 +189,7 @@ public class Subordinates extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel2.setText("Dashboard");
+        jLabel2.setFocusable(false);
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);

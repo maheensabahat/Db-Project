@@ -64,6 +64,7 @@ public class DashboardEmp extends javax.swing.JFrame {
         Tasks.setForeground(new java.awt.Color(255, 255, 255));
         Tasks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/TaskAssignment.png"))); // NOI18N
         Tasks.setText("My Tasks");
+        Tasks.setFocusable(false);
         Tasks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TasksActionPerformed(evt);
@@ -78,6 +79,7 @@ public class DashboardEmp extends javax.swing.JFrame {
         generateSalary.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/PayGrade.png"))); // NOI18N
         generateSalary.setText("Generate Salary");
         generateSalary.setFocusPainted(false);
+        generateSalary.setFocusable(false);
         generateSalary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generateSalaryActionPerformed(evt);
@@ -91,6 +93,7 @@ public class DashboardEmp extends javax.swing.JFrame {
         Attendance.setForeground(new java.awt.Color(255, 255, 255));
         Attendance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/ComplaintPortal.png"))); // NOI18N
         Attendance.setText("Attendance Report");
+        Attendance.setFocusable(false);
         Attendance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AttendanceActionPerformed(evt);
@@ -104,6 +107,7 @@ public class DashboardEmp extends javax.swing.JFrame {
         Sreport.setForeground(new java.awt.Color(255, 255, 255));
         Sreport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/SalaryReport.png"))); // NOI18N
         Sreport.setText("Salary Report");
+        Sreport.setFocusable(false);
         Sreport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SreportActionPerformed(evt);
@@ -117,6 +121,7 @@ public class DashboardEmp extends javax.swing.JFrame {
         Profile.setForeground(new java.awt.Color(255, 255, 255));
         Profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/ViewProfile.png"))); // NOI18N
         Profile.setText("View Profile");
+        Profile.setFocusable(false);
         Profile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ProfileActionPerformed(evt);
@@ -130,6 +135,7 @@ public class DashboardEmp extends javax.swing.JFrame {
         star.setForeground(new java.awt.Color(255, 255, 255));
         star.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/EmpofMonth.png"))); // NOI18N
         star.setText("Star Employee");
+        star.setFocusable(false);
         star.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 starActionPerformed(evt);
@@ -144,6 +150,7 @@ public class DashboardEmp extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Sign out");
+        jButton7.setFocusable(false);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);

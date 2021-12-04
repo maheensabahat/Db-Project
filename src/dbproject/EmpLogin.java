@@ -79,6 +79,7 @@ public class EmpLogin extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(357, 0, 454, 515);
 
+        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -122,6 +123,8 @@ public class EmpLogin extends javax.swing.JFrame {
         empIDerror1.setText("*invalid Employee ID");
         jPanel1.add(empIDerror1);
         empIDerror1.setBounds(170, 130, 200, 30);
+
+        pw.setFocusable(false);
         jPanel1.add(pw);
         pw.setBounds(64, 230, 231, 31);
 
@@ -131,6 +134,7 @@ public class EmpLogin extends javax.swing.JFrame {
         login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/login_new (2).png"))); // NOI18N
         login.setText("Login");
         login.setFocusPainted(false);
+        login.setFocusable(false);
         login.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 loginMouseEntered(evt);
@@ -148,6 +152,7 @@ public class EmpLogin extends javax.swing.JFrame {
         login.setBounds(105, 303, 142, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/back_32.png"))); // NOI18N
+        jLabel1.setFocusable(false);
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);

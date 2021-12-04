@@ -150,6 +150,7 @@ public class Employee_Salary extends javax.swing.JFrame {
         search1.setForeground(new java.awt.Color(255, 255, 255));
         search1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/search_white.png"))); // NOI18N
         search1.setText("Search");
+        search1.setFocusable(false);
         search1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 search1MouseEntered(evt);
@@ -182,6 +183,7 @@ public class Employee_Salary extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(52, 45, 71));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel4.setText("Dashboard");
+        jLabel4.setFocusable(false);
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -193,6 +195,7 @@ public class Employee_Salary extends javax.swing.JFrame {
         reset.setBackground(new java.awt.Color(38, 32, 54));
         reset.setForeground(new java.awt.Color(255, 255, 255));
         reset.setText("Reset Table");
+        reset.setFocusable(false);
         reset.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 resetMouseEntered(evt);
@@ -211,6 +214,7 @@ public class Employee_Salary extends javax.swing.JFrame {
 
         month.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
+        month.setFocusable(false);
         month.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 monthMouseClicked(evt);
@@ -226,6 +230,7 @@ public class Employee_Salary extends javax.swing.JFrame {
 
         year.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", " " }));
+        year.setFocusable(false);
         year.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 yearMouseClicked(evt);

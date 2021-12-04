@@ -155,6 +155,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         jPanel1.add(first_name);
         first_name.setBounds(30, 70, 100, 20);
 
+        fname.setFocusable(false);
         fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnameActionPerformed(evt);
@@ -169,6 +170,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         jPanel1.add(first_name1);
         first_name1.setBounds(150, 70, 100, 20);
 
+        lname.setFocusable(false);
         lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lnameActionPerformed(evt);
@@ -184,6 +186,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         first_name2.setBounds(30, 120, 100, 20);
 
         email.setEditable(false);
+        email.setFocusable(false);
         email.setRequestFocusEnabled(false);
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,6 +202,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         jPanel1.add(first_name3);
         first_name3.setBounds(30, 170, 100, 20);
 
+        address.setFocusable(false);
         address.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addressActionPerformed(evt);
@@ -213,6 +217,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         jPanel1.add(first_name4);
         first_name4.setBounds(30, 220, 100, 20);
 
+        bankacc.setFocusable(false);
         bankacc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bankaccActionPerformed(evt);
@@ -228,6 +233,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         first_name6.setBounds(30, 320, 100, 20);
 
         hiredate.setEditable(false);
+        hiredate.setFocusable(false);
         hiredate.setRequestFocusEnabled(false);
         hiredate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,6 +249,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         jPanel1.add(first_name7);
         first_name7.setBounds(30, 270, 100, 20);
 
+        deptid.setFocusable(false);
         deptid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deptidActionPerformed(evt);
@@ -268,6 +275,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         jPanel1.add(empID);
         empID.setBounds(290, 70, 80, 14);
 
+        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -281,6 +289,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         delete.setForeground(new java.awt.Color(255, 255, 255));
         delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/delete.png"))); // NOI18N
         delete.setText("Delete");
+        delete.setFocusable(false);
         delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 deleteMouseEntered(evt);
@@ -302,6 +311,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         add.setForeground(new java.awt.Color(255, 255, 255));
         add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/add_new.png"))); // NOI18N
         add.setText("Add");
+        add.setFocusable(false);
         add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 addMouseEntered(evt);
@@ -323,6 +333,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         Update.setForeground(new java.awt.Color(255, 255, 255));
         Update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/update.png"))); // NOI18N
         Update.setText("Update");
+        Update.setFocusable(false);
         Update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 UpdateMouseEntered(evt);
@@ -361,6 +372,8 @@ public class Admin_Employee extends javax.swing.JFrame {
         });
         jPanel1.add(search);
         search.setBounds(460, 57, 90, 25);
+
+        password.setFocusable(false);
         jPanel1.add(password);
         password.setBounds(30, 390, 245, 30);
 
@@ -402,6 +415,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel2.setText("Dashboard");
+        jLabel2.setFocusable(false);
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);

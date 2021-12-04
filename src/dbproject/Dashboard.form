@@ -123,6 +123,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Department Info"/>
             <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeptActionPerformed"/>

@@ -96,6 +96,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(730, 425));
         jPanel1.setLayout(null);
 
+        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -114,6 +115,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         view.setForeground(new java.awt.Color(255, 255, 255));
         view.setText("View Attendance");
         view.setFocusPainted(false);
+        view.setFocusable(false);
         view.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 viewMouseEntered(evt);
@@ -158,6 +160,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        Employee.setFocusable(false);
         Employee.setGridColor(new java.awt.Color(52, 45, 71));
         Employee.setSelectionBackground(new java.awt.Color(130, 120, 158));
         jScrollPane1.setViewportView(Employee);
@@ -186,6 +189,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         save.setForeground(new java.awt.Color(255, 255, 255));
         save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/save.png"))); // NOI18N
         save.setText("Save Changes");
+        save.setFocusable(false);
         save.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 saveMouseEntered(evt);
@@ -227,18 +231,21 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         l.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
         l.setForeground(new java.awt.Color(52, 45, 71));
         l.setText("On Leave");
+        l.setFocusable(false);
         jPanel1.add(l);
         l.setBounds(30, 290, 160, 23);
 
         p.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
         p.setForeground(new java.awt.Color(52, 45, 71));
         p.setText("Present");
+        p.setFocusable(false);
         jPanel1.add(p);
         p.setBounds(30, 230, 160, 23);
 
         a.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
         a.setForeground(new java.awt.Color(52, 45, 71));
         a.setText("Absent");
+        a.setFocusable(false);
         jPanel1.add(a);
         a.setBounds(30, 260, 160, 23);
 
@@ -271,6 +278,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel2.setText("Dashboard");
+        jLabel2.setFocusable(false);
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);

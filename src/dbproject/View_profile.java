@@ -121,6 +121,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name.setBounds(50, 80, 80, 15);
 
         fname.setEditable(false);
+        fname.setFocusable(false);
         fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnameActionPerformed(evt);
@@ -136,6 +137,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name1.setBounds(340, 80, 80, 15);
 
         eid.setEditable(false);
+        eid.setFocusable(false);
         eid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eidActionPerformed(evt);
@@ -151,6 +153,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name2.setBounds(50, 140, 80, 15);
 
         email.setEditable(false);
+        email.setFocusable(false);
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailActionPerformed(evt);
@@ -166,6 +169,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name3.setBounds(50, 200, 80, 15);
 
         address.setEditable(false);
+        address.setFocusable(false);
         address.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addressActionPerformed(evt);
@@ -181,6 +185,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name4.setBounds(340, 200, 90, 15);
 
         bankacc.setEditable(false);
+        bankacc.setFocusable(false);
         bankacc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bankaccActionPerformed(evt);
@@ -196,6 +201,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name6.setBounds(50, 410, 80, 15);
 
         hiredate.setEditable(false);
+        hiredate.setFocusable(false);
         hiredate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hiredateActionPerformed(evt);
@@ -211,6 +217,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name7.setBounds(50, 290, 100, 15);
 
         deptid.setEditable(false);
+        deptid.setFocusable(false);
         deptid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deptidActionPerformed(evt);
@@ -226,6 +233,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name8.setBounds(340, 410, 80, 15);
 
         password.setEditable(false);
+        password.setFocusable(false);
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordActionPerformed(evt);
@@ -241,6 +249,7 @@ public class View_profile extends javax.swing.JFrame {
         empID.setBounds(340, 140, 100, 15);
 
         lname.setEditable(false);
+        lname.setFocusable(false);
         lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lnameActionPerformed(evt);
@@ -256,6 +265,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name9.setBounds(340, 290, 120, 15);
 
         dname.setEditable(false);
+        dname.setFocusable(false);
         dname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dnameActionPerformed(evt);
@@ -271,6 +281,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name10.setBounds(50, 350, 80, 15);
 
         mid.setEditable(false);
+        mid.setFocusable(false);
         mid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 midActionPerformed(evt);
@@ -286,6 +297,7 @@ public class View_profile extends javax.swing.JFrame {
         first_name11.setBounds(340, 350, 100, 15);
 
         mname.setEditable(false);
+        mname.setFocusable(false);
         mname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnameActionPerformed(evt);
@@ -298,6 +310,7 @@ public class View_profile extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(52, 45, 71));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/dashboard_32.png"))); // NOI18N
         jLabel2.setText("Dashboard");
+        jLabel2.setFocusable(false);
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
