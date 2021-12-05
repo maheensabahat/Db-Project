@@ -8,14 +8,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-/**
- *
- * @author Hp
- */
 public class Admin_Dept extends javax.swing.JFrame {
 
     Connection con;
@@ -58,10 +50,12 @@ public class Admin_Dept extends javax.swing.JFrame {
         int c;
         try {
 
-            pst = con.prepareStatement("SELECT d.department_ID, CONCAT_WS(\" \", m.first_name, m.last_name) as Mname,"
+            pst = con.prepareStatement("SELECT d.department_ID, CONCAT_WS(\" \","
+                    + " m.first_name, m.last_name) as Mname,"
                     + " d.department_name, d.manager_id \n"
                     + "FROM department d\n"
                     + "left outer JOIN Employee m on d.manager_id = m.employee_id");
+
             rs = pst.executeQuery();
 
             ResultSetMetaData rsd = rs.getMetaData();
@@ -72,10 +66,19 @@ public class Admin_Dept extends javax.swing.JFrame {
             while (rs.next()) {
                 Vector v2 = new Vector();
                 for (int i = 1; i <= c; i++) {
-                    v2.add(rs.getString("department_id"));
+                    int dept = rs.getInt("department_id");
+                    v2.add(dept);
                     v2.add(rs.getString("department_name"));
                     v2.add(rs.getString("manager_id"));
                     v2.add(rs.getString("Mname"));
+
+                    pst = con.prepareStatement("SELECT count(*) as num from employee "
+                            + "where department_id = ?");
+                    pst.setInt(1, dept);
+                    ResultSet rs1 = pst.executeQuery();
+                    if (rs1.next()) {
+                        v2.add(rs1.getString("num"));
+                    }
                 }
 
                 dft.addRow(v2);

@@ -33,8 +33,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         error2.setVisible(false);
         error3.setVisible(false);
 
-//        error1.setVisible(false);
-//        error2.setVisible(false);
+
         db = new Database();
         try {
             db.openConnection();
@@ -90,6 +89,14 @@ public class Emp_Tasks extends javax.swing.JFrame {
 
     }
 
+    private void setfieldsEmpty() {
+        taskid.setText("");
+        taskname.setText("");
+        taskdet.setText("");
+        startdate.setText("");
+        enddate.setText("");
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -118,6 +125,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         error2 = new javax.swing.JLabel();
         error3 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        reset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -277,7 +285,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Pending);
-        Pending.setBounds(470, 50, 80, 23);
+        Pending.setBounds(470, 60, 80, 23);
 
         Missed.setBackground(new java.awt.Color(38, 32, 54));
         Missed.setForeground(new java.awt.Color(255, 255, 255));
@@ -297,7 +305,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Missed);
-        Missed.setBounds(555, 50, 80, 23);
+        Missed.setBounds(555, 60, 80, 23);
 
         Finished.setBackground(new java.awt.Color(38, 32, 54));
         Finished.setForeground(new java.awt.Color(255, 255, 255));
@@ -317,7 +325,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Finished);
-        Finished.setBounds(641, 50, 80, 23);
+        Finished.setBounds(640, 60, 80, 23);
 
         alert1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         alert1.setForeground(new java.awt.Color(102, 255, 102));
@@ -356,6 +364,28 @@ public class Emp_Tasks extends javax.swing.JFrame {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(630, 10, 130, 40);
 
+        reset.setBackground(new java.awt.Color(38, 32, 54));
+        reset.setForeground(new java.awt.Color(255, 255, 255));
+        reset.setText("Reset Table");
+        reset.setFocusPainted(false);
+        reset.setFocusable(false);
+        reset.setRequestFocusEnabled(false);
+        reset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                resetMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                resetMouseExited(evt);
+            }
+        });
+        reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetActionPerformed(evt);
+            }
+        });
+        jPanel1.add(reset);
+        reset.setBounds(630, 450, 100, 20);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -393,43 +423,45 @@ public class Emp_Tasks extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) Etask.getModel();
         int selectedIndex = Etask.getSelectedRow();
 
-        //emp id of selected record, used to update record
-        int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
-        String status = model.getValueAt(selectedIndex, 4).toString();
-        //if hours have not been calculated
-        if (model.getValueAt(selectedIndex, 5) == null) {
+        if (selectedIndex != -1) {
+            //emp id of selected record, used to update record
+            int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
+            String status = model.getValueAt(selectedIndex, 4).toString();
+            //if hours have not been calculated
+            if (model.getValueAt(selectedIndex, 5) == null) {
 
-            //can ony mark open tasks 
-            if (status.equals("Open")) {
-                try {
+                //can ony mark open tasks 
+                if (status.equals("Open")) {
+                    try {
 
-                    //Hours = No of days between start date and today, multiplied by 9(office hours)
-                    String query = "update Employee_Task set hours ="
-                            + " ((Datediff(sysdate(),(select start_date from Task where Task_ID = ?))+1)*9)"
-                            + " where task_ID = ? and hours is Null";
-                    pst = con.prepareStatement(query);
-                    pst.setInt(1, id);
-                    pst.setInt(2, id);
+                        //Hours = No of days between start date and today, multiplied by 9(office hours)
+                        String query = "update Employee_Task set hours ="
+                                + " ((Datediff(sysdate(),(select start_date from Task where Task_ID = ?))+1)*9)"
+                                + " where task_ID = ? and hours is Null";
+                        pst = con.prepareStatement(query);
+                        pst.setInt(1, id);
+                        pst.setInt(2, id);
 
-                    pst.executeUpdate();
-                    pst.close();
-                    alert1.setVisible(true);
+                        pst.executeUpdate();
+                        pst.close();
+                        alert1.setVisible(true);
 
-                    //Table updated after edits
-                    tableupdate("");
+                        //Table updated after edits
+                        tableupdate("");
 
-                } catch (SQLException ex) {
-                    java.util.logging.Logger.getLogger(Admin_Employee.class
-                            .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(this, ex);
+                    } catch (SQLException ex) {
+                        java.util.logging.Logger.getLogger(Admin_Employee.class
+                                .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(this, ex);
+                    }
+                } else if (status.equals("Closed")) {
+                    error1.setVisible(true);
+                } else {
+                    error2.setVisible(true);
                 }
-            } else if (status.equals("Closed")) {
-                error1.setVisible(true);
             } else {
-                error2.setVisible(true);
+                error3.setVisible(true);
             }
-        } else {
-            error3.setVisible(true);
         }
 
     }//GEN-LAST:event_MarkCompleteActionPerformed
@@ -473,7 +505,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
 
         String q = " and status = 'closed' and Hours is Null";
         tableupdate(q);
-
+        setfieldsEmpty();
     }//GEN-LAST:event_MissedActionPerformed
 
     private void PendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PendingActionPerformed
@@ -482,6 +514,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
 
         String q = " and status = 'Open' and Hours is Null";
         tableupdate(q);
+        setfieldsEmpty();
     }//GEN-LAST:event_PendingActionPerformed
 
     private void FinishedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinishedActionPerformed
@@ -490,6 +523,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
 
         String q = " and Hours is not Null";
         tableupdate(q);
+        setfieldsEmpty();
     }//GEN-LAST:event_FinishedActionPerformed
 
     private void MarkCompleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MarkCompleteMouseEntered
@@ -545,6 +579,22 @@ public class Emp_Tasks extends javax.swing.JFrame {
         db.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void resetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseEntered
+        // TODO add your handling code here:
+        reset.setBackground(new java.awt.Color(79, 70, 102));
+    }//GEN-LAST:event_resetMouseEntered
+
+    private void resetMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseExited
+        // TODO add your handling code here:
+        reset.setBackground(new java.awt.Color(38, 32, 54));
+    }//GEN-LAST:event_resetMouseExited
+
+    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
+        // TODO add your handling code here:
+        tableupdate("");
+        setfieldsEmpty();
+    }//GEN-LAST:event_resetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -611,6 +661,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton reset;
     private javax.swing.JTextField startdate;
     private javax.swing.JTextArea taskdet;
     private javax.swing.JTextField taskid;
