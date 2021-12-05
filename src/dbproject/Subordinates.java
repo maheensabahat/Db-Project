@@ -132,7 +132,6 @@ public class Subordinates extends javax.swing.JFrame {
         jPanel1.add(empID);
         empID.setBounds(290, 70, 80, 14);
 
-        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);

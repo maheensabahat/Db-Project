@@ -96,9 +96,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="day">
-          <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dayActionPerformed"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="dayKeyPressed"/>
@@ -277,7 +274,6 @@
                 <StringItem index="11" value="December"/>
               </StringArray>
             </Property>
-            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="monthMouseClicked"/>
@@ -312,7 +308,6 @@
                 <StringItem index="10" value=" "/>
               </StringArray>
             </Property>
-            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="yearMouseClicked"/>

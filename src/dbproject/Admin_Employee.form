@@ -163,9 +163,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="fname">
-          <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fnameActionPerformed"/>
           </Events>
@@ -192,9 +189,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="lname">
-          <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lnameActionPerformed"/>
           </Events>
@@ -252,9 +246,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="address">
-          <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addressActionPerformed"/>
           </Events>
@@ -281,9 +272,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="bankacc">
-          <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bankaccActionPerformed"/>
           </Events>
@@ -341,9 +329,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="deptid">
-          <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deptidActionPerformed"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="deptidKeyPressed"/>
@@ -387,9 +372,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="empid">
-          <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="empidActionPerformed"/>
           </Events>
@@ -513,9 +495,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JPasswordField" name="password">
-          <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="30" y="390" width="245" height="30"/>

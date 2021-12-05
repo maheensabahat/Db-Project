@@ -275,7 +275,6 @@ public class RateEmployee extends javax.swing.JFrame {
         jPanel2.add(jLabel11);
         jLabel11.setBounds(20, 310, 130, 24);
 
-        rating.setFocusable(false);
         rating.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ratingActionPerformed(evt);

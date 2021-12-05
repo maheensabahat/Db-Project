@@ -239,7 +239,6 @@ public class Admin_Dept extends javax.swing.JFrame {
         jPanel1.add(first_name);
         first_name.setBounds(20, 100, 110, 15);
 
-        DeptID.setFocusable(false);
         DeptID.setSelectionColor(new java.awt.Color(130, 120, 158));
         DeptID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,7 +259,6 @@ public class Admin_Dept extends javax.swing.JFrame {
         jPanel1.add(first_name1);
         first_name1.setBounds(20, 170, 130, 15);
 
-        DeptName.setFocusable(false);
         DeptName.setSelectionColor(new java.awt.Color(130, 120, 158));
         DeptName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,7 +274,6 @@ public class Admin_Dept extends javax.swing.JFrame {
         jPanel1.add(first_name2);
         first_name2.setBounds(20, 230, 120, 15);
 
-        MgrID.setFocusable(false);
         MgrID.setSelectionColor(new java.awt.Color(130, 120, 158));
         MgrID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

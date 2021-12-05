@@ -231,7 +231,6 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(emp_id_txt);
         emp_id_txt.setBounds(30, 100, 90, 20);
 
-        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -252,7 +251,6 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         date_txt.setBounds(140, 100, 90, 20);
 
         date.setEditable(false);
-        date.setFocusable(false);
         date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dateActionPerformed(evt);
@@ -267,7 +265,6 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(base_salary);
         base_salary.setBounds(30, 160, 120, 13);
 
-        salary.setFocusable(false);
         salary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salaryActionPerformed(evt);
@@ -282,7 +279,6 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(bonus_txt);
         bonus_txt.setBounds(30, 220, 110, 13);
 
-        bonus.setFocusable(false);
         bonus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bonusActionPerformed(evt);
@@ -297,7 +293,6 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(travel_allowance);
         travel_allowance.setBounds(30, 280, 100, 13);
 
-        travel.setFocusable(false);
         travel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 travelActionPerformed(evt);
@@ -312,7 +307,6 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(empID);
         empID.setBounds(480, 70, 80, 13);
 
-        emp.setFocusable(false);
         emp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empActionPerformed(evt);
@@ -403,7 +397,6 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         jPanel1.add(medical_allowance);
         medical_allowance.setBounds(30, 340, 110, 13);
 
-        medical.setFocusable(false);
         medical.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 medicalActionPerformed(evt);
