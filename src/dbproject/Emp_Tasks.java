@@ -396,17 +396,16 @@ public class Emp_Tasks extends javax.swing.JFrame {
         //emp id of selected record, used to update record
         int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
         String status = model.getValueAt(selectedIndex, 4).toString();
-        String hours = model.getValueAt(selectedIndex, 5).toString();
-
         //if hours have not been calculated
-        if (hours.equals("")) {
+        if (model.getValueAt(selectedIndex, 5) == null) {
+
             //can ony mark open tasks 
             if (status.equals("Open")) {
                 try {
 
                     //Hours = No of days between start date and today, multiplied by 9(office hours)
                     String query = "update Employee_Task set hours ="
-                            + " (Datediff(sysdate(),(select start_date from Task where Task_ID = ?))*9)"
+                            + " ((Datediff(sysdate(),(select start_date from Task where Task_ID = ?))+1)*9)"
                             + " where task_ID = ? and hours is Null";
                     pst = con.prepareStatement(query);
                     pst.setInt(1, id);
@@ -495,49 +494,49 @@ public class Emp_Tasks extends javax.swing.JFrame {
 
     private void MarkCompleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MarkCompleteMouseEntered
         // TODO add your handling code here:
-                MarkComplete.setBackground(new java.awt.Color(79, 70, 102));
+        MarkComplete.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_MarkCompleteMouseEntered
 
     private void PendingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PendingMouseEntered
         // TODO add your handling code here:
-                Pending.setBackground(new java.awt.Color(79, 70, 102));
+        Pending.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_PendingMouseEntered
 
     private void MissedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MissedMouseEntered
         // TODO add your handling code here:
-                Missed.setBackground(new java.awt.Color(79, 70, 102));
+        Missed.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_MissedMouseEntered
 
     private void FinishedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FinishedMouseEntered
         // TODO add your handling code here:
-                Finished.setBackground(new java.awt.Color(79, 70, 102));
+        Finished.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_FinishedMouseEntered
 
     private void MarkCompleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MarkCompleteMouseExited
         // TODO add your handling code here:
-                MarkComplete.setBackground(new java.awt.Color(38, 32, 54));
+        MarkComplete.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_MarkCompleteMouseExited
 
     private void PendingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PendingMouseExited
         // TODO add your handling code here:
-                Pending.setBackground(new java.awt.Color(38, 32, 54));
+        Pending.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_PendingMouseExited
 
     private void MissedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MissedMouseExited
         // TODO add your handling code here:
-                Missed.setBackground(new java.awt.Color(38, 32, 54));
+        Missed.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_MissedMouseExited
 
     private void FinishedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FinishedMouseExited
         // TODO add your handling code here:
-                Finished.setBackground(new java.awt.Color(38, 32, 54));
+        Finished.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_FinishedMouseExited
 
@@ -586,7 +585,7 @@ public class Emp_Tasks extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Emp_Tasks(2).setVisible(true);
+                new Emp_Tasks(8).setVisible(true);
             }
         });
     }

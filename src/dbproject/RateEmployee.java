@@ -29,7 +29,7 @@ public class RateEmployee extends javax.swing.JFrame {
     public RateEmployee(int taskid, int mgr) {
         initComponents();
 
-        taskid = taskid;
+        this.taskid = taskid;
         this.mgr = mgr;
 
         error3.setVisible(false);
@@ -64,10 +64,9 @@ public class RateEmployee extends javax.swing.JFrame {
             rs = pst.executeQuery();
 
             if (rs.next()) {
-
+                System.out.println("x");
                 TaskID.setText(rs.getString("task_id"));
                 Taskname.setText(rs.getString("task_name"));
-
             }
 
         } catch (SQLException ex) {
@@ -75,6 +74,7 @@ public class RateEmployee extends javax.swing.JFrame {
         }
 
     }
+
 
     private void getDept() {
         try {
@@ -379,8 +379,7 @@ public class RateEmployee extends javax.swing.JFrame {
                         pst.setInt(2, eid);
                         pst.executeUpdate();
                         pst.close();
-                        JOptionPane.showMessageDialog(this, "Record Updated.");
-
+                        
                         //Table updated after edits
                         tableupdate();
 
@@ -415,12 +414,11 @@ public class RateEmployee extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) task.getModel();
         int selectedIndex = task.getSelectedRow();
 
-        TaskID.setText(model.getValueAt(selectedIndex, 0).toString());
-        int tid = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
-        Taskname.setText(model.getValueAt(selectedIndex, 1).toString());
-        empid.setText(model.getValueAt(selectedIndex, 2).toString());
-        hours.setText(model.getValueAt(selectedIndex, 3).toString());
-        rating.setText(model.getValueAt(selectedIndex, 4).toString());
+        empid.setText(model.getValueAt(selectedIndex, 0).toString());
+        hours.setText(model.getValueAt(selectedIndex, 2).toString());
+        if (model.getValueAt(selectedIndex, 3) != null) {
+            rating.setText(model.getValueAt(selectedIndex, 3).toString());
+        }
     }//GEN-LAST:event_taskMouseClicked
 
     private void add1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add1MouseEntered

@@ -248,7 +248,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
         date_txt.setForeground(new java.awt.Color(52, 45, 71));
         date_txt.setText("Date:");
         jPanel1.add(date_txt);
-        date_txt.setBounds(140, 100, 90, 20);
+        date_txt.setBounds(130, 100, 90, 20);
 
         date.setEditable(false);
         date.addActionListener(new java.awt.event.ActionListener() {
@@ -257,7 +257,7 @@ public class Ad_Salaryy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(date);
-        date.setBounds(140, 120, 100, 30);
+        date.setBounds(130, 120, 110, 30);
 
         base_salary.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         base_salary.setForeground(new java.awt.Color(52, 45, 71));

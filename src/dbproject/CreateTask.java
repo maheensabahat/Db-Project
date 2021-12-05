@@ -561,7 +561,7 @@ public class CreateTask extends javax.swing.JFrame {
         error3.setForeground(new java.awt.Color(255, 0, 51));
         error3.setText("Select a Task from table to proceed");
         jPanel2.add(error3);
-        error3.setBounds(370, 410, 230, 40);
+        error3.setBounds(400, 410, 340, 40);
 
         error4.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         error4.setForeground(new java.awt.Color(255, 0, 51));
@@ -573,7 +573,7 @@ public class CreateTask extends javax.swing.JFrame {
         error5.setForeground(new java.awt.Color(255, 0, 51));
         error5.setText("Canceled or closed task can not be assigned.");
         jPanel2.add(error5);
-        error5.setBounds(310, 410, 230, 40);
+        error5.setBounds(310, 410, 380, 40);
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(52, 45, 71));
@@ -654,7 +654,6 @@ public class CreateTask extends javax.swing.JFrame {
                 pst.setString(5, stat);
                 pst.execute();
                 pst.close();
-                JOptionPane.showMessageDialog(this, "Record Addedd.");
 
                 //Table updates after insertion
                 tableupdate();
@@ -697,7 +696,6 @@ public class CreateTask extends javax.swing.JFrame {
                     pst.setInt(6, id);
                     pst.executeUpdate();
                     pst.close();
-                    JOptionPane.showMessageDialog(this, "Record Updated.");
 
                     //Table updated after edits
                     tableupdate();
@@ -728,12 +726,12 @@ public class CreateTask extends javax.swing.JFrame {
             String st = (String) status.getSelectedItem();
 
             //only completed tasks can be rated
-            if (st.equals("Complete")) {
+            //if (st.equals("Complete")) {
                 new RateEmployee(id, empid).setVisible(true);
                 this.setVisible(false);
-            } else {
-                error4.setVisible(true);
-            }
+//            } else {
+//                error4.setVisible(true);
+//            }
 
         } else {
             error3.setVisible(true);
@@ -759,7 +757,6 @@ public class CreateTask extends javax.swing.JFrame {
                 pst = con.prepareStatement("delete from task where task_id = ?");
                 pst.setInt(1, id);
                 pst.executeUpdate();
-                JOptionPane.showMessageDialog(this, "Record Deleted.");
 
                 tableupdate();
 
@@ -1004,7 +1001,7 @@ public class CreateTask extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                new CreateTask().setVisible(true);
+                new CreateTask(1).setVisible(true);
             }
         });
     }

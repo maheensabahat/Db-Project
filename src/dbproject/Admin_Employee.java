@@ -515,7 +515,6 @@ public class Admin_Employee extends javax.swing.JFrame {
                             pst.setInt(6, dept);
                             pst.setInt(7, id);
                             pst.executeUpdate();
-                            
 
                             //Table updated after edits
                             tableupdate();
@@ -658,9 +657,9 @@ public class Admin_Employee extends javax.swing.JFrame {
                     pst.setString(7, "Working");
                     if (x) {
                         pst.setInt(8, dept);
-                        
+
                     }
-                    
+
                     pst.execute();
                     pst.close();
 
@@ -699,7 +698,11 @@ public class Admin_Employee extends javax.swing.JFrame {
         fname.setText(model.getValueAt(selectedIndex, 1).toString());
         lname.setText(model.getValueAt(selectedIndex, 2).toString());
         email.setText(model.getValueAt(selectedIndex, 3).toString());
-        deptid.setText(model.getValueAt(selectedIndex, 4).toString());
+        if (model.getValueAt(selectedIndex, 4) == null) {
+            deptid.setText("");
+        } else {
+            deptid.setText(model.getValueAt(selectedIndex, 4).toString());
+        }
 
         //bring other fields from table
         try {
@@ -713,7 +716,6 @@ public class Admin_Employee extends javax.swing.JFrame {
                 hiredate.setText(rs.getString("hire_date"));
                 password.setText(rs.getString("password"));
                 deptid.setText(rs.getString("Department_ID"));
-
             }
 
         } catch (SQLException ex) {
@@ -758,7 +760,7 @@ public class Admin_Employee extends javax.swing.JFrame {
                         pst.setInt(2, id);
                         pst.executeUpdate();
                         pst.close();
-                        
+
                         query = "update department set manager_id = Null "
                                 + "where manager_ID = ?";
                         pst = con.prepareStatement(query);

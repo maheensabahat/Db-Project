@@ -372,7 +372,7 @@ public class TaskAssignment extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, ex);
                     }
                 } else {
-                     error3.setVisible(true);
+                    error3.setVisible(true);
                 }
             } catch (NumberFormatException ex) {
 
@@ -383,10 +383,11 @@ public class TaskAssignment extends javax.swing.JFrame {
     }//GEN-LAST:event_add1ActionPerformed
 
     public boolean checkEmployee(int emp) {
-        //manager can not 
+        //manager can not assign task to himself
         if (mgr == emp) {
             return false;
         }
+        
         try {
             pst = con.prepareStatement("select * from Employee where "
                     + "employee_ID = ? and department_id = ?");
@@ -424,7 +425,7 @@ public class TaskAssignment extends javax.swing.JFrame {
     }//GEN-LAST:event_add1MouseExited
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        DashboardMgr db = new DashboardMgr(mgr);
+        new DashboardMgr(mgr).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel6MouseClicked
 
@@ -459,7 +460,7 @@ public class TaskAssignment extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                new TaskAssignment().setVisible(true);
+                new TaskAssignment(4, 1).setVisible(true);
             }
         });
     }

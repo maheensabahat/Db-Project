@@ -466,7 +466,6 @@ public class Admin_Dept extends javax.swing.JFrame {
                         pst.setInt(3, dept);
                         pst.executeUpdate();
                         pst.close();
-                        JOptionPane.showMessageDialog(this, "Record Updated.");
 
                         //Table updated after edits
                         tableupdate();
@@ -521,7 +520,6 @@ public class Admin_Dept extends javax.swing.JFrame {
                         pst.setInt(3, mgr);
                         pst.execute();
                         pst.close();
-                        JOptionPane.showMessageDialog(this, "Record Addedd.");
 
                         //Table updates after insertion
                         tableupdate();
@@ -591,7 +589,6 @@ public class Admin_Dept extends javax.swing.JFrame {
                     pst = con.prepareStatement("delete from Department where department_id = ?");
                     pst.setInt(1, id);
                     pst.executeUpdate();
-                    JOptionPane.showMessageDialog(this, "Record Deleted.");
 
                     tableupdate();
 

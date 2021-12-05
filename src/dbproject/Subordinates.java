@@ -221,8 +221,10 @@ public class Subordinates extends javax.swing.JFrame {
         try {
 
             pst = con.prepareStatement("select * from Employee join department "
-                    + "using (department_id) where manager_id = ? and status = 'Working'");
+                    + "using (department_id) where manager_id = ? and "
+                    + "status = 'Working' and employee_id <> ?");
             pst.setInt(1, mgr);
+            pst.setInt(2, mgr);
             rs = pst.executeQuery();
 
             ResultSetMetaData rsd = rs.getMetaData();
@@ -238,7 +240,7 @@ public class Subordinates extends javax.swing.JFrame {
                     v2.add(rs.getString("last_name"));
                     v2.add(rs.getString("email"));
                     v2.add(rs.getString("Bank_account"));
-                    v2.add(rs.getString("hiredate"));
+                    v2.add(rs.getString("hire_date"));
                 }
 
                 dft.addRow(v2);
@@ -265,8 +267,10 @@ public class Subordinates extends javax.swing.JFrame {
                 try {
                     pst = con.prepareStatement("select * from Employee join department "
                             + "using (department_id) where manager_id = ? and "
-                            + "status = 'Working' and employee_ID = ?");
-                    pst.setInt(1, emp);
+                            + "status = 'Working' and employee_ID = ? and employee_id <> ?");
+                    pst.setInt(1, mgr);
+                    pst.setInt(2, emp);
+                    pst.setInt(3, mgr);
                     rs = pst.executeQuery();
 
                     ResultSetMetaData rsd = rs.getMetaData();
@@ -280,7 +284,7 @@ public class Subordinates extends javax.swing.JFrame {
                         v2.add(rs.getString("last_name"));
                         v2.add(rs.getString("email"));
                         v2.add(rs.getString("Bank_account"));
-                        v2.add(rs.getString("hiredate"));
+                        v2.add(rs.getString("hire_date"));
                         dft.addRow(v2);
 
                     }
@@ -362,7 +366,7 @@ public class Subordinates extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 //                try {
-//                    new Subordinates().setVisible(true);
+                    new Subordinates(1).setVisible(true);
 //
 //                } catch (SQLException ex) {
 //                    Logger.getLogger(Subordinates.class

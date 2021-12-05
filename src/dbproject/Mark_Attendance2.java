@@ -333,7 +333,6 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
                     pst.setString(2, att);
 
                     if (pst.executeUpdate() == 1) {
-                        JOptionPane.showMessageDialog(this, "Attendance Marked.");
                         empid.setText("");
                     } else {
                         JOptionPane.showMessageDialog(this, "Unable to mark attendance.");

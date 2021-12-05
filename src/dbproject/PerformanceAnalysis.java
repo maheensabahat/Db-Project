@@ -1,6 +1,8 @@
 package dbproject;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -87,7 +89,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
                     v2.add(rs.getString("year"));
                     v2.add(rs.getString("task_scores"));
                     v2.add(rs.getString("absences"));
-                    v2.add(rs.getString("task_scores"));
+                    v2.add(rs.getString("tasks_completed"));
                 }
 
                 dft.addRow(v2);
@@ -452,7 +454,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
                     v2.add(rs.getString("year"));
                     v2.add(rs.getString("task_scores"));
                     v2.add(rs.getString("absences"));
-                    v2.add(rs.getString("task_scores"));
+                    v2.add(rs.getString("tasks_completed"));
                 }
 
                 dft.addRow(v2);
@@ -500,7 +502,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
                         v2.add(rs.getString("year"));
                         v2.add(rs.getString("task_scores"));
                         v2.add(rs.getString("absences"));
-                        v2.add(rs.getString("task_scores"));
+                        v2.add(rs.getString("tasks_completed"));
                     }
 
                     dft.addRow(v2);
@@ -564,6 +566,7 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
         //Get employee working
         try {
 
+            ResultSet rs;
             pst = con.prepareStatement("select employee_id from Employee"
                     + " where status = 'Working'");
             rs = pst.executeQuery();
@@ -572,82 +575,83 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
             ResultSet rs2;
             ResultSet rs3;
             ResultSet rs4;
+            PreparedStatement pst1;
 
             while (rs.next()) {
                 //get empID
                 int emp = Integer.parseInt(rs.getString("employee_id"));
-                System.out.println(emp);
 
                 //generate score rating
-                pst = con.prepareStatement("select Sum(ifnull(rating,0)) as score from "
-                        + "Employee_task join task using (task_id)\n"
-                        + "where end_date = Date_format(sysdate(),'%M %Y') and employee_id = ?");
-                pst.setInt(1, emp);
-                rs1 = pst.executeQuery();
+                pst1 = con.prepareStatement("select Sum(ifnull(rating,0)) as score "
+                        + "from Employee_task join task using (task_id)\n"
+                        + "where TIMESTAMPDIFF(MONTH, sysdate(), end_date) = 0 and employee_id = ?");
+                pst1.setInt(1, emp);
+                rs1 = pst1.executeQuery();
 
                 int score = 0;
                 if (rs1.next()) {
                     score = rs1.getInt("score");
                 }
-                System.out.println(score);
 
                 //generate tasks completed
-                pst = con.prepareStatement("select count(*) as completed from "
+                pst1 = con.prepareStatement("select count(*) as completed from "
                         + "Employee_task join task using (task_id)\n"
-                        + "where end_date = Date_format(sysdate(),'%M %Y') "
+                        + "where TIMESTAMPDIFF(MONTH, sysdate(), end_date) = 0 "
                         + "and hours is not null and employee_id = ?");
-                pst.setInt(1, emp);
-                rs2 = pst.executeQuery();
+                pst1.setInt(1, emp);
+                rs2 = pst1.executeQuery();
 
                 int TC = 0;
-                if (rs1.next()) {
+                if (rs2.next()) {
                     TC = rs2.getInt("completed");
                 }
-                System.out.println(TC);
 
-                pst = con.prepareStatement("select count(*) as absences from attendance "
-                        + "where date = Date_format(sysdate(),'%M %Y') "
+                pst1 = con.prepareStatement("select count(*) as absences from attendance "
+                        + "where TIMESTAMPDIFF(MONTH, sysdate(), date) = 0 "
                         + "and attendance = 'Absent' and employee_id = ?");
-                pst.setInt(1, emp);
-                rs3 = pst.executeQuery();
+                pst1.setInt(1, emp);
+                rs3 = pst1.executeQuery();
 
                 int AB = 0;
-                if (rs1.next()) {
-                    AB = rs3.getInt("completed");
+                if (rs3.next()) {
+                    AB = rs3.getInt("absences");
                 }
-                System.out.println(AB);
 
-                try {
-                    pst = con.prepareStatement("insert into performance_analysis "
-                            + "values (?, ?, ?, ?, Date_format(sysdate(),'%M %Y'))");
-                    pst.setInt(1, emp);
-                    pst.setInt(2, score);
-                    pst.setInt(3, AB);
-                    pst.setInt(4, TC);
+                pst1 = con.prepareStatement("select * from performance_analysis "
+                        + "where month_of_pa = Date_format(sysdate(),'%M %Y')");
 
-                    pst.executeUpdate();
+                rs4 = pst1.executeQuery();
 
-                    tableupdate();
-                } catch (SQLIntegrityConstraintViolationException e) {
+                if (rs4.next()) {
                     //update records for month if already present
                     String query = "update performance_analysis set task_scores = ?,"
                             + "absences = ?, tasks_completed= ? "
                             + "where Employee_ID = ? and month_of_pa = Date_format(sysdate(),'%M %Y') ";
-                    pst = con.prepareStatement(query);
-                    pst.setInt(4, emp);
-                    pst.setInt(1, score);
-                    pst.setInt(2, AB);
-                    pst.setInt(3, TC);
-                    pst.executeUpdate();
-                    pst.close();
+                    pst1 = con.prepareStatement(query);
+                    pst1.setInt(4, emp);
+                    pst1.setInt(1, score);
+                    pst1.setInt(2, AB);
+                    pst1.setInt(3, TC);
+                    pst1.executeUpdate();
+                    pst1.close();
+                } else {
+                    pst1 = con.prepareStatement("insert into performance_analysis "
+                            + "values (?, ?, ?, ?, Date_format(sysdate(),'%M %Y'))");
+                    pst1.setInt(1, emp);
+                    pst1.setInt(2, score);
+                    pst1.setInt(3, AB);
+                    pst1.setInt(4, TC);
+                    pst1.executeUpdate();
                 }
+
+                tableupdate();
+
             }
 
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(Admin_Employee.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-
 
     }//GEN-LAST:event_Generate_AnalysisActionPerformed
 
@@ -684,12 +688,16 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
 
                     error2.setVisible(true);
                     setStarName();
+
                 } catch (SQLException ex) {
-                    Logger.getLogger(PerformanceAnalysis.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(PerformanceAnalysis.class
+                            .getName()).log(Level.SEVERE, null, ex);
+
                 }
 
             } catch (SQLException ex) {
-                java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(Admin_Employee.class
+                        .getName()).log(java.util.logging.Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, ex);
             }
 
@@ -751,10 +759,12 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
 
             if (rs.next()) {
                 name.setText(rs.getString("first_name") + " " + rs.getString("last_name"));
+
             }
 
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_Employee.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex);
         }
 
