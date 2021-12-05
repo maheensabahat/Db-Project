@@ -68,7 +68,6 @@ public class AdminLogin extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(357, 0, 454, 515);
 
-        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -112,8 +111,6 @@ public class AdminLogin extends javax.swing.JFrame {
         empIDerror1.setText("*invalid Employee ID");
         jPanel1.add(empIDerror1);
         empIDerror1.setBounds(170, 130, 200, 30);
-
-        pw.setFocusable(false);
         jPanel1.add(pw);
         pw.setBounds(64, 230, 231, 31);
 
