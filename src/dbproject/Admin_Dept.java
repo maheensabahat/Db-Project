@@ -127,10 +127,12 @@ public class Admin_Dept extends javax.swing.JFrame {
         return false;
     }
 
-    public boolean checkManagerExist(int emp) {
+    public boolean checkManagerExist(int emp, int dept) {
         try {
-            pst = con.prepareStatement("select * from Department where manager_ID = ?");
+            pst = con.prepareStatement("select * from Department where "
+                    + "manager_ID = ? and department_id <> ?");
             pst.setInt(1, emp);
+            pst.setInt(2, dept);
             rs = pst.executeQuery();
 
             if (!rs.isBeforeFirst()) { //Manager not exists
@@ -407,7 +409,7 @@ public class Admin_Dept extends javax.swing.JFrame {
         error7.setForeground(new java.awt.Color(255, 0, 51));
         error7.setText("This employee manages another department.");
         jPanel1.add(error7);
-        error7.setBounds(10, 210, 260, 30);
+        error7.setBounds(20, 210, 260, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -455,7 +457,7 @@ public class Admin_Dept extends javax.swing.JFrame {
                 int dept = Integer.parseInt(DeptID.getText());
                 int mgr = Integer.parseInt(MgrID.getText());
 
-                if (!checkManagerExist(mgr)) {
+                if (!checkManagerExist(mgr, dept)) {
                     try {
 
                         String query = "update Department set department_name = ?, manager_ID = ?"
@@ -510,7 +512,7 @@ public class Admin_Dept extends javax.swing.JFrame {
                 int dept = Integer.parseInt(DeptID.getText());
                 int mgr = Integer.parseInt(MgrID.getText());
 
-                if (!checkManagerExist(mgr)) {
+                if (!checkManagerExist(mgr, dept)) {
                     try {
                         String query = "insert into Department(department_id, department_name, manager_id)"
                                 + " values(?,?,?)";

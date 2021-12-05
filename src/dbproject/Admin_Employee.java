@@ -617,6 +617,7 @@ public class Admin_Employee extends javax.swing.JFrame {
         fname.requestFocus();
 
     }
+
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         //req fields are there
         if (!checkfields()) {
@@ -725,7 +726,6 @@ public class Admin_Employee extends javax.swing.JFrame {
     }//GEN-LAST:event_EmployeeMouseClicked
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-
         //gets Data of selected record from table
         DefaultTableModel model = (DefaultTableModel) Employee.getModel();
         int selectedIndex = Employee.getSelectedRow();
@@ -768,6 +768,7 @@ public class Admin_Employee extends javax.swing.JFrame {
                         pst.executeUpdate();
                         pst.close();
                         JOptionPane.showMessageDialog(this, "Employee status updated.");
+                        
 
                         //Table updated after edits
                         tableupdate();

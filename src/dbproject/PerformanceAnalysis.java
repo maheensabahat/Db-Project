@@ -645,7 +645,6 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
                 }
 
                 tableupdate();
-
             }
 
         } catch (SQLException ex) {
