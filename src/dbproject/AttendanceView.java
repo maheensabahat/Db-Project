@@ -311,6 +311,8 @@ public class AttendanceView extends javax.swing.JFrame {
 
         month.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        month.setFocusable(false);
+        month.setRequestFocusEnabled(false);
         month.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 monthMouseClicked(evt);
@@ -338,6 +340,8 @@ public class AttendanceView extends javax.swing.JFrame {
 
         year.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", " " }));
+        year.setFocusable(false);
+        year.setRequestFocusEnabled(false);
         year.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 yearMouseClicked(evt);
