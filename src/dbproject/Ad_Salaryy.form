@@ -132,9 +132,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="empid">
-          <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="empidActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="empidKeyTyped"/>
@@ -164,7 +161,6 @@
         <Component class="javax.swing.JTextField" name="date">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dateActionPerformed"/>
@@ -192,9 +188,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="salary">
-          <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salaryActionPerformed"/>
           </Events>
@@ -221,9 +214,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="bonus">
-          <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bonusActionPerformed"/>
           </Events>
@@ -250,9 +240,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="travel">
-          <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="travelActionPerformed"/>
           </Events>
@@ -279,9 +266,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="emp">
-          <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="empActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="empKeyTyped"/>
@@ -406,9 +390,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="medical">
-          <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="medicalActionPerformed"/>
           </Events>

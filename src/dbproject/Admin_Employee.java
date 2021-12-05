@@ -155,7 +155,6 @@ public class Admin_Employee extends javax.swing.JFrame {
         jPanel1.add(first_name);
         first_name.setBounds(30, 70, 100, 20);
 
-        fname.setFocusable(false);
         fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnameActionPerformed(evt);
@@ -170,7 +169,6 @@ public class Admin_Employee extends javax.swing.JFrame {
         jPanel1.add(first_name1);
         first_name1.setBounds(150, 70, 100, 20);
 
-        lname.setFocusable(false);
         lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lnameActionPerformed(evt);
@@ -202,7 +200,6 @@ public class Admin_Employee extends javax.swing.JFrame {
         jPanel1.add(first_name3);
         first_name3.setBounds(30, 170, 100, 20);
 
-        address.setFocusable(false);
         address.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addressActionPerformed(evt);
@@ -217,7 +214,6 @@ public class Admin_Employee extends javax.swing.JFrame {
         jPanel1.add(first_name4);
         first_name4.setBounds(30, 220, 100, 20);
 
-        bankacc.setFocusable(false);
         bankacc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bankaccActionPerformed(evt);
@@ -249,7 +245,6 @@ public class Admin_Employee extends javax.swing.JFrame {
         jPanel1.add(first_name7);
         first_name7.setBounds(30, 270, 100, 20);
 
-        deptid.setFocusable(false);
         deptid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deptidActionPerformed(evt);
@@ -275,7 +270,6 @@ public class Admin_Employee extends javax.swing.JFrame {
         jPanel1.add(empID);
         empID.setBounds(290, 70, 80, 14);
 
-        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -372,8 +366,6 @@ public class Admin_Employee extends javax.swing.JFrame {
         });
         jPanel1.add(search);
         search.setBounds(460, 57, 90, 25);
-
-        password.setFocusable(false);
         jPanel1.add(password);
         password.setBounds(30, 390, 245, 30);
 

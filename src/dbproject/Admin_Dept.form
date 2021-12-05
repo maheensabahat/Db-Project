@@ -156,7 +156,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="DeptID">
           <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
             <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="9e" green="78" red="82" type="rgb"/>
             </Property>
@@ -189,7 +188,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="DeptName">
           <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
             <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="9e" green="78" red="82" type="rgb"/>
             </Property>
@@ -221,7 +219,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="MgrID">
           <Properties>
-            <Property name="focusable" type="boolean" value="false"/>
             <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="9e" green="78" red="82" type="rgb"/>
             </Property>

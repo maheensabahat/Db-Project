@@ -96,7 +96,6 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(730, 425));
         jPanel1.setLayout(null);
 
-        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);

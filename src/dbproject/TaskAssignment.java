@@ -173,7 +173,6 @@ public class TaskAssignment extends javax.swing.JFrame {
         Taskdetail.setEditable(false);
         Taskdetail.setColumns(20);
         Taskdetail.setRows(5);
-        Taskdetail.setFocusable(false);
         jScrollPane1.setViewportView(Taskdetail);
 
         jPanel2.add(jScrollPane1);
@@ -240,7 +239,6 @@ public class TaskAssignment extends javax.swing.JFrame {
         jPanel2.add(jLabel10);
         jLabel10.setBounds(20, 310, 130, 24);
 
-        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);

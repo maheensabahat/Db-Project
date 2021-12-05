@@ -137,7 +137,6 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
         jPanel1.add(Date);
         Date.setBounds(30, 170, 80, 14);
 
-        day.setFocusable(false);
         day.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dayActionPerformed(evt);
@@ -238,7 +237,6 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
 
         month.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
-        month.setFocusable(false);
         month.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 monthMouseClicked(evt);
@@ -254,7 +252,6 @@ public class Emp_AttendanceView extends javax.swing.JFrame {
 
         year.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", " " }));
-        year.setFocusable(false);
         year.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 yearMouseClicked(evt);
