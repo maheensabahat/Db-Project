@@ -98,8 +98,9 @@ public class RateEmployee extends javax.swing.JFrame {
         try {
 
             pst = con.prepareStatement("select * from Employee_task inner join employee using (employee_id)"
-                    + "where hours is not null and department_id = ?");
+                    + "where hours is not null and department_id = ? and task_id = ?");
             pst.setInt(1, dept);
+            pst.setInt(2, taskid);
             rs = pst.executeQuery();
 
             ResultSetMetaData rsd = rs.getMetaData();
@@ -395,10 +396,12 @@ public class RateEmployee extends javax.swing.JFrame {
 
                     try {
 
-                        String query = "update Employee_task set rating = ? where Employee_ID = ?";
+                        String query = "update Employee_task set rating = ? "
+                                + "where Employee_ID = ? and task_id = ?";
                         pst = con.prepareStatement(query);
                         pst.setInt(1, Rating);
                         pst.setInt(2, eid);
+                        pst.setInt(3, taskid);
                         pst.executeUpdate();
                         pst.close();
                         

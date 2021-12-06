@@ -618,8 +618,8 @@ public class PerformanceAnalysis extends javax.swing.JFrame {
                 }
 
                 pst1 = con.prepareStatement("select * from performance_analysis "
-                        + "where month_of_pa = Date_format(sysdate(),'%M %Y')");
-
+                        + "where Employee_ID = ? and month_of_pa = Date_format(sysdate(),'%M %Y')");
+                pst1.setInt(1, emp);
                 rs4 = pst1.executeQuery();
 
                 if (rs4.next()) {

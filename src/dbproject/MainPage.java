@@ -49,7 +49,7 @@ public class MainPage extends javax.swing.JFrame {
         title.setBounds(60, 240, 710, 100);
 
         image.setBackground(new java.awt.Color(255, 255, 255));
-        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Untitled design (4).png"))); // NOI18N
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/Untitled design (4).png"))); // NOI18N
         jPanel1.add(image);
         image.setBounds(0, 40, 660, 250);
 
