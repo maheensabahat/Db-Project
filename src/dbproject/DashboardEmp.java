@@ -86,7 +86,7 @@ public class DashboardEmp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(generateSalary);
-        generateSalary.setBounds(510, 260, 230, 100);
+        generateSalary.setBounds(270, 260, 230, 100);
 
         Attendance.setBackground(new java.awt.Color(105, 103, 115));
         Attendance.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
@@ -142,7 +142,7 @@ public class DashboardEmp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(star);
-        star.setBounds(270, 260, 230, 100);
+        star.setBounds(510, 260, 230, 100);
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(630, 320, 2, 2);
 
