@@ -53,7 +53,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         error2.setVisible(false);
         error3.setVisible(false);
         error4.setVisible(false);
-        
+
         Employee.getTableHeader().setOpaque(true);
 //        Employee.getTableHeader().setBackground(new java.awt.Color(64, 56, 84));
         Employee.getTableHeader().setFont(new java.awt.Font("Rockwell", 1, 10));
@@ -318,43 +318,47 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
                 int emp = Integer.parseInt(empid.getText());
                 String att = "";
 
-                try {
-                    String query = "insert into Attendance(employee_id, attendance) values(?,?)";
-                    pst = con.prepareStatement(query);
-                    pst.setInt(1, emp);
+                if (checkEmployeeExist(emp)) {
+                    try {
+                        String query = "insert into Attendance(employee_id, attendance) values(?,?)";
+                        pst = con.prepareStatement(query);
+                        pst.setInt(1, emp);
 
-                    if (p.isSelected()) {
-                        att = "Present";
-                    } else if (a.isSelected()) {
-                        att = "Absent";
-                    } else if (l.isSelected()) {
-                        att = "On Leave";
+                        if (p.isSelected()) {
+                            att = "Present";
+                        } else if (a.isSelected()) {
+                            att = "Absent";
+                        } else if (l.isSelected()) {
+                            att = "On Leave";
+                        }
+                        pst.setString(2, att);
+
+                        if (pst.executeUpdate() == 1) {
+                            empid.setText("");
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Unable to mark attendance.");
+                        }
+
+                        pst.close();
+
+                        //Table updates after insertion
+                        tableupdate();
+                        //fields are set empty again
+                        setfieldsEmpty();
+
+                    } catch (SQLIntegrityConstraintViolationException e) {
+                        if (checkEmployeeExist(emp)) {
+                            error3.setVisible(true);
+                            attendance.clearSelection();
+                        } else {
+                            error4.setVisible(true);
+                        }
+                    } catch (SQLException ex) {
+                        java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(this, ex);
                     }
-                    pst.setString(2, att);
-
-                    if (pst.executeUpdate() == 1) {
-                        empid.setText("");
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Unable to mark attendance.");
-                    }
-
-                    pst.close();
-
-                    //Table updates after insertion
-                    tableupdate();
-                    //fields are set empty again
-                    setfieldsEmpty();
-
-                } catch (SQLIntegrityConstraintViolationException e) {
-                    if (checkEmployeeExist(emp)) {
-                        error3.setVisible(true);
-                        attendance.clearSelection();
-                    } else {
-                        error4.setVisible(true);
-                    }
-                } catch (SQLException ex) {
-                    java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(this, ex);
+                } else {
+                    error4.setVisible(true);
                 }
 
             } catch (NumberFormatException ex) {
@@ -380,25 +384,25 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
 
     private void saveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseEntered
         // TODO add your handling code here:
-                save.setBackground(new java.awt.Color(79, 70, 102));
+        save.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_saveMouseEntered
 
     private void viewMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewMouseEntered
         // TODO add your handling code here:
-                view.setBackground(new java.awt.Color(79, 70, 102));
+        view.setBackground(new java.awt.Color(79, 70, 102));
 
     }//GEN-LAST:event_viewMouseEntered
 
     private void viewMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewMouseExited
         // TODO add your handling code here:
-                view.setBackground(new java.awt.Color(38, 32, 54));
+        view.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_viewMouseExited
 
     private void saveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseExited
         // TODO add your handling code here:
-                save.setBackground(new java.awt.Color(38, 32, 54));
+        save.setBackground(new java.awt.Color(38, 32, 54));
 
     }//GEN-LAST:event_saveMouseExited
 
@@ -433,7 +437,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
 
     public boolean checkEmployeeExist(int emp) {
         try {
-            pst = con.prepareStatement("select * from Employee where employee_ID = ?");
+            pst = con.prepareStatement("select * from Employee where employee_ID = ? and status = 'Working'");
             pst.setInt(1, emp);
             rs = pst.executeQuery();
 

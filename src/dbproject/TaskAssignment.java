@@ -98,8 +98,8 @@ public class TaskAssignment extends javax.swing.JFrame {
         try {
 
             pst = con.prepareStatement("select * from Employee_task inner join"
-                    + " employee using (employee_id) where department_id = ?");
-            pst.setInt(1, dept);
+                    + " employee using (employee_id) where task_id = ?");
+            pst.setInt(1, taskid);
             rs = pst.executeQuery();
 
             ResultSetMetaData rsd = rs.getMetaData();
@@ -149,6 +149,7 @@ public class TaskAssignment extends javax.swing.JFrame {
         error2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         error3 = new javax.swing.JLabel();
+        Assign = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -305,6 +306,27 @@ public class TaskAssignment extends javax.swing.JFrame {
         jPanel2.add(error3);
         error3.setBounds(100, 300, 200, 40);
 
+        Assign.setBackground(new java.awt.Color(38, 32, 54));
+        Assign.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
+        Assign.setForeground(new java.awt.Color(255, 255, 255));
+        Assign.setText("Back to all tasks");
+        Assign.setFocusable(false);
+        Assign.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AssignMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AssignMouseExited(evt);
+            }
+        });
+        Assign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AssignActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Assign);
+        Assign.setBounds(440, 420, 160, 30);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -359,7 +381,6 @@ public class TaskAssignment extends javax.swing.JFrame {
                         pst.setInt(2, id);
                         pst.execute();
                         pst.close();
-                        JOptionPane.showMessageDialog(this, "Record Addedd.");
 
                         //Table updates after insertion
                         tableupdate();
@@ -429,44 +450,60 @@ public class TaskAssignment extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jLabel6MouseClicked
 
+    private void AssignMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AssignMouseEntered
+        // TODO add your handling code here:
+        Assign.setBackground(new java.awt.Color(79, 70, 102));
+    }//GEN-LAST:event_AssignMouseEntered
+
+    private void AssignMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AssignMouseExited
+        // TODO add your handling code here:
+        Assign.setBackground(new java.awt.Color(38, 32, 54));
+    }//GEN-LAST:event_AssignMouseExited
+
+    private void AssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AssignActionPerformed
+        new CreateTask(mgr).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_AssignActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TaskAssignment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TaskAssignment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TaskAssignment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TaskAssignment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TaskAssignment(4, 1).setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(TaskAssignment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(TaskAssignment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(TaskAssignment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(TaskAssignment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new TaskAssignment(4, 1).setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ATask;
+    private javax.swing.JButton Assign;
     private javax.swing.JTextArea Taskdetail;
     private javax.swing.JTextField Taskname;
     private javax.swing.JButton add1;

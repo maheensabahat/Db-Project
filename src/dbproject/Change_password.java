@@ -78,8 +78,8 @@ public class Change_password extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         first_name4 = new javax.swing.JLabel();
         first_name5 = new javax.swing.JLabel();
-        add1 = new javax.swing.JButton();
-        conf = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
+        confirm = new javax.swing.JButton();
         error1 = new javax.swing.JLabel();
         error3 = new javax.swing.JLabel();
         error2 = new javax.swing.JLabel();
@@ -117,35 +117,35 @@ public class Change_password extends javax.swing.JFrame {
         jPanel2.add(first_name5);
         first_name5.setBounds(50, 240, 160, 15);
 
-        add1.setBackground(new java.awt.Color(52, 45, 71));
-        add1.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
-        add1.setForeground(new java.awt.Color(255, 255, 255));
-        add1.setText("Cancel");
-        add1.setFocusPainted(false);
-        add1.setFocusable(false);
-        add1.setRequestFocusEnabled(false);
-        add1.addActionListener(new java.awt.event.ActionListener() {
+        cancel.setBackground(new java.awt.Color(52, 45, 71));
+        cancel.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
+        cancel.setForeground(new java.awt.Color(255, 255, 255));
+        cancel.setText("Cancel");
+        cancel.setFocusPainted(false);
+        cancel.setFocusable(false);
+        cancel.setRequestFocusEnabled(false);
+        cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add1ActionPerformed(evt);
+                cancelActionPerformed(evt);
             }
         });
-        jPanel2.add(add1);
-        add1.setBounds(50, 320, 110, 30);
+        jPanel2.add(cancel);
+        cancel.setBounds(50, 320, 110, 30);
 
-        conf.setBackground(new java.awt.Color(52, 45, 71));
-        conf.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
-        conf.setForeground(new java.awt.Color(255, 255, 255));
-        conf.setText("Confirm");
-        conf.setFocusPainted(false);
-        conf.setFocusable(false);
-        conf.setRequestFocusEnabled(false);
-        conf.addActionListener(new java.awt.event.ActionListener() {
+        confirm.setBackground(new java.awt.Color(52, 45, 71));
+        confirm.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
+        confirm.setForeground(new java.awt.Color(255, 255, 255));
+        confirm.setText("Confirm");
+        confirm.setFocusPainted(false);
+        confirm.setFocusable(false);
+        confirm.setRequestFocusEnabled(false);
+        confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confActionPerformed(evt);
+                confirmActionPerformed(evt);
             }
         });
-        jPanel2.add(conf);
-        conf.setBounds(180, 320, 110, 30);
+        jPanel2.add(confirm);
+        confirm.setBounds(180, 320, 110, 30);
 
         error1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         error1.setForeground(new java.awt.Color(255, 0, 51));
@@ -216,7 +216,7 @@ public class Change_password extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void confActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confActionPerformed
+    private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         //req fields are there
         if (!checkfields()) {
             try {
@@ -239,6 +239,7 @@ public class Change_password extends javax.swing.JFrame {
                             pst.setInt(2, emp);
                             pst.executeUpdate();
                             new View_profile(emp, isMgr).setVisible(true);
+                            this.setVisible(false);
                         } else {
                             Confirm.setText("");
                             error3.setVisible(true);
@@ -252,12 +253,12 @@ public class Change_password extends javax.swing.JFrame {
                 Logger.getLogger(Change_password.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_confActionPerformed
+    }//GEN-LAST:event_confirmActionPerformed
 
-    private void add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add1ActionPerformed
-        new View_profile(emp, isMgr).setVisible(true);
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+      //  new View_profile(emp, isMgr).setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_add1ActionPerformed
+    }//GEN-LAST:event_cancelActionPerformed
 
     private void newpwKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newpwKeyTyped
         // TODO add your handling code here:
@@ -289,43 +290,43 @@ public class Change_password extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Change_password(1, true).setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Change_password(1, true).setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField Confirm;
     private javax.swing.JPasswordField Current;
-    private javax.swing.JButton add1;
-    private javax.swing.JButton conf;
+    private javax.swing.JButton cancel;
+    private javax.swing.JButton confirm;
     private javax.swing.JLabel error1;
     private javax.swing.JLabel error2;
     private javax.swing.JLabel error3;
