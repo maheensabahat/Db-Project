@@ -122,9 +122,9 @@ public class Subordinates extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(52, 45, 71));
-        jLabel1.setText("Employee");
+        jLabel1.setText("Employees");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(30, 10, 180, 43);
+        jLabel1.setBounds(30, 10, 200, 43);
 
         empID.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         empID.setForeground(new java.awt.Color(52, 45, 71));

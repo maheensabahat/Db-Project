@@ -401,7 +401,7 @@ public class CreateTask extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Rate);
-        Rate.setBounds(520, 440, 180, 30);
+        Rate.setBounds(550, 440, 180, 30);
 
         jLabel12.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(52, 45, 71));
@@ -459,7 +459,7 @@ public class CreateTask extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Assign);
-        Assign.setBounds(312, 440, 180, 30);
+        Assign.setBounds(330, 440, 180, 30);
 
         error1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         error1.setForeground(new java.awt.Color(255, 0, 51));
