@@ -46,6 +46,7 @@ public class AdminLogin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         empid = new javax.swing.JTextField();
         pwerror = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -65,8 +66,14 @@ public class AdminLogin extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(47, 27, 71));
         jPanel2.setLayout(null);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/Mobile_login-amico_1_25.png"))); // NOI18N
+        jLabel6.setText("jLabel6");
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(-50, 0, 480, 490);
+
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(357, 0, 454, 515);
+        jPanel2.setBounds(357, 0, 400, 490);
 
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -299,6 +306,7 @@ public class AdminLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton login;
