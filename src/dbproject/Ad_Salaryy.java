@@ -621,7 +621,6 @@ public class Ad_Salaryy extends javax.swing.JFrame {
                         pst.setInt(5, id);
                         pst.executeUpdate();
                         pst.close();
-                       
 
                         //Table updated after edits
                         tableupdate();
