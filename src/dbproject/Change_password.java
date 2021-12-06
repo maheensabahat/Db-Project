@@ -255,7 +255,8 @@ public class Change_password extends javax.swing.JFrame {
     }//GEN-LAST:event_confActionPerformed
 
     private void add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add1ActionPerformed
-        new View_profile(emp, isMgr).setVisible(false);
+        new View_profile(emp, isMgr).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_add1ActionPerformed
 
     private void newpwKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newpwKeyTyped
