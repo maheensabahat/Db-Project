@@ -324,6 +324,7 @@ public class View_profile extends javax.swing.JFrame {
         add1.setBackground(new java.awt.Color(52, 45, 71));
         add1.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
         add1.setForeground(new java.awt.Color(255, 255, 255));
+        add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/change_password.png"))); // NOI18N
         add1.setText("Change Password");
         add1.setFocusPainted(false);
         add1.setFocusable(false);
@@ -334,7 +335,7 @@ public class View_profile extends javax.swing.JFrame {
             }
         });
         jPanel1.add(add1);
-        add1.setBounds(450, 390, 120, 30);
+        add1.setBounds(440, 400, 140, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
