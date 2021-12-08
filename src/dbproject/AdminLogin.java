@@ -178,22 +178,22 @@ public class AdminLogin extends javax.swing.JFrame {
         empIDerror1.setVisible(false);
         pwerror.setVisible(false);
 
-        int employeeID = Integer.parseInt(empid.getText());
-        String password = pw.getText();
-
-        if (empid.getText().equals("") || password.equals("")) {
+        if (empid.getText().equals("") || pw.getText().equals("")) {
             //check if both fields are filled
             error.setVisible(true);
             if (empid.getText().trim().isEmpty()) {
                 empid.grabFocus();
                 return;
-            } else if (password.trim().isEmpty()) {
+            } else if (pw.getText().trim().isEmpty()) {
                 pw.grabFocus();
                 return;
             }
         } else {
-        //when fields are filled
+            //when fields are filled
             try {
+                int employeeID = Integer.parseInt(empid.getText());
+                String password = pw.getText();
+
                 pst = con.prepareStatement("select * from department d inner join"
                         + " employee e using (department_id)"
                         + " where employee_id = ? and status = 'Working' and department_name = 'Administration'");

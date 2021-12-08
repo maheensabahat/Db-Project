@@ -125,7 +125,7 @@ public class MainPage extends javax.swing.JFrame {
     private void login_adminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_adminMouseEntered
         // TODO add your handling code here:
         //login_admin.setBackground(new java.awt.Color(105, 103, 115));
-        login_admin.setBackground(new java.awt.Color(52, 45, 71));
+        login_admin.setBackground(new java.awt.Color(38, 32, 54));
     }//GEN-LAST:event_login_adminMouseEntered
 
     private void login_adminMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_adminMouseExited
@@ -135,7 +135,7 @@ public class MainPage extends javax.swing.JFrame {
 
     private void login_empMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_empMouseEntered
         // TODO add your handling code here:
-        login_emp.setBackground(new java.awt.Color(52, 45, 71));
+        login_emp.setBackground(new java.awt.Color(38, 32, 54));
     }//GEN-LAST:event_login_empMouseEntered
 
     private void login_empMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_empMouseExited

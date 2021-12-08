@@ -89,6 +89,8 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         error3 = new javax.swing.JLabel();
         error4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        Today = new javax.swing.JButton();
+        Today1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,6 +133,8 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         jPanel1.add(view);
         view.setBounds(540, 45, 160, 30);
 
+        jScrollPane1.setBackground(new java.awt.Color(52, 45, 71));
+
         Employee.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
         Employee.setForeground(new java.awt.Color(52, 45, 71));
         Employee.setModel(new javax.swing.table.DefaultTableModel(
@@ -162,6 +166,11 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         Employee.setFocusable(false);
         Employee.setGridColor(new java.awt.Color(52, 45, 71));
         Employee.setSelectionBackground(new java.awt.Color(130, 120, 158));
+        Employee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EmployeeMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(Employee);
         if (Employee.getColumnModel().getColumnCount() > 0) {
             Employee.getColumnModel().getColumn(0).setResizable(false);
@@ -169,7 +178,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         }
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(220, 80, 480, 300);
+        jScrollPane1.setBounds(220, 80, 480, 290);
 
         empID.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         empID.setForeground(new java.awt.Color(52, 45, 71));
@@ -286,6 +295,51 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(600, 0, 130, 40);
 
+        Today.setBackground(new java.awt.Color(38, 32, 54));
+        Today.setForeground(new java.awt.Color(255, 255, 255));
+        Today.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbproject/calendar.png"))); // NOI18N
+        Today.setText("Today");
+        Today.setFocusPainted(false);
+        Today.setFocusable(false);
+        Today.setRequestFocusEnabled(false);
+        Today.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                TodayMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                TodayMouseExited(evt);
+            }
+        });
+        Today.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TodayActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Today);
+        Today.setBounds(220, 50, 90, 25);
+
+        Today1.setBackground(new java.awt.Color(38, 32, 54));
+        Today1.setForeground(new java.awt.Color(255, 255, 255));
+        Today1.setText("Reset Table");
+        Today1.setFocusPainted(false);
+        Today1.setFocusable(false);
+        Today1.setRequestFocusEnabled(false);
+        Today1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Today1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Today1MouseExited(evt);
+            }
+        });
+        Today1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Today1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Today1);
+        Today1.setBounds(590, 370, 100, 22);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -316,13 +370,17 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
 
             try {
                 int emp = Integer.parseInt(empid.getText());
+                String d = date.getText();
                 String att = "";
 
                 if (checkEmployeeExist(emp)) {
                     try {
-                        String query = "insert into Attendance(employee_id, attendance) values(?,?)";
+//                        String query = "insert into Attendance(employee_id, attendance) values(?,?)";
+                        String query = "update Attendance set attendance = ?"
+                                + "where employee_id = ? and date = STR_TO_DATE(?,'%Y-%m-%d')";
                         pst = con.prepareStatement(query);
-                        pst.setInt(1, emp);
+                        pst.setInt(2, emp);
+                        pst.setString(3, d);
 
                         if (p.isSelected()) {
                             att = "Present";
@@ -331,7 +389,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
                         } else if (l.isSelected()) {
                             att = "On Leave";
                         }
-                        pst.setString(2, att);
+                        pst.setString(1, att);
 
                         if (pst.executeUpdate() == 1) {
                             empid.setText("");
@@ -342,17 +400,17 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
                         pst.close();
 
                         //Table updates after insertion
-                        tableupdate();
+                        tableupdate2();
                         //fields are set empty again
                         setfieldsEmpty();
 
-                    } catch (SQLIntegrityConstraintViolationException e) {
-                        if (checkEmployeeExist(emp)) {
-                            error3.setVisible(true);
-                            attendance.clearSelection();
-                        } else {
-                            error4.setVisible(true);
-                        }
+//                    } catch (SQLIntegrityConstraintViolationException e) {
+//                        if (checkEmployeeExist(emp)) {
+//                            error3.setVisible(true);
+//                            attendance.clearSelection();
+//                        } else {
+//                            error4.setVisible(true);
+//                        }
                     } catch (SQLException ex) {
                         java.util.logging.Logger.getLogger(Admin_Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
                         JOptionPane.showMessageDialog(this, ex);
@@ -412,6 +470,95 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void EmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmployeeMouseClicked
+        error1.setVisible(false);
+        error2.setVisible(false);
+
+        //setting text fields as a record is selected
+        DefaultTableModel model = (DefaultTableModel) Employee.getModel();
+        int selectedIndex = Employee.getSelectedRow();
+
+        empid.setText(model.getValueAt(selectedIndex, 0).toString());
+        date.setText(model.getValueAt(selectedIndex, 3).toString());
+        String att = model.getValueAt(selectedIndex, 4).toString();
+        if (att.equals("Present")) {
+            p.setSelected(true);
+            a.setSelected(false);
+            l.setSelected(false);
+        } else if (att.equals("Absent")) {
+            p.setSelected(false);
+            a.setSelected(true);
+            l.setSelected(false);
+        } else if (att.equals("On Leave")) {
+            p.setSelected(false);
+            a.setSelected(false);
+            l.setSelected(true);
+        }
+
+    }//GEN-LAST:event_EmployeeMouseClicked
+
+    private void TodayMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TodayMouseEntered
+        // TODO add your handling code here:
+        Today.setBackground(new java.awt.Color(79, 70, 102));
+    }//GEN-LAST:event_TodayMouseEntered
+
+    private void TodayMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TodayMouseExited
+        // TODO add your handling code here:
+        Today.setBackground(new java.awt.Color(38, 32, 54));
+    }//GEN-LAST:event_TodayMouseExited
+
+    private void TodayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TodayActionPerformed
+        tableupdate2();
+    }//GEN-LAST:event_TodayActionPerformed
+
+    private void Today1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Today1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Today1MouseEntered
+
+    private void Today1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Today1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Today1MouseExited
+
+    private void Today1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Today1ActionPerformed
+       tableupdate();
+    }//GEN-LAST:event_Today1ActionPerformed
+
+    private void tableupdate2() {
+        int c;
+
+        try {
+            pst = con.prepareStatement("SELECT a.Employee_ID, e.first_name, "
+                    + "e.last_name, a.date, a.`Attendance`\n"
+                    + "FROM Attendance a\n"
+                    + "INNER JOIN Employee e using (Employee_ID)"
+                    + " where date = Date_format(sysdate(), '%Y-%m-%d');");
+            rs = pst.executeQuery();
+
+            ResultSetMetaData rsd = rs.getMetaData();
+            c = rsd.getColumnCount();
+            DefaultTableModel dft = (DefaultTableModel) Employee.getModel();
+            dft.setRowCount(0);
+
+            while (rs.next()) {
+                Vector v2 = new Vector();
+                for (int i = 1; i <= c; i++) {
+                    v2.add(rs.getString("employee_id"));
+                    v2.add(rs.getString("first_name"));
+                    v2.add(rs.getString("last_name"));
+                    v2.add(rs.getString("date"));
+                    v2.add(rs.getString("attendance"));
+                }
+
+                dft.addRow(v2);
+
+            }
+
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(Admin_Employee.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+    }
+
     private boolean checkfields() { //check if required fields are there
         if (empid.getText().equals("")) {
             error1.setVisible(true);
@@ -455,6 +602,31 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
     private void tableupdate() { //table updated after every change
         int c;
         try {
+
+            ResultSet rs;
+            //working employees record
+            pst = con.prepareStatement("select employee_id from Employee"
+                    + " where status = 'Working'");
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+                int emp = Integer.parseInt(rs.getString("employee_id"));
+
+                //generate attendance list
+                //check if list for day not exists
+                PreparedStatement pst1 = con.prepareStatement("select * from attendance "
+                        + "where Employee_ID = ? and date = Date_format(sysdate(), '%Y-%m-%d')");
+                pst1.setInt(1, emp);
+                ResultSet rs1 = pst1.executeQuery();
+
+                //
+                if (!rs1.next()) {
+                    pst1 = con.prepareStatement("insert into attendance(employee_id, date) "
+                            + "values (?, sysdate())");
+                    pst1.setInt(1, emp);
+                    pst1.executeUpdate();
+                }
+            }
 
             pst = con.prepareStatement("SELECT a.Employee_ID, e.first_name, "
                     + "e.last_name, a.date, a.`Attendance`\n"
@@ -531,6 +703,8 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Employee;
+    private javax.swing.JButton Today;
+    private javax.swing.JButton Today1;
     private javax.swing.JRadioButton a;
     private javax.swing.JTextField date;
     private javax.swing.JLabel empID;

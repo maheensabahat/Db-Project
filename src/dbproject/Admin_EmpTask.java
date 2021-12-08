@@ -386,8 +386,17 @@ public class Admin_EmpTask extends javax.swing.JFrame {
         int selectedIndex = ATask.getSelectedRow();
 
         empid.setText(model.getValueAt(selectedIndex, 0).toString());
-        hrs.setText(model.getValueAt(selectedIndex, 1).toString());
-        rating.setText(model.getValueAt(selectedIndex, 2).toString());
+        if( model.getValueAt(selectedIndex, 2)!= null){
+        hrs.setText(model.getValueAt(selectedIndex, 2).toString());
+        } else{
+            hrs.setText("");
+        }
+        
+        if( model.getValueAt(selectedIndex, 3)!= null){
+        rating.setText(model.getValueAt(selectedIndex, 3).toString());
+        }else{
+            rating.setText("");
+        }
 
     }//GEN-LAST:event_ATaskMouseClicked
 
