@@ -641,7 +641,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
             pst = con.prepareStatement("SELECT a.Employee_ID, e.first_name, "
                     + "e.last_name, a.date, a.`Attendance`\n"
                     + "FROM Attendance a\n"
-                    + "INNER JOIN Employee e using (Employee_ID);");
+                    + "INNER JOIN Employee e using (Employee_ID) order by date;");
             rs = pst.executeQuery();
 
             ResultSetMetaData rsd = rs.getMetaData();
