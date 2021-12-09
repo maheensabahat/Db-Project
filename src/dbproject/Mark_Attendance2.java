@@ -26,6 +26,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
     ResultSet rs;
     Database db;
     ButtonGroup attendance;
+    boolean TU;
 
     public Mark_Attendance2() {
         initComponents();
@@ -38,6 +39,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
             Logger.getLogger(Mark_Attendance2.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        TU = false;
         con = db.con;
         pst = db.pst;
         rs = db.rs;
@@ -98,6 +100,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(730, 425));
         jPanel1.setLayout(null);
 
+        empid.setEditable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -259,7 +262,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
 
         error1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         error1.setForeground(new java.awt.Color(255, 0, 51));
-        error1.setText("This field is required.");
+        error1.setText("select a record from table.");
         jPanel1.add(error1);
         error1.setBounds(30, 70, 200, 30);
 
@@ -400,7 +403,11 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
                         pst.close();
 
                         //Table updates after insertion
-                        tableupdate2();
+                        if (TU) {
+                            tableupdate2();
+                        } else {
+                            tableupdate();
+                        }
                         //fields are set empty again
                         setfieldsEmpty();
 
@@ -520,10 +527,12 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
     }//GEN-LAST:event_Today1MouseExited
 
     private void Today1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Today1ActionPerformed
-       tableupdate();
+        tableupdate();
+        TU = false;
     }//GEN-LAST:event_Today1ActionPerformed
 
     private void tableupdate2() {
+        TU = true;
         int c;
 
         try {

@@ -28,6 +28,7 @@ public class Generate_Salary extends javax.swing.JFrame {
     Statement st;
     ResultSet rs;
     Database db;
+    boolean generate;
 
     public Generate_Salary(int emp, boolean isMgr) {
         initComponents();
@@ -39,6 +40,8 @@ public class Generate_Salary extends javax.swing.JFrame {
         Name.setVisible(false);
         Date.setVisible(false);
         Amount.setVisible(false);
+
+        generate = true;
 
         db = new Database();
         try {
@@ -63,11 +66,11 @@ public class Generate_Salary extends javax.swing.JFrame {
 
         try {
 
-            pst = con.prepareStatement("SELECT s.Employee_ID, CONCAT_WS(\"-\", e.first_name, e.last_name) as name,"
+            pst = con.prepareStatement("SELECT s.Employee_ID, CONCAT_WS(\" \", e.first_name, e.last_name) as name,"
                     + "s.salary, s.bonus, s.travel_allowance, s.medical_allowance, e.status\n"
                     + "FROM monthly_salary s\n"
                     + "INNER JOIN Employee e using (Employee_ID) "
-                    + "where employee_id = ? and date = Date_format(sysdate(),'%M %Y') ");
+                    + "where employee_id = ? and date = Date_format(sysdate(),'%M %Y') and salary is not null");
             pst.setInt(1, emp);
             rs = pst.executeQuery();
 
@@ -353,11 +356,18 @@ public class Generate_Salary extends javax.swing.JFrame {
     }//GEN-LAST:event_travelActionPerformed
 
     private void GenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateActionPerformed
-        if (!noSal) {
+        if (!noSal && generate) {
             Check.setVisible(true);
             Name.setVisible(true);
             Date.setVisible(true);
             Amount.setVisible(true);
+            generate = false;
+        } else {
+            Check.setVisible(false);
+            Name.setVisible(false);
+            Date.setVisible(false);
+            Amount.setVisible(false);
+            generate = true;
         }
     }//GEN-LAST:event_GenerateActionPerformed
 
