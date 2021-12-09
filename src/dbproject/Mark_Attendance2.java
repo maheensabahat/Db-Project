@@ -101,6 +101,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         empid.setEditable(false);
+        empid.setFocusable(false);
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -185,7 +186,7 @@ public class Mark_Attendance2 extends javax.swing.JFrame {
 
         empID.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         empID.setForeground(new java.awt.Color(52, 45, 71));
-        empID.setText("*Employee ID:");
+        empID.setText("Employee ID:");
         jPanel1.add(empID);
         empID.setBounds(30, 90, 90, 15);
 
